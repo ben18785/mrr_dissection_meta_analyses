@@ -6,3 +6,6 @@
 *.gz
 _minted*
 ~*
+*.docx
+*.html
+
