@@ -107,7 +107,7 @@ predominantly East-African vector \emph{A. funestus s.l}. We estimate
 LBLs of 7.0 days (mean estimate; 25\%-75\% CI: 4.5-8.5 days from the
 MRR analysis) and 5.0 days (mean estimate; 25\%-75\% CI: 3.5-5.1 days
 from the dissection analysis) for \emph{Aedes aegypti}; and 12.1 days
-(median estimate; 25\%-75\% CI: 10.0-13.7 days from the MRR analysis)
+(mean estimate; 25\%-75\% CI: 10.0-13.7 days from the MRR analysis)
 for \emph{Ae.} \emph{albopictus} -- the predominant vectors of dengue
 fever, chikungunya and Zika. Our estimates indicate that there is
 significant variation in lifespan across species, with most variation
@@ -275,7 +275,7 @@ Posterior distributions were derived using Markov Chain Monte Carlo
 using \emph{K}-fold cross validation which tests the ability of the
 model fitted to part of the data to predict the rest using multiple
 different partitions. Further details of the prior specification,
-fitting and validation through posterior predictive checks are given in
+fitting and validation through posterior predictive checks \citep{lambert2018student} are given in
 the SOM.
 
 Two studies of \emph{Anopheles balabacensis} reported capture rates
@@ -564,8 +564,7 @@ enough to transmit diseases (Fig. \ref{fig:eip}), rising to a maximum of 84\% fo
 \section{Discussion}\label{discussion}
 
 In this study, we applied a Bayesian hierarchical framework to the
-analysis of a database of mark-release-recapture experiments and a
-database of mosquito dissection studies to estimate mosquito lifespan.
+analysis of a database of mark-release-recapture experiments and another for mosquito dissection studies to estimate mosquito lifespan.
 By applying a single framework, this allows us to effectively synthesise
 information from the disparate experiments which, individually, estimate
 lifespan with considerable uncertainty. Due to the assumptions required
@@ -579,7 +578,7 @@ each sex individually, and we estimate that, on average, males live
 shorter lives than females. Pre-release feeding with sugar also
 lengthens lifespan across all three genera, although this effect is less
 marked than the sex differences. In contrast to a number of lab-based
-experiments, temperature was not determined to significantly impact
+experiments \citep{yang2009assessing,brady2013modelling}, temperature was not determined to significantly impact
 lifespan. By fitting a range of survival models to the data in both
 meta-analyses, we could assess evidence for age-dependent mortality.
 Overall, we conclude that the evidence is mixed: in the MRR experiments,
@@ -589,7 +588,7 @@ by a model incorporating an increasing risk of mortality with age.
 
 MRR experiments are known to produce downwardly-biased estimates of
 lifespan. Lab experiments have demonstrated that marking can negatively
-impact survival (Verhurst et al., 2013; Dickens and Brant, 2014),
+impact survival \citep{verhulst2013advances,dickens2014effects}
 resulting in artificially depressed survival. MRR studies typically
 cannot differentiate between a mosquito dying and dispersal from the
 study area meaning that lifespan will be underestimated. In this study,
@@ -615,20 +614,17 @@ sampled is in equilibrium (recruitment matches mortality) and (iv)
 individual mosquitoes can be randomly sampled from the population. The
 reliability and accuracy of dissection has been questioned. The
 objections include the impracticality of dissecting more than a small
-proportion of ovarioles (Hoc and Wilkes, 1995), particularly in African
-vector species (Gillies and Wilkes, 1965), the related issue of locating
+proportion of ovarioles \citep{hoc1995ovariole}, particularly in African
+vector species \citep{gillies1965study}, the related issue of locating
 ovarioles whose count of dilations represents true physiological age
-(Fox and Brust, 1994), and the variation in numbers of ovariolar
-dilations for mosquitoes of the same, known, physiological age (Kay,
-1979; Russell, 1986; Hugo et al., 2008). Indeed there is considerable
+\citep{fox1994dilatations}, and the variation in numbers of ovariolar
+dilations for mosquitoes of the same, known, physiological age \citep{kay1979age,russell1986population,hugo2008evaluations}. Indeed there is considerable
 uncertainty concerning the fundamental question of how dilations in
 ovarioles form in the first place. Whilst the `Old School' of thought (a
-term coined by Fox and Brust, 1994) headed by Polovodana (Polovodova,
-1949) and Detinova (Detinova, 1962) considers dilations to result from
-normal oogenesis, a `New School' headed by Lange and Hoc (Lange and Hoc,
-1981) has challenged this assertion. The New School believe that only
+term coined by Fox and Brust, 1994) headed by Polovodana \citep{polovodova1949determination} and Detinova \citep{detinova1962age} considers dilations to result from
+normal oogenesis, a `New School' headed by Lange and Hoc \citep{lange1981abortive} has challenged this assertion. The New School believe that only
 abortive oogenesis results in follicular dilations because normal
-oogenesis destroys the sack-like structures (Fox and Brust, 1994). This
+oogenesis destroys the sack-like structures \citep{fox1994dilatations}. This
 means that Polovodana's method requires dissecting large numbers of
 ovarioles to uncover those with the most dilations, where abortive
 oogenesis has occurred in each gonotrophic cycle. They deem these
@@ -639,18 +635,17 @@ random occurrence of normal oogenesis in a particular ovariole means its
 dilation count does not equal the number of gonotrophic cycles
 undertaken. This increased difficulty of finding diagnostic ovarioles as
 a mosquito ages would elevate the chance of age `hypodiagnosis' for
-older specimens (Fox and Brust, 1994), and likely biases lifespan
+older specimens \citep{fox1994dilatations}, and likely biases lifespan
 estimates downwards. The difficulty of locating diagnostic ovarioles has
 been investigated using lab populations of \emph{Culex} and \emph{Aedes}
-mosquitoes by Hugo et al., 2008, who conclude that only a small
+mosquitoes by Hugo et al. (2008), who conclude that only a small
 percentage of ovarioles are diagnostic. The exchange rate between
 physiological age and chronological age is the duration of gonotrophic
 cycles. Two methods are commonly used to estimate the duration of
-gonotrophic cycles: MRR studies (see, for example, Gillies and Wilkes,
-1965), where marked mosquitoes are recaptured and dissected to determine
+gonotrophic cycles: MRR studies (see, for example, \cite{gillies1965study}), where marked mosquitoes are recaptured and dissected to determine
 the number of gonotrophic cycles occurring since release; and
 laboratory-based observations of colonies of (typically) wild-caught
-females, or their progeny (see, for example, Afrane et al., 2005).
+females, or their progeny (see, for example, \cite{afrane2005effects}).
 Whilst it is unclear how each method could bias estimated gonotrophic
 cycle duration, in our analysis, laboratory-based studies indicated a
 longer gonotrophic cycle (Fig. \ref{S-fig:dissection_gonotrophicCycleRaw_MRRVsLab}). The distributions we used to
@@ -671,12 +666,12 @@ additional uncertainty of a fluctuating population size, however, could
 lead us to understate the uncertainty in estimates. Field entomologists
 have challenged the assumption of random sampling the mosquito
 population, although there are conflicting opinions as to whether this
-results in a relative paucity (Gillies and Wilkes, 1965) or abundance
-(Clements and Paterson, 1981) of nulliparous individuals. In our
+results in a relative paucity \citep{gillies1965study} or abundance
+\citep{clements1981analysis} of nulliparous individuals. In our
 database, there are cases where there was an obvious deficit of
 nulliparous individuals, which has previously been ascribed to the
 differing distribution of resting females between indoor and outdoor
-traps (Detinova, 1962; Gillies and Wilkes, 1965). We chose to not
+traps \citep{detinova1962age,clements1981analysis}. We chose to not
 include those counts of nulliparous individuals in our analysis where
 their number was less than 90\% of the uniparous. Whilst we see no
 obvious differences in lifespan according to collection method (data not
@@ -685,7 +680,7 @@ sampling is violated, although the directionality of the bias induced by
 this is unclear. Overall, the assumptions underpinning estimates from
 dissection studies indicate that our estimates represent lower bounds on
 lifespan. The alternative dissection-based approach of Detinova
-(Detinova, 1962), based on dichotomous categorisation of female mosquito
+\cite{detinova1962age}, based on dichotomous categorisation of female mosquito
 specimens as `parous' or `unparous' relies on fewer assumptions, and is
 widely used. Further work examining parity rates in field specimens may
 be fruitful although, in principle, it offers less information on the
@@ -715,32 +710,30 @@ will be particularly useful and will allow quantification of the biases
 induced by the assumptions of each. Similarly, MRR experiments releasing
 large numbers of marked mosquitoes and recording
 spatiotemporally-disaggregated captures of wild and re-caught marked
-mosquitoes will be especially useful to estimate lifespan and dispersal.
+mosquitoes will continue be useful in estimating lifespan and dispersal.
 
 To compare estimates of lifespan derived from MRR with those from
 dissection-based methods, we display the estimates of lifespan from
 those ten species occurring in both databases in a single plot (Fig. \ref{fig:comparison}). In is reassuring that there is correlation between estimates from both approaches, although the small sample size likely hindered our ability
 to determine statistical significance. In both cases, we estimate that
 \emph{A. sergentii} was amongst the longest lived of the anopheline
-species with a posterior median LBL of 8.7 days (median estimate;
-25\%-75\% CI: 5.9-13.8 days) from the MRR analysis and 10.0 days (median
+species with a posterior median LBL of 12.4 days (mean estimate;
+25\%-75\% CI: 5.9-13.8 days) from the MRR analysis and 11.9 days (mean
 estimate; 25\%-50\% CI: 7.6-14.0 days) from the analysis of dissection
-studies. This species is a major vector of malaria in the Sahara (Sinka
-et al., 2010), where to act as a disease vector it must persevere
+studies. This species is a major vector of malaria in the Sahara \citep{sinka2010dominant}, where to act as a disease vector it must persevere
 through these hard conditions. It is reasonable to hypothesise that this
 species should live longer than those in environments where the
 potential for blood-feeding and oviposition is greater. The species with
 the greatest discrepancy in the estimates was the major African malaria
-vector \emph{A. gambiae s.l.}, where we estimated LBLs of 4.4 days
-(median estimate; 25\%-75\% CI: 3.8-5.1 days for unfed female) from the
-MRR analysis and 7.6 days (median estimate; 25\%-75\% CI: 5.2-11.0) from
-the dissection analysis. Across genera, the greatest discrepancy in
-estimates was for \emph{Culex} (a posterior median of 2.5 days from the
-MRR versus 4.4 days from the dissection analysis) with the smallest
-discrepancy for \emph{Anopheles} (4.8 versus 5.0 days). By contrast for
-\emph{Aedes} the estimates from the MRR studies (6.9 days) exceed those
-of dissection-based studies (3.5 days). Across all studies we estimate
-from the MRR analysis that mean mosquito lifespan is 4.6 days versus 5.1
+vector \emph{A. gambiae s.l.}, where we estimated LBLs of 4.5 days
+(mean estimate; 25\%-75\% CI: 3.8-5.1 days for unfed female) from the
+MRR analysis and 9.5 days (mean estimate; 25\%-75\% CI: 5.2-11.0) from
+the dissection analysis. Across genera, the greatest discrepancy in estimates was for
+\emph{Aedes}, where the estimates from the MRR studies (8.1 days) are considerably longer than those of dissection-based studies (3.5 days).
+This was followed by \emph{Culex} (a posterior mean of 2.9 days from the
+MRR versus 4.9 days from the dissection analysis) with the smallest
+discrepancy for \emph{Anopheles} (6.8 versus 6.4 days). Across all studies we estimate
+from the MRR analysis that mean mosquito lifespan is 6.0 days versus 5.5
 days from the dissection-based studies. Some of the differences in these
 group-level estimates between the two approaches is likely due to
 environmental and genetic differences between mosquitoes in the
@@ -753,7 +746,7 @@ fly farther during their lifetimes than \emph{Aedes} {[}Charles, do you
 have a reference here?{]}, meaning that the estimates from MRR-based
 approaches will be most downwardly-biased for these genera. This is
 supported by our results since the dissection-based estimates
-(themselves not reliant on assumptions about dispersal) exceed the MRR
+(themselves not reliant on assumptions about dispersal) are similar or exceed the MRR
 estimates for \emph{Anopheles} and \emph{Culex} mosquitoes, but not for
 \emph{Aedes}.
 
@@ -764,11 +757,11 @@ they constitute an upper bound on the lifespan of wild populations.
 Also, since the numbers of mosquitoes involved in large cage experiments
 often numbers in the thousands, these estimates have lower uncertainty
 than those from field experiments although are typically conducted on
-highly inbred mosquito strains. Styer et al. (2007), using colonies of
+highly inbred mosquito strains. \cite{styer2007mosquitoes}, using colonies of
 45,054 female and 55,997 male \emph{Ae. aegypti}, determined that
 females lived nearly twice as long as males; the median lifespan was
 estimated as 31.69 $\pm$ 0.06 days for females and 16.39 $\pm$ 0.03 days
-for males. A similar study by Dawes et al., 2009 with a lab colony of
+for males. A similar study by \cite{dawes2009anopheles} with a lab colony of
 over 1000 female \emph{A. stephensi} found similar estimates for median
 lifespan (31-42 days). These estimates are many multiples of the average
 estimates that result from our analysis of field data which, as
@@ -776,15 +769,14 @@ discussed, represent lower bound estimates. Without an unbiased method
 to measure mosquito lifespan, however, it is difficult to quantify and
 explain the gap that exists between field and laboratory lifespans. The
 development of additional methods to estimate mosquito age, such as
-`Near-Infrared Spectroscopy' (Mayagaya et al., 2009; Sikulu et al.,
-2011; Lambert et al., 2018), if they are proven to work in the field,
+`Near-Infrared Spectroscopy' \citep{mayagaya2009non,sikulu2011evaluating,lambert2018monitoring} if they are proven to work in the field,
 may be of considerable worth here.
 
 We conducted a power analysis of MRR experiments to determine
 whether typical experimental characteristics could detect senescence.
 Here we calculated the power of a maximum likelihood estimator of the
 `senescence parameter' $\beta$ of the Gompertz survival function (see Table
-S\#) for case study populations with three different levels of
+S\ref{S-tab:mrr_survivalDescription}) for case study populations with three different levels of
 senescence (Fig. \ref{S-fig:mrr_mcPowerAnalysis_senescence}A). This analysis indicated that power to detect
 senescence strongly depends on study length (Fig. \ref{S-fig:mrr_mcPowerAnalysis_senescence}B) but is
 insensitive to release size (Fig. \ref{S-fig:mrr_mcPowerAnalysis_senescence}C). Clements and Patterson (1981)
@@ -792,11 +784,11 @@ conducted a meta-analysis of MRR and dissection-based field experiments
 and found evidence of an increasing risk of mortality hazard with age
 that is similar in magnitude to that of the `mild' case considered
 above. For this case, detecting senescence with a power of 80\% requires
-a study length of at least 18 days. Since the median study length for
-experiments included in our analysis was 10 days (Table S\#) this could
+a study length of at least 18 days. Since the median study duration for
+experiments included in our analysis was 10 days (Table S\ref{S-tab:mrr_IndividualData}) this could
 partly explain our failure to detect senescence at the species level. A
 number of experiments have found evidence of age-dependence in
-laboratory populations (Styer et al., 2007; Dawes et al., 2009).
+laboratory populations \citep{styer2007mosquitoes,dawes2009anopheles}.
 However, the artificially benign environment of the laboratory means
 mosquitoes live considerably longer than in the wild, where they may die
 because of exogenous factors, before the effects of physiological
@@ -818,19 +810,19 @@ indicates that females outlive male mosquitoes by approximately 0.9 days
 other ecological parameters determinable by MRR. This suggests that
 continued field entomological work on contained releases of mosquitoes
 in semi-field sites or large microcosms may be a valuable source of
-information on female mosquitoes.
+information on female mosquito ecology.
 
 Our estimates of LBL indicate that mosquitoes that were sugar-fed prior
-to release lived on average 0.7 days longer than those that were unfed
-(, suggesting the potential value of this underappreciated aspect of the
+to release lived on average 0.7 days longer than those that were unfed (Fig. \ref{S-fig:mrr_female_blood_sugar})
+suggesting the potential value of this underappreciated aspect of the
 mosquito ecology to the insects. It may also partly explain the recent
-successes in the use of Attractive Toxic Sugar Baits (ATSB) as a vector
-control intervention (Schlein and Muller references). More research is
+successes in the use of Attractive Toxic Sugar Baits as a vector
+control intervention \citep{muller2008decline,muller2010effective,muller2010field,muller2010successful,beier2012attractive}. More research is
 needed, however, to identify the sugar-feeding frequency and food
 sources for wild populations.
 
-There is considerable evidence from the laboratory that temperature
-modulates mosquito ecology and behaviour (Matt Thomas references). The
+There is evidence mainly from laboratory studies that temperature
+modulates mosquito ecology and behaviour \citep{yang2009assessing,brady2013modelling,murdock2012complex,beck2013effect}. The
 locations and times of year over which the MRR studies were conducted
 encompassed a large range of average air temperatures, from
 approximately 10 \textsuperscript{o}C to 35 \textsuperscript{o}C and,
@@ -850,14 +842,14 @@ experiments may be useful in probing these interactions further.
 
 In this work, we have used modern statistical methods to synthesise precious field data conducted by entomologists past and present, to produce lower bound estimates of mosquito lifespan. The importance of vector mortality for disease transmission has long been recognised, however,
 since even before 1957, when George Macdonald formulated the
-now famous Ross-Macdonald equation of R\textsubscript{0} for malaria. Indeed, the recent declines in malaria prevalence in Sub-Saharan Africa were likely due to upscaling of interventions (insecticide-treated bednets and indoor residual spraying) that aim to reduce mosquito lifespan (Bhatt et al., 2015). Worryingly, resistance to pyrethroids, the only class of insecticide used in current insecticide-treated bednets and likely the only product to come to market in the near
+now famous Ross-Macdonald equation of R\textsubscript{0} for malaria. Indeed, the recent declines in malaria prevalence in Sub-Saharan Africa were likely due to upscaling of interventions (insecticide-treated bednets and indoor residual spraying) that aim to reduce mosquito lifespan \citep{bhatt2015effect}. Worryingly, resistance to pyrethroids, the only class of insecticide used in current insecticide-treated bednets and likely the only product to come to market in the near
 future, has been determined to be widespread and increasing in intensity
-across Sub-Saharan Africa (WHO reference 2018). This alarming trend
+across Sub-Saharan Africa \citep{world2018global}. This alarming trend
 highlights the need for continued MRR and dissection-based studies to
 monitor the effectiveness of bednets and determine whether more
 expensive alternatives, such as nets incorporating piperonyl butoxide be
 deployed. It also emphasises the need for investment in new tools for
-real time monitoring of mosquito populations. In recent years, there has been considerable funding allocated to molecular and genomic research
+real time monitoring of mosquito populations. In recent years, considerable funding has been allocated to molecular and genomic research
 into mosquitoes that strengthens existing interventions and suggest
 novel control strategies. Without commensurate funding allocated to
 applied vector ecology, our lack of knowledge in this area threatens our
@@ -870,5 +862,6 @@ The authors would like to thank the following for useful conversations
 throughout the course of this work: Austin Burt, Mike Bonsall, Thomas Churcher, Steve
 Lindsay and Ellie Sherrard-Smith.
 
+\printbibliography
 
 \end{document}
