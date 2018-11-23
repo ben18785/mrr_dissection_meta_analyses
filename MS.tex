@@ -55,8 +55,10 @@
 \def\fps@figure{htbp}
 \makeatother
 
-
 \date{}
+
+\usepackage{xr}
+\externaldocument{figures}
 
 \begin{document}
 
@@ -368,7 +370,7 @@ MRR}\label{lifespan-estimates-from-mrr}
 MRR estimates the length of time a mosquito remains alive and is still
 in the area available for recapture. It thus provides a lower bound to
 lifespan which we shall refer to as LBL. In 187 of the 230 MRR time
-series the estimated LBL was less than 10 days (Fig. 1). The smallest
+series the estimated LBL was less than 10 days (Fig. \ref{fig:mrr_lifespan_individualEstimates}). The smallest
 estimate was \textless{}1 day for the Asian malaria vector
 \emph{Anopheles subpictus s.l.} which is unfeasibly short and almost
 certainly reflects dispersal out of the recapture zone or a violation of
@@ -388,7 +390,7 @@ sex and pre-release feeding: \emph{F}\textsubscript{37,194} = 2.5,
 The estimated median LBL for female mosquitoes not pre-fed with blood or
 sugar before release for \emph{Culex, Anopheles} and \emph{Aedes} were
 2.5, 5.0 and 6.9 days respectively with an overall estimate of 4.6 days
-(Fig. 2). Differences between genera were significant (ANOVA on median
+(Fig. \ref{fig:mrr_lifespans}). Differences between genera were significant (ANOVA on median
 LBL controlling for sex and pre-release feeding:
 \emph{F}\textsubscript{2,229} = 12.4, \emph{p}\textless{}0.01; Kruskal
 Wallace: \({\chi^{2}}_{2} = 30.8,p < 0.01\)). \emph{K}-fold cross
@@ -405,7 +407,7 @@ between LBL and trap density (Fig. S\#).
 
 The MRR experiments included a mixture of male-only and female-only
 releases, and releases of both sexes. We estimated average male and
-female LBL at the genus level (Fig. 3; there were too few studies to
+female LBL at the genus level (Fig. \ref{fig:mrr_sexDifferences_without_sugar_nor_blood}; there were too few studies to
 make comparisons at the species level). There was a consistent trend for
 females to live longer than males for each of the genera, with the
 difference largest for \emph{Aedes} (2.5 days; fraction of pairwise
@@ -430,7 +432,7 @@ records to calculate average temperatures at the MRR sites (see
 Methods). Using both linear and quadratic temperature terms in
 regressions, we found no significant relationship between study-site
 temperature and LBL (overall or within genus) for the 238 datasets we
-analysed (Fig. 4). This result held if, instead of pooling results from
+analysed (Fig. \ref{fig:mrr_temperature}). This result held if, instead of pooling results from
 all time series, we considered the four species with the most data
 (\emph{Ae. aegypti}, \emph{Cx. tarsalis}, \emph{A. gambiae s.l.} and
 \emph{A. culicifacies s.l.}) individually (Fig. S\#).
@@ -441,8 +443,8 @@ dissection}\label{number-of-gonotrophic-cycles-estimates-from-dissection}
 Dissection allows the number of completed gonotrophic cycles to be
 counted and from this the mean number of cycles before death was
 estimated. Overall, the mean number of cycles completed in a lifetime
-was 1.2 (Fig. 5; posterior median) and across the 131 studies, 95\% of
-the individual time series estimates were less than 3 (Fig. 6). The
+was 1.2 (Fig. \ref{fig:dissection_lifetimes_exponential}; posterior median) and across the 131 studies, 95\% of
+the individual time series estimates were less than 3 (Fig. \ref{fig:dissection_individualEstimates_allSpecies}). The
 estimated greatest number of cycles was for \emph{Anopheles sergentii}
 (2.5 cycles; posterior median) which is adapted to desert conditions (it
 is known as the ``oasis vector'' of malaria) and may have evolved
@@ -458,7 +460,7 @@ species (ANOVA: \emph{F}\textsubscript{24,106} =2.2, \emph{p}
 
 The estimated lifetime gonotrophic cycles for the different genera were
 \emph{Anopheles,} 1.4; \emph{Mansonia}, 1.1; \emph{Culex,} 1.0; and
-\emph{Aedes} 0.8 (Fig. 5) and the differences between the genera were
+\emph{Aedes} 0.8 (Fig. \ref{fig:dissection_lifetimes_exponential}) and the differences between the genera were
 significant (ANOVA: \emph{F}\textsubscript{3,127} =3.4, \emph{p} =0.02;
 the non-parametric Kruskal Wallace: \(\chi_{3}^{2} = 21.7\),
 \emph{p}\textless{}0.01).
@@ -471,7 +473,7 @@ To compare the two methods, we converted numbers of gonotrophic cycle
 the Methods (Fig. S\#). For ten species, we had enough data from both
 species to make a comparison, and there was a positive correlation (not
 statistically significant; Pearson correlation $\rho=0.42$, $n=10$, $p=0.23$)
-between the two measures (Fig. 7), and in only one case -- for \emph{A.
+between the two measures (Fig. \ref{fig:comparison}), and in only one case -- for \emph{A.
 darlingi} - (Table S\#) there was a significant difference in the
 time-series level LBLs.
 
@@ -485,7 +487,7 @@ in different ways, mortality to vary with age. We did this to maximise
 our chance of detecting age-varying mortality (though aware of the risks
 of false positives with multiple estimations).
 
-In Fig. 8 we compare the performance of the six models for describing
+In Fig. \ref{fig:mrr_elpd}, we compare the performance of the six models for describing
 lifespan in MRR studies of 33 species using K-fold cross-validation. We
 categorised the evidence for age-dependent mortality in each species
 according to the performance of the five age-dependent models versus the
@@ -503,7 +505,7 @@ average, were conducted over a longer period of time than the others,
 which may be why we failed to detect age-dependence in the latter (Fig
 S\#).
 
-In Fig. 9, we compare the performance of the six models for describing
+In Fig. \ref{fig:dissection_elpd}, we compare the performance of the six models for describing
 lifespan in dissection studies of 25 species using K-fold
 cross-validation, and categorise the evidence in the same way as for the
 MRR analysis. By our metric, we determined that there were only two
@@ -534,7 +536,7 @@ In order to transmit a disease, a mosquito must live longer than the
 length of the intrinsic incubation period (the time taken for a pathogen
 ingested in one blood meal to be ready to be transmitted during a future
 feeding event). This is a lower bound as it does not include the waiting
-time to find a host after feeding or egg maturation. In Fig. 10 we plot
+time to find a host after feeding or egg maturation. In Fig. \ref{fig:eip}, we plot
 the fraction of the mosquito population that pass this threshold using
 estimates from both MRR and dissection studies for vector species (see
 SOM for references used to identify species as vectors) and their most
@@ -558,7 +560,7 @@ Kruskal-Wallis: \(\chi_{11}^{2} = 38.9\), p\textless{}0.01).
 \emph{Ae. aegypti} and \emph{Ae. albopictus} are the main vectors of
 dengue, chikungunya and Zika viruses. Because of their short intrinsic
 incubation periods a greater fraction of mosquito potentially live long
-enough to transmit diseases (Fig. 10), rising to a maximum of 84\% for
+enough to transmit diseases (Fig. \ref{fig:eip}), rising to a maximum of 84\% for
 \emph{Ae. albopictus} transmitting chikungunya.
 
 \section{Discussion}\label{discussion}
@@ -719,9 +721,7 @@ mosquitoes will be especially useful to estimate lifespan and dispersal.
 
 To compare estimates of lifespan derived from MRR with those from
 dissection-based methods, we display the estimates of lifespan from
-those ten species occurring in both databases in a single plot (Fig. 7).
-In is reassuring that there is correlation between estimates from both
-approaches, although the small sample size likely hindered our ability
+those ten species occurring in both databases in a single plot (Fig. \ref{fig:comparison}). In is reassuring that there is correlation between estimates from both approaches, although the small sample size likely hindered our ability
 to determine statistical significance. In both cases, we estimate that
 \emph{A. sergentii} was amongst the longest lived of the anopheline
 species with a posterior median LBL of 8.7 days (median estimate;
@@ -851,26 +851,16 @@ in reaction to changes in temperature. More work exploring the
 relationship between mosquito ecology and temperature in semi-field
 experiments may be useful in probing these interactions further.
 
-In this work, we have used modern statistical methods to synthesise
-precious field data conducted by entomologists past and present, to
-produce lower bound estimates of mosquito lifespan. The importance of
-vector mortality for disease transmission has long been recognised,
-however, since even before 1957, when George Macdonald formulated the
-now famous Ross-Macdonald equation of R\textsubscript{0} for malaria.
-Indeed, the recent declines in malaria prevalence in Sub-Saharan Africa
-were likely due to the upscaling of interventions (insecticide-treated
-bednets and indoor residual spraying) that aim to reduce mosquito
-lifespan (Bhatt et al., 2015). Worryingly, resistance to pyrethroids,
-the only class of insecticide used in current insecticide-treated
-bednets and likely the only product to come to market in the near
+The importance of vector mortality for disease transmission has long been recognised,
+since even before 1957, when George Macdonald formulated the
+now famous Ross-Macdonald equation of R\textsubscript{0} for malaria. Indeed, the recent declines in malaria prevalence in Sub-Saharan Africa were likely due to upscaling of interventions (insecticide-treated bednets and indoor residual spraying) that aim to reduce mosquito lifespan (Bhatt et al., 2015). Worryingly, resistance to pyrethroids, the only class of insecticide used in current insecticide-treated bednets and likely the only product to come to market in the near
 future, has been determined to be widespread and increasing in intensity
 across Sub-Saharan Africa (WHO reference 2018). This alarming trend
 highlights the need for continued MRR and dissection-based studies to
 monitor the effectiveness of bednets and determine whether more
 expensive alternatives, such as nets incorporating piperonyl butoxide be
 deployed. It also emphasises the need for investment in new tools for
-real time monitoring of mosquito populations. In recent years, there has
-been considerable funding allocated to molecular and genomic research
+real time monitoring of mosquito populations. In this work, we have used modern statistical methods to synthesise precious field data conducted by entomologists past and present, to produce lower bound estimates of mosquito lifespan. In recent years, there has been considerable funding allocated to molecular and genomic research
 into mosquitoes that strengthens existing interventions and suggest
 novel control strategies. Without commensurate funding allocated to
 applied vector ecology, our lack of knowledge in this area threatens our
