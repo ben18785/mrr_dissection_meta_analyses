@@ -730,7 +730,7 @@ The data collection method resulted in 568 separate dissection series, across 72
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1.3\textwidth]{./Figure_files/dissection_parity_data3.png}}
-	\caption{\textbf{The normalised physiological age series for nine species in the database.} Each different coloured line represents an individual series. In each case the count for all ages has been normalised by the nulliparous count. In all cases we do not include any data for censored observations (see Section \ref{sec:dissection_censored}).}\label{fig:dissection_exampleData3}
+	\caption{\textbf{The normalised physiological age series for seven species in the database.} Each different coloured line represents an individual series. In each case the count for all ages has been normalised by the nulliparous count. In all cases we do not include any data for censored observations (see Section \ref{sec:dissection_censored}).}\label{fig:dissection_exampleData3}
 \end{figure}
 
 
@@ -827,8 +827,6 @@ To demonstrate that the results we obtain are not sensitive to the particular fo
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_lifespanPrior_individual.pdf}}
 	\caption{\textbf{The priors over A. mean lifespan and B. over-dispersion parameter used to analyse the individual dissection series.} The prior on the rate parameter of the exponential distribution was $\lambda\sim \text{log-normal}(-1.8,1)$. The prior on the dispersion parameter was $\kappa\sim \text{log-normal}(1,1)$.}\label{fig:dissection_lifespanPrior_individual}
 \end{figure}
-
-As for the MRR analysis we use \textit{Stan} that implements a form of MCMC algorithm known as NUTS \citep{hoffman2014no} to sample from the posterior. The protocol followed for the MCMC sampling was the same as described in Section \ref{sec:mrr_MCMC}.
 
 \subsubsection{Analysis of censored data series}\label{sec:dissection_censored}
 In some of the published papers the data are censored above a threshold age, $a_T$. In these cases we only know the number, $y(a_T)$, of individuals who were captured and dissected with an estimated physiological age that is greater than or equal to the threshold. Since we do not know the estimated physiological age of individual specimens $i$, we represent this as a parameter, $\aleph_i$, in our statistical model. This means that the joint distribution is a function of $y(a_T)$ different $\aleph_i$ parameters. Since these parameters are not directly of interest, and our chosen MCMC engine, Stan \citep{stan-software:2014}, does not directly allow discrete parameters in models, we marginalise these out of the joint distribution. To do this exactly would require an infinite sum over all the possible ages for all $y(a_T)$ mosquitoes that have been caught whose age exceeds the threshold. Rather than carry out this intractable number of summations we instead make the approximation that all mosquitoes in this group are of the same age $\aleph_i = \aleph,\; \forall i \in (1,...,y(a_T))$. We believe this assumption is justifiable, particularly since the numbers of mosquitoes in each subsequent age category is a strongly-decreasing function of age. This means that whilst we do not know with certainty individuals' ages, it is likely that most will be of the threshold age $a_T$.
