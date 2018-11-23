@@ -1,6 +1,7 @@
 \documentclass[]{article}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
+\usepackage[citestyle=authoryear,natbib=true,backend=bibtex,giveninits=true]{biblatex}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -61,7 +62,9 @@
 \externaldocument{figures}
 \externaldocument[S-]{supplementary_materials}
 
+\bibliography{Malaria}
 \begin{document}
+	
 
 A Meta-analysis of Longevity Estimates of Mosquito Vectors of Disease
 
@@ -118,38 +121,36 @@ database indicated evidence for senescence, versus only 2 of 25 species
 from the dissection database. Our analysis applies a common framework to
 the analysis of databases of MRR and dissection-based experiments,
 allowing us to produce robust estimates of lower bounds on lifespan. It
-also enables us to critically appraise each field method, which
-highlights a need for alternative field methods for measuring this
+also enables us to critically appraise each field method, highlighting a need for alternative field methods for measuring this
 important mosquito characteristic.
 
 \section{Keywords}\label{keywords}
 
-mosquitoes, mortality, senescence, vector-borne disease, Bayesian,
-hierarchical model.
+mosquitoes, mortality, senescence, mark-release-recapture, vector-borne disease, Bayesian, hierarchical model.
 
 \section{Introduction}\label{introduction}
 
 Some of the most important infectious diseases afflicting humans are
-transmitted by mosquitoes, including pathogens such as the causative
+transmitted by mosquitoes \citep{gates2014}, including pathogens such as the causative
 agent of malaria that have been associated with humans throughout our
-evolutionary history as well recently emergent infections such as the
-Zika virus. Most mosquito species have a ``gonotrophic cycle'' involving
+evolutionary history \citep{carter2002evolutionary} as well recently emergent infections such as the
+Zika virus \citep{world2016statement}. Most mosquito species have a ``gonotrophic cycle'' involving
 successive episodes of vertebrate blood feeding, egg maturation and
-oviposition. In order for a mosquito to transmit a pathogen it must feed
+oviposition \citep{silver2007mosquito}. In order for a mosquito to transmit a pathogen it must feed
 on an infectious person and live long enough to complete at least one
 gonotrophic cycle and feed on an uninfected and susceptible individual.
 Adult lifespan is thus a critical determinant of the ability of a
 mosquito population to allow the persistence of an indirectly
-transmitted infection. Lifespan can of course be straightforwardly
+transmitted infection \citep{macdonald1957epidemiology}. Lifespan can of course be straightforwardly
 assessed in the laboratory, but it is generally accepted that
 measurements under relatively benign laboratory conditions are likely to
 have limited relevance in the field, and much effort has been directed
-at estimating this parameter in the vector's natural environment. Most
+at estimating this parameter in the vector's natural environment \citep{clements1981analysis,guerra2014global}. Most
 work has focused on assessing average daily mortality rates, and the
 simplest assumption is that these do not vary with mosquito age -- in
 this case longevity is simply the reciprocal of mortality. Testing this
 assumption and discovering whether mosquitoes senesce or show other
-types of age-dependent mortality has also been studied in the field.
+types of age-dependent mortality has also been studied in the field \citep{clements1981analysis,harrington2008age,hugo2014adult}.
 
 There are two main strategies to estimate mosquito mortality rates and
 longevity. The first is through mark-release-recapture (MRR)
@@ -873,12 +874,5 @@ The authors would like to thank the following for useful conversations
 throughout the course of this work: Austin Burt, Mike Bonsall, Thomas Churcher, Steve
 Lindsay and Ellie Sherrard-Smith.
 
-\section{References}\label{references}
-
-ADDIN EN.REFLISTX
-
-\section{Figure Legends}\label{figure-legends}
-
-Figure 1:
 
 \end{document}

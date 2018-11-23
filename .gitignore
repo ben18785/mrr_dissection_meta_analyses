@@ -7,4 +7,5 @@
 _minted*
 ~*
 *.html
-
+*.xml
+*blx.bib
