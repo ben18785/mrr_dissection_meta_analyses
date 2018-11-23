@@ -793,7 +793,7 @@ To determine whether mosquitoes experience age-dependent mortality we compared t
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_lifespanPriorsParity.pdf}}
-	\caption{\textbf{The priors over mean lifespan used to analyse the data for each of the hierarchical models.} The distributional form of the priors is given in Table \ref{tab:dissection_priors}. In all cases the plots show data for 10,000 samples from the relevant prior distribution.}\label{fig:dissection_lifespanPriorsParity}
+	\caption{\textbf{The priors for mean lifespan used to analyse the data for each of the hierarchical models.} The distributional form of the priors is given in Table \ref{tab:dissection_priors}. In all cases the plots show data for 10,000 samples from the relevant prior distribution.}\label{fig:dissection_lifespanPriorsParity}
 \end{figure}
 
 \begin{table}
@@ -825,7 +825,7 @@ To demonstrate that the results we obtain are not sensitive to the particular fo
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_lifespanPrior_individual.pdf}}
-	\caption{\textbf{The priors over A. mean lifespan and B. over-dispersion parameter used to analyse the individual dissection series.} The prior on the rate parameter of the exponential distribution was $\lambda\sim \text{log-normal}(-1.8,1)$. The prior on the dispersion parameter was $\kappa\sim \text{log-normal}(1,1)$.}\label{fig:dissection_lifespanPrior_individual}
+	\caption{\textbf{The priors for A. mean lifespan and B. the over-dispersion parameter used to analyse the individual dissection series.} The prior on the rate parameter of the exponential distribution was $\lambda\sim \text{log-normal}(-1.8,1)$. The prior on the dispersion parameter was $\kappa\sim \text{log-normal}(1,1)$.}\label{fig:dissection_lifespanPrior_individual}
 \end{figure}
 
 \subsubsection{Analysis of censored data series}\label{sec:dissection_censored}
@@ -930,7 +930,7 @@ As for the MRR experiments, we simulated from the posterior predictive distribut
 {%
 	\centering
 	\includegraphics[page=1,scale=.7]{./Figure_files/dissection_ppcs_all}
-	\captionof{figure}{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the dissection series. The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
+	\captionof{figure}{\textbf{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the dissection series.} The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
 	\label{fig:dissection_ppc_all1}
 	\par
 }
@@ -941,7 +941,7 @@ As for the MRR experiments, we simulated from the posterior predictive distribut
 {%
 	\centering
 	\includegraphics[page=2,scale=.7]{./Figure_files/dissection_ppcs_all}
-	\captionof{figure}{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the dissection series. The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
+	\captionof{figure}{\textbf{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the dissection series.} The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
 	\label{fig:dissection_ppc_all2}
 	\par
 }
@@ -952,7 +952,7 @@ As for the MRR experiments, we simulated from the posterior predictive distribut
 {%
 	\centering
 	\includegraphics[page=3,scale=.7]{./Figure_files/dissection_ppcs_all}
-	\captionof{figure}{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the dissection series. The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
+	\captionof{figure}{\textbf{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the dissection series.} The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
 	\label{fig:dissection_ppc_all3}
 	\par
 }
@@ -969,7 +969,7 @@ Along with point estimates of the parameter we also collected information about 
 	\caption{\textbf{Raw gonotrophic cycle duration estimates for A. the 1st cycle and B. subsequent cycles.} The confidence intervals represent a range of uncertainties since they were not available in a standardised form (see Section \ref{sec:dissection_gonotrophicMethod} for a discussion of how we handle this issue). If no statement of uncertainty was given in the estimates then we indicate this by a triangle marker. The studies are ordered according to the central estimate of gonotrophic duration.}\label{fig:dissection_gonotrophicCycleRaw}
 \end{figure}
 
-Since we collected data on the method used to estimate the duration of the gonotrophic cycle we show the raw estimates for the two most common approaches: MRR and laboratory (Fig. \ref{fig:dissection_gonotrophicCycleRaw_MRRVsLab}). From these results it is evident that the estimates from the laboratory studies are, on average, higher than those using the MRR method, (although we wait until Section \ref{sec:dissection_gonotrophicDuration} for a quantitative comparison).
+Since we collected data on the method used to estimate the duration of the gonotrophic cycle we show the raw estimates for the two most common approaches: MRR and laboratory (Fig. \ref{fig:dissection_gonotrophicCycleRaw_MRRVsLab}). From these results it is evident that the estimates from the laboratory studies are, on average, higher than those using the MRR method.
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_gonotrophicCycleRaw_MRRVsLab.pdf}}
@@ -979,7 +979,7 @@ Since we collected data on the method used to estimate the duration of the gonot
 \subsection{Statistical analysis of gonotrophic cycle data}\label{sec:dissection_gonotrophicMethod}
 As discussed in Section \ref{sec:dissection_gonotrophicData}, there was considerable study-level heterogeneity in the information provided for the estimates of the gonotrophic cycle duration. A number of studies ($n=24$) provided no estimates of uncertainty in gonotrophic cycle duration, whereas the rest gave some indication of confidence or alternatively a range of possible estimates. However the types of uncertainty intervals that were specified varied considerably from study to study, from the vague (but common)  `4-6 days' to the more helpful `5$\pm 1$ day (95\% confidence interval)'. 
 
-The heterogeneous nature of the gonotrophic cycle estimates requires a method that explicitly accounts for this characteristic of the data. We decided to model the estimates as representing quantiles from an underlying normal distribution that represents uncertainty over possible durations of the gonotrophic cycle. In those circumstances where lower, central and upper bounds were given explicitly the data was fairly symmetric and so we believe assuming the observations come from an unskewed normal distribution is not unreasonable. Explicitly we treated each type of uncertainty interval as follows,
+The heterogeneous nature of the gonotrophic cycle estimates requires a method that explicitly accounts for this characteristic of the data. We decided to model the estimates as representing quantiles from an underlying normal distribution that represents uncertainty over possible durations of the gonotrophic cycle. In those circumstances where lower, central and upper bounds were given explicitly the data was fairly symmetric and so we believe assuming the observations come from an unskewed normal distribution is reasonable. Explicitly we treated each type of uncertainty interval as follows,
 
 \begin{itemize}
 	\item Simple range, for example, `4-6 days': treat the lower and upper bounds as the 2.5\% and 97.5\% quantiles of a normal distribution.
@@ -1003,6 +1003,8 @@ which forms a straight line in $(Z,G)$ space with slope $\sigma$ and y-intercept
 
 Due to the relative unavailability of estimates for gonotrophic cycle duration across the different genera we generated a single distribution to represent the uncertainty in this parameter by pooling all the data. This was justified because there was not found to be significant variation in the 1st gonotrophic cycle duration (ANOVA: $F_{3,75}=2.6,p>0.05$).
 
+Using the collected data, we estimated that uncertainty in the first gonotrophic cycle duration is estimated as $\mathcal{N}(4.26, 0.38)$ and, for subsequent cycles, $\mathcal{N}(3.85, 0.35)$.
+
 \subsection{Conversion of lifespan from physiological to calendar age}\label{sec:dissection_conversion}
 The estimates of lifespan produced from analysing the dissection data are in terms of physiological age (the number of gonotrophic cycles undertaken). To allow comparison with the estimates from the MRR studies (Fig. \ref{fig:mrr_lifespans}) as well as produce more useful estimates to inform disease transmission dynamical models we convert these estimates to calendar days. To do this we use the estimated parameters of the normal densities that we have assumed represent uncertainty in gonotrophic cycle duration (see Section \ref{sec:dissection_gonotrophicMethod}) and use them to convert our posterior samples of mean physiological lifespan $(L^p_1,...,L^p_S)$ to lifespan in calendar ages $(L^c_1,...,L^c_S)$. To do this we iterate the following for all $i\in (1,...,S)$ posterior samples,
 
@@ -1019,11 +1021,9 @@ In the using the above methodology to convert from physiological to calendar age
 
 \section{Results}
 \subsection{MRR experments}
-Figures \ref{fig:mrr_lifeSpanVsRange}, \ref{fig:mrr_lifeSpanVsTrapDensity} and \ref{fig:mrr_temperature} show the estimates of lifespan versus the trapping range, spatial density and temperature at study location. In these cases, the lifespans shown were obtained from the non-hierarchical model with the exponential survival model.
+Figures \ref{fig:mrr_lifeSpanVsRange} and \ref{fig:mrr_lifeSpanVsTrapDensity} show the estimates of lifespan versus the trapping range and spatial density of traps at study location. In these cases, the lifespans shown were obtained from the non-hierarchical model with the exponential survival model. The spatial density of traps was obtained assuming that the study area was a circular area of radius equal to the maximum trapping distance.
 
-Fig. \ref{fig:mrr_sex} shows the lifespans obtained by sex, for each genus and across all studies ("overall") using the hierarchical Bayesian model with exponential survival model. In the genus-level models, the sex-specific effects (male-only, female-only, mixed-releases) were estimated as independent random effects for each genus with standard normal priors. For the overall model, the sex-specific effects were estimated as independent random effects across all studies, with a standard normal prior.
-
-Fig. \ref{fig:mrr_sugarBlood} shows the lifespans obtained for each pre-release feeding category for each genus and across all studies using the hierarchical Bayesian model with exponential survival model. In the genus-level models, the feeding-specific effects (fed nothing, blood-fed-only, sugar-fed-only and fed both) were estimated as independent random effects for each genus with standard normal priors. For the overall model, the feeding-specific effects were estimated as independent random effects across all studies, with a standard normal prior.
+Fig. \ref{fig:mrr_female_blood_sugar} shows the lifespans obtained for each pre-release feeding category for each genus and across all studies using the hierarchical Bayesian model with exponential survival model. In the genus-level models, the feeding-specific effects (not pre-fed, blood-fed-only and sugar-fed-only) were estimated as independent random effects for each genus with standard normal priors. For the overall model, the feeding-specific effects were estimated as independent random effects across all studies, with a standard normal prior.
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_lifeSpanVsRange.pdf}}
@@ -1061,9 +1061,6 @@ Fig. \ref{fig:mrr_sugarBlood} shows the lifespans obtained for each pre-release 
 	\caption{\textbf{The statistical power to detect senescence for A. three case study populations as a function of B. study length and C. number released.} For each parameter set we generated 500 simulated data series using the negative binomial sampling model with a gompertz hazard function ($\lambda(t) = \alpha e^{\beta t}$), and estimated the $\beta$ parameter using maximum likelihood and tested the null hypothesis $\beta=0$ (constant mortality risk) against the alternative $\beta>0$ using an likelihood ratio test with a 5\% test size. The error bars show the standard deviation in the power for each parameter set. The recapture probability parameters ($\psi$ and $\kappa$) used were the averages of those estimated for the actual data.}
 	\label{fig:mrr_mcPowerAnalysis_senescence}
 \end{figure}
-
-
-\subsubsection{Table of estimated lifespans estimated from mark-release-recapture studies}
 
 \begin{table}[htbp]
 \begin{tabular}{l|l|l|l|l|l|l|l|l}
@@ -1108,15 +1105,13 @@ Fig. \ref{fig:mrr_sugarBlood} shows the lifespans obtained for each pre-release 
 \hline
 \textbf{Overall} & \text{} & 1.4 & 2.8 & 4.6 & 7.5 & 15.4 & 6.0 & 5.2 \\
 \end{tabular}
-\caption{Posterior summaries of mean unfed female mosquito lifespan from the MRR analysis. The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
+\caption{\textbf{Posterior summaries of mean unfed female mosquito lifespan from the MRR analysis.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
 \label{tab:mrr_estimated_lifespans}%
 \end{table}%
 
 
 \subsection{Dissection studies}
-
-
-\subsubsection{Table of estimated lifespan in terms of gonotrophic cycles and chronological time using dissection data}
+Tables \ref{tab:dissection_estimated_lifespans} and \ref{tab:dissection_estimated_lifespans_chron} show posterior summaries of lifespan estimated from the dissection analysis, in terms of gonotrophic cycles and chronological time, respectively.
 
 \begin{table}[htbp]
 \begin{tabular}{l|l|l|l|l|l|l|l|l}
@@ -1155,18 +1150,17 @@ Fig. \ref{fig:mrr_sugarBlood} shows the lifespans obtained for each pre-release 
 		\hline
 		\textbf{Overall} & \textit{} & 0.5 & 0.8 & 1.2 & 1.7 & 2.7 & 1.3 & 0.7 \\
 	\end{tabular}
-\caption{Posterior summaries of mean mosquito lifespan in terms of gonotrophic cycles from dissection studies. The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
+\caption{\textbf{Posterior summaries of mean female mosquito lifespan in terms of gonotrophic cycles from dissection studies.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
 \label{tab:dissection_estimated_lifespans}%
 \end{table}
 
-\subsubsection{Chronological lifespan estimates}
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_lifetimes_exponential_chron.pdf}}
 	\caption{\textbf{Posterior estimates of female mosquito mean chronological lifespan across species, genus and overall groupings as determined from the dissection data.} The lifespans shown are for mosquitoes that were not fed with sugar or blood (for females) before release. The middle line in each box shows the median estimates and the solid dot indicates the mean. The left and right box edges show the 25\%, and 75\% posterior quantiles respectively. The whiskers show the range of the data, excluding points lying more than 1.5 times the interquartile range away from each edge of the box. The numbers before the start of the left whisker indicate the number of individual time-series within each species. All estimates were obtained using the hierarchical exponential survival model.}
 	\label{fig:dissection_lifetimes_exponential_chron}
 \end{figure}
 
-\begin{table}[htbp]
+\begin{table}[htbp!]
 	\begin{tabular}{l|l|l|l|l|l|l|l|l}
 		\textbf{Genus} & \textbf{Species} & \textbf{5$\%$} & \textbf{25$\%$} & \textbf{50$\%$} & \textbf{75$\%$} & \textbf{95\%} &  \textbf{Mean} & \textbf{Std. dev.}\\
 		\hline
@@ -1203,7 +1197,7 @@ Fig. \ref{fig:mrr_sugarBlood} shows the lifespans obtained for each pre-release 
 		\hline
 		\textbf{Overall} & \textit{} & 2.2 & 3.5 & 5.1 & 6.8 & 10.7 & 5.5 & 2.7 \\
 	\end{tabular}
-	\caption{Posterior summaries of mean mosquito lifespan in terms of chronological time from dissection studies. The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
+	\caption{\textbf{Posterior summaries of mean female mosquito lifespan in terms of chronological time from dissection studies.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
 	\label{tab:dissection_estimated_lifespans_chron}%
 \end{table}
 
@@ -1226,7 +1220,7 @@ To conduct a comparison between the LBLs from the MRR analysis and from the diss
 		\textit{Cx. tritaeniorhynchus} & 1     & 5     & 3.5   & 0.12 \\
 		\textit{Ae. vexans} & 1     & 2     & 1.2   & 0.39 \\
 	\end{tabular}%
-	\caption{The results of comparisons between LBLs for those species with data for MRRs and dissection-based studies. The ANOVA tests were conducted using LBLs estimated at the time-series level.}
+	\caption{\textbf{The results of comparisons between LBLs for those species with data for MRRs and dissection-based studies.} The ANOVA tests were conducted using median posterior LBLs estimated at the time-series level.}
 	\label{tab:comparison}%
 \end{table}%
 
