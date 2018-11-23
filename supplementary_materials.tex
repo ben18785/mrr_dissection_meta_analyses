@@ -81,6 +81,9 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 
+\usepackage{xr}
+\externaldocument{figures}
+
 %   \doublespacing
 % \raggedright
 \title{A Meta-analysis of Longevity Estimates of Mosquito Vectors of Disease: Supplementary Material}
@@ -166,6 +169,12 @@ The R file \verb|s_clean_data.R| attached cleans the data, makes the above amend
 		\label{tab:mrr_IndividualData}%
 	\end{adjustwidth}
 \end{table}%
+
+\begin{figure}[h]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_sexReleasesOverTime.pdf}}
+	\caption{\textbf{The number of MRR time-series by date and sex of released mosquitoes.} The numbers represent by-decade totals of the 232 time-series we used in the main analysis.}
+	\label{fig:mrr_sexReleasesOverTime}
+\end{figure}
 
 
 \subsection{Statistical model}\label{sec:mrr_statistical}
@@ -1041,6 +1050,19 @@ Figure \ref{fig:mrr_sugarBlood} shows the lifespans obtained for each pre-releas
 	\label{fig:mrr_female_blood_sugar}
 \end{figure}
 
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/mrr_mcPowerAnalysis.pdf}}
+	\caption{\textbf{The average error in predicting mean lifespan as a function of study length (left) and number of released mosquitoes (right) in a Monte Carlo analysis.} For each parameter set we generated 400 simulated data series using the negative binomial sampling model with an exponential survival function as described in the text, and estimated the mean lifespan using maximum likelihood. The error bars show the standard deviation in the prediction error.}
+	\label{fig:mrr_mcPowerAnalysis}
+\end{figure}
+
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/mrr_mcPowerAnalysis_senescence.pdf}}
+	\caption{\textbf{The statistical power to detect senescence for A. three case study populations as a function of B. study length and C. number released.} For each parameter set we generated 500 simulated data series using the negative binomial sampling model with a gompertz hazard function ($\lambda(t) = \alpha e^{\beta t}$), and estimated the $\beta$ parameter using maximum likelihood and tested the null hypothesis $\beta=0$ (constant mortality risk) against the alternative $\beta>0$ using an likelihood ratio test with a 5\% test size. The error bars show the standard deviation in the power for each parameter set. The recapture probability parameters ($\psi$ and $\kappa$) used were the averages of those estimated for the actual data.}
+	\label{fig:mrr_mcPowerAnalysis_senescence}
+\end{figure}
+
 
 \subsubsection{Table of estimated lifespans estimated from mark-release-recapture studies}
 
@@ -1220,6 +1242,15 @@ The following anopheline species were identified as vector species of malaria,
 \end{itemize}
 
 For dengue fever, chikungunya and Zika, the main vector species are \textit{Ae. aegypti} and \textit{Ae. albopictus} \citep{kraemer2015global,grard2014zika,benelli2016declining}. 
+
+\subsection{The statistical power of MRR studies}\label{sec:mrr_discussion_MonteCarlo}
+Consider an ideal MRR experiment, where the assumptions of no emigration and harmless marking are fully satisfied. With these data, how accurately can we estimate mosquito lifespan? To address this question we generated artificial MRR data and attempted to estimate the (known) parameters by maximum likelihood (a `Monte Carlo' analysis). Specifically, we simulated releases of $N$ mosquitoes that are monitored for $m$ days in each case, and determined how statistical power to estimate lifespan depends on these two parameters (Figure \ref{fig:mrr_mcPowerAnalysis}). In order to focus on estimating lifespan, we assumed the mosquitoes experience constant mortality, and recaptures follow the negative binomial sampling model (eqn. \ref{eq:NB}) where the recapture probability parameters ($\psi$ and $\kappa$) were the averages of those estimated for the actual data.
+
+Unsurprisingly, the error in predicting lifespan declines as the duration of study is increased (Figure \ref{fig:mrr_mcPowerAnalysis}A). However once a study length is much longer than the lifespan of the majority of mosquitoes, the predictive power cannot be improved by extending the study duration. The effect of increasing release size (while holding study length constant) is similarly a case of diminishing returns (Figure \ref{fig:mrr_mcPowerAnalysis}B). For the parameters we use, there are significant gains in accuracy from releasing $1,000$ rather than $100$ mosquitoes, but modest gains from releasing $10,000$ rather than $1000$ mosquitoes.
+
+We also conducted a power analysis for the detection of senescence in MRR experiments (Figure \ref{fig:mrr_mcPowerAnalysis_senescence}). Here we calculated the power of a maximum likelihood estimator of the `senescence parameter' $\beta$ of the Gompertz survival function (see Table \ref{tab:mrr_survivalDescription}) for case study populations with three different levels of senescence (Figure \ref{fig:mrr_mcPowerAnalysis_senescence}A.). These indicate that the power to detect senescence is strongly dependent on study length (Figure \ref{fig:mrr_mcPowerAnalysis_senescence}B.), but is insensitive to release size (Figure \ref{fig:mrr_mcPowerAnalysis_senescence}C.). \cite{clements1981analysis} conducted a meta-analysis of MRR and dissection-based experiments and found evidence of senescence that is, at least, qualitatively similar in magnitude to that of the `mild' case considered above. For this case detecting senescence with a power of 80\% requires a study length of at least 18 days. Since the median study length for experiments included in our analysis was 10 days (Table \ref{tab:mrr_aggregateData}) this could partly explain our failure to detect senescence at the species level.
+
+
 
 
 \section{Studies included in the MRR meta-analysis}\label{sec:appendix_mrrStudyList}

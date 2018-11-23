@@ -59,6 +59,7 @@
 
 \usepackage{xr}
 \externaldocument{figures}
+\externaldocument[S-]{supplementary_materials}
 
 \begin{document}
 
@@ -402,8 +403,8 @@ there are few time series per species).
 We reasoned that if dispersal out of the recapture area was reducing the
 LBL below the true lifespan then there should be a positive correlation
 between the spatial extent of the recapture zone and LBL. We found no
-such pattern (Fig. S\#), although there was a positive correlation
-between LBL and trap density (Fig. S\#).
+such pattern (Fig. \ref{S-fig:mrr_lifeSpanVsRange}), although there was a positive correlation
+between LBL and trap density (Fig. \ref{S-fig:mrr_lifeSpanVsTrapDensity}).
 
 The MRR experiments included a mixture of male-only and female-only
 releases, and releases of both sexes. We estimated average male and
@@ -420,7 +421,7 @@ The MRR experiments included information on whether mosquitoes were
 pre-fed with sugar (41 time series), blood (71), both (4) or
 alternatively unfed (116). We estimate that female mosquitoes that were
 fed on sugar pre-release lived on average for 0.7 days longer than those
-that were not fed (Fig. S\#; a pattern that was consistent across the
+that were not fed (Fig. \ref{S-fig:mrr_female_blood_sugar}; a pattern that was consistent across the
 genera). There were insufficient males that were either fed or unfed
 with sugar prior to release to make a meaningful comparison. Females
 that were blood-fed prior to release on average lived 1.5 days longer
@@ -435,7 +436,7 @@ temperature and LBL (overall or within genus) for the 238 datasets we
 analysed (Fig. \ref{fig:mrr_temperature}). This result held if, instead of pooling results from
 all time series, we considered the four species with the most data
 (\emph{Ae. aegypti}, \emph{Cx. tarsalis}, \emph{A. gambiae s.l.} and
-\emph{A. culicifacies s.l.}) individually (Fig. S\#).
+\emph{A. culicifacies s.l.}) individually (Fig. \ref{S-fig:mrr_ThreeSpeciesVersusTemperature}).
 
 \subsection{Number of gonotrophic cycles estimates from
 dissection}\label{number-of-gonotrophic-cycles-estimates-from-dissection}
@@ -470,7 +471,7 @@ methods}\label{comparison-of-longevity-estimates-from-two-methods}
 
 To compare the two methods, we converted numbers of gonotrophic cycle
 (physiological age) into lifespan (chronological age) as described in
-the Methods (Fig. S\#). For ten species, we had enough data from both
+the SOM using estimates of gonotrophic cycle duration (Fig. \ref{S-fig:dissection_gonotrophicCycleRaw}). For ten species, we had enough data from both
 species to make a comparison, and there was a positive correlation (not
 statistically significant; Pearson correlation $\rho=0.42$, $n=10$, $p=0.23$)
 between the two measures (Fig. \ref{fig:comparison}), and in only one case -- for \emph{A.
@@ -503,7 +504,7 @@ vector of dengue fever, Zika and chikungunya, \emph{Ae. Aegypti}. These
 studies also tended to include multiple release MRR studies which, on
 average, were conducted over a longer period of time than the others,
 which may be why we failed to detect age-dependence in the latter (Fig
-S\#).
+\ref{S-fig:mrr_mcPowerAnalysis_senescence}).
 
 In Fig. \ref{fig:dissection_elpd}, we compare the performance of the six models for describing
 lifespan in dissection studies of 25 species using K-fold
@@ -603,8 +604,8 @@ lifespan given study parameters in an ideal MRR experiment, where the
 assumptions of no emigration and harmless marking are fully satisfied
 (see SOM for full details). This work indicated that for many of the
 experiments, the short study lengths or typical numbers of mosquitoes
-released, results in considerable uncertainty in lifespan estimates (Fig
-S\#). This indicates that statistical power can be substantially
+released, results in considerable uncertainty in lifespan estimates (Fig.
+\ref{S-fig:mrr_mcPowerAnalysis}). This indicates that statistical power can be substantially
 increased by pooling data across experiments as we did using a Bayesian
 hierarchical model.
 
@@ -655,7 +656,7 @@ laboratory-based observations of colonies of (typically) wild-caught
 females, or their progeny (see, for example, Afrane et al., 2005).
 Whilst it is unclear how each method could bias estimated gonotrophic
 cycle duration, in our analysis, laboratory-based studies indicated a
-longer gonotrophic cycle (Fig. S\#). The distributions we used to
+longer gonotrophic cycle (Fig. \ref{S-fig:dissection_gonotrophicCycleRaw_MRRVsLab}). The distributions we used to
 convert physiological age into calendar age were calculated by pooling
 data across both approaches, to incorporate uncertainty from both
 experimental procedures. It is possible, however, that this aggregate
@@ -698,7 +699,7 @@ it is possible that we may have missed patterns of mortality that would
 have been evident from using a more bespoke approach. As our \emph{in
 silico} analysis of MRR experiments indicates, however, the
 overdispersed data from single experiments results in high measurement
-error (Fig. S\#). By applying different methods to each study, this
+error (Fig. \ref{S-fig:mrr_mcPowerAnalysis}). By applying different methods to each study, this
 could lead us to falsely detect patterns when none are present, and we
 prefer a pooled approach.
 
@@ -782,14 +783,14 @@ development of additional methods to estimate mosquito age, such as
 2011; Lambert et al., 2018), if they are proven to work in the field,
 may be of considerable worth here.
 
-We conducted a power analysis of MRR experiments (Fig. S\#) to determine
+We conducted a power analysis of MRR experiments to determine
 whether typical experimental characteristics could detect senescence.
 Here we calculated the power of a maximum likelihood estimator of the
 `senescence parameter' $\beta$ of the Gompertz survival function (see Table
 S\#) for case study populations with three different levels of
-senescence (Fig. S\#). This analysis indicated that power to detect
-senescence strongly depends on study length (Fig. S\#) but is
-insensitive to release size (Fig. S\#). Clements and Patterson (1981)
+senescence (Fig. \ref{S-fig:mrr_mcPowerAnalysis_senescence}A). This analysis indicated that power to detect
+senescence strongly depends on study length (Fig. \ref{S-fig:mrr_mcPowerAnalysis_senescence}B) but is
+insensitive to release size (Fig. \ref{S-fig:mrr_mcPowerAnalysis_senescence}C). Clements and Patterson (1981)
 conducted a meta-analysis of MRR and dissection-based field experiments
 and found evidence of an increasing risk of mortality hazard with age
 that is similar in magnitude to that of the `mild' case considered
@@ -814,9 +815,9 @@ days) than typical estimates of wild mosquito lifespan.
 
 As ethical concerns of contributing to disease burden are more often
 considered, it is now less common for MRR experiments to release female
-mosquitoes versus males than historically (Fig. S\#). Our analysis
+mosquitoes versus males than historically (Fig. \ref{S-fig:mrr_sexReleasesOverTime}). Our analysis
 indicates that females outlive male mosquitoes by approximately 0.9 days
-(Fig. \#), meaning that differences between the sexes may exist for
+(Fig. \ref{fig:mrr_sexDifferences_without_sugar_nor_blood}), meaning that differences between the sexes may exist for
 other ecological parameters determinable by MRR. This suggests that
 continued field entomological work on contained releases of mosquitoes
 in semi-field sites or large microcosms may be a valuable source of
@@ -837,11 +838,9 @@ locations and times of year over which the MRR studies were conducted
 encompassed a large range of average air temperatures, from
 approximately 10 \textsuperscript{o}C to 35 \textsuperscript{o}C and,
 within this, we determined no relationship between lifespan and
-temperature across all time series (Fig. 4) or, for any of the species
-with the most data (Fig. S\#). It is possible that by considering a raw
-average of air temperature across the month, this ignored other
-temperature-dependent factors of importance for longevity, such as
-temperature range. It is also possible that by ignoring the effects of
+temperature across all time series (Fig. \ref{fig:mrr_temperature}) or, for any of the species
+with the most data (Fig. \ref{S-fig:mrr_ThreeSpeciesVersusTemperature}). It is possible that by considering a raw
+average of air temperature across the month, this ignored, more complex, interactions between temperature and lifespan. It is also possible that by ignoring the effects of
 rainfall (the historical data on rainfall is less likely to be reliable
 for a given location), that this masked a more complex interaction
 between longevity and temperature. The observed laboratory relationship
@@ -851,7 +850,8 @@ in reaction to changes in temperature. More work exploring the
 relationship between mosquito ecology and temperature in semi-field
 experiments may be useful in probing these interactions further.
 
-The importance of vector mortality for disease transmission has long been recognised,
+
+In this work, we have used modern statistical methods to synthesise precious field data conducted by entomologists past and present, to produce lower bound estimates of mosquito lifespan. The importance of vector mortality for disease transmission has long been recognised, however,
 since even before 1957, when George Macdonald formulated the
 now famous Ross-Macdonald equation of R\textsubscript{0} for malaria. Indeed, the recent declines in malaria prevalence in Sub-Saharan Africa were likely due to upscaling of interventions (insecticide-treated bednets and indoor residual spraying) that aim to reduce mosquito lifespan (Bhatt et al., 2015). Worryingly, resistance to pyrethroids, the only class of insecticide used in current insecticide-treated bednets and likely the only product to come to market in the near
 future, has been determined to be widespread and increasing in intensity
@@ -860,7 +860,7 @@ highlights the need for continued MRR and dissection-based studies to
 monitor the effectiveness of bednets and determine whether more
 expensive alternatives, such as nets incorporating piperonyl butoxide be
 deployed. It also emphasises the need for investment in new tools for
-real time monitoring of mosquito populations. In this work, we have used modern statistical methods to synthesise precious field data conducted by entomologists past and present, to produce lower bound estimates of mosquito lifespan. In recent years, there has been considerable funding allocated to molecular and genomic research
+real time monitoring of mosquito populations. In recent years, there has been considerable funding allocated to molecular and genomic research
 into mosquitoes that strengthens existing interventions and suggest
 novel control strategies. Without commensurate funding allocated to
 applied vector ecology, our lack of knowledge in this area threatens our
@@ -870,8 +870,8 @@ our ability to control of mosquito-borne disease.
 \section{Acknowledgements}\label{acknowledgements}
 
 The authors would like to thank the following for useful conversations
-throughout the course of this work: Austin Burt, Thomas Churcher, Steve
-Lindsay, Mike Bonsall and Ellie Sherrard-Smith.
+throughout the course of this work: Austin Burt, Mike Bonsall, Thomas Churcher, Steve
+Lindsay and Ellie Sherrard-Smith.
 
 \section{References}\label{references}
 
