@@ -1160,6 +1160,13 @@ Figure \ref{fig:mrr_sugarBlood} shows the lifespans obtained for each pre-releas
 \label{tab:dissection_estimated_lifespans}%
 \end{table}
 
+\subsubsection{Chronological lifespan estimates}
+\begin{figure}[h]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_lifetimes_exponential_chron.pdf}}
+	\caption{\textbf{Posterior estimates of female mosquito mean chronological lifespan across species, genus and overall groupings as determined from the dissection data.} The lifespans shown are for mosquitoes that were not fed with sugar or blood (for females) before release. The middle line in each box shows the median estimates and the solid dot indicates the mean. The left and right box edges show the 25\%, and 75\% posterior quantiles respectively. The whiskers show the range of the data, excluding points lying more than 1.5 times the interquartile range away from each edge of the box. The numbers before the start of the left whisker indicate the number of individual time-series within each species. All estimates were obtained using the hierarchical exponential survival model.}
+	\label{fig:dissection_lifetimes_exponential}
+\end{figure}
+
 \begin{table}[htbp]
 	\begin{tabular}{l|l|l|l|l|l|l|l|l}
 		\textbf{Genus} & \textbf{Species} & \textbf{5$\%$} & \textbf{25$\%$} & \textbf{50$\%$} & \textbf{75$\%$} & \textbf{95\%} &  \textbf{Mean} & \textbf{Std. dev.}\\
@@ -1197,16 +1204,9 @@ Figure \ref{fig:mrr_sugarBlood} shows the lifespans obtained for each pre-releas
 		\hline
 		\textbf{Overall} & \textit{} & 2.2 & 3.5 & 5.1 & 6.8 & 10.7 & 5.5 & 2.7 \\
 	\end{tabular}
-\caption{Posterior summaries of mean mosquito lifespan in terms of chronological time from dissection studies. The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
-\label{tab:dissection_estimated_lifespans_chron}%
+	\caption{Posterior summaries of mean mosquito lifespan in terms of chronological time from dissection studies. The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
+	\label{tab:dissection_estimated_lifespans_chron}%
 \end{table}
-
-\subsubsection{Chronological lifespan estimates}
-\begin{figure}[h]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_lifetimes_exponential_chron.pdf}}
-	\caption{\textbf{Posterior estimates of female mosquito mean chronological lifespan across species, genus and overall groupings as determined from the dissection data.} The lifespans shown are for mosquitoes that were not fed with sugar or blood (for females) before release. The middle line in each box shows the median estimates and the solid dot indicates the mean. The left and right box edges show the 25\%, and 75\% posterior quantiles respectively. The whiskers show the range of the data, excluding points lying more than 1.5 times the interquartile range away from each edge of the box. The numbers before the start of the left whisker indicate the number of individual time-series within each species. All estimates were obtained using the hierarchical exponential survival model.}
-	\label{fig:dissection_lifetimes_exponential}
-\end{figure}
 
 \subsection{Comparison of LBLs between the MRR and dissection analyses}
 To conduct a comparison between the LBLs from the MRR analysis and from the dissections, we converted the latter lifespans from gonotrophic cycles to chronological age as described in Section \ref{sec:dissection_conversion}. We conducted ANOVA using the individual time series estimates of LBL for each of the 10 species with estimates from both MRR- and dissection-based analysis. The results of this analysis are shown in Table \ref{tab:comparison}.
