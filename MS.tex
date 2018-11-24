@@ -113,7 +113,7 @@ fever, chikungunya and Zika. Our estimates indicate that there is
 significant variation in lifespan across species, with most variation
 explained by differences between genera. In correspondence with
 laboratory studies, we estimate that female mosquitoes outlive males by
-0.9 days on average (mean estimate; 25\%-75\% CI: 0.3-1.6 days). We
+1.2 days on average (mean estimate; 25\%-75\% CI: 0.3-1.6 days). We
 fit models incorporating mosquito senescence to the data, which allows
 us to assess evidence for age-dependent mortality in mosquitoes across
 different species. We determine that 8 of 33 species included in the MRR
@@ -382,8 +382,8 @@ yellow fever in Africa. There are multiple data sets for the most
 important vector species such as \emph{Anopheles gambiae, Aedes aegypti}
 and \emph{albopictus} and \emph{Culex tarsalis} all of which show
 considerable variation. For example, there are 54 estimates of LBL for
-\emph{Ae. aegypti} which range from 2.2 days to 38.3 days with a mean of
-8.3 days and coefficient of variation of 0.7. There were significant
+\emph{Ae. aegypti} which range from 2.5 days to 42.1 days with a mean of
+11.4 days and coefficient of variation of 0.6 (all estimates are posterior mean). There were significant
 differences in LBL amongst species (ANOVA on median LBL controlling for
 sex and pre-release feeding: \emph{F}\textsubscript{37,194} = 2.5,
 \emph{p} \textless{}0.01; the non-parametric Kruskal Wallace:
@@ -398,7 +398,7 @@ LBL controlling for sex and pre-release feeding:
 Wallace: \({\chi^{2}}_{2} = 30.8,p < 0.01\)). \emph{K}-fold cross
 validation suggests that after the effect of genus is accounted for the
 incorporation of a species term provides little predictive power (Fig.
-S\#; in part explained by the latter model over-fitting the data where
+\ref{S-fig:mrr_genusTopLevel}; in part explained by the latter model over-fitting the data where
 there are few time series per species).
 
 We reasoned that if dispersal out of the recapture area was reducing the
@@ -412,22 +412,22 @@ releases, and releases of both sexes. We estimated average male and
 female LBL at the genus level (Fig. \ref{fig:mrr_sexDifferences_without_sugar_nor_blood}; there were too few studies to
 make comparisons at the species level). There was a consistent trend for
 females to live longer than males for each of the genera, with the
-difference largest for \emph{Aedes} (2.5 days; fraction of pairwise
+difference largest for \emph{Aedes} (2.9 days; fraction of pairwise
 posterior samples of females versus males where difference was less than
-zero, p\textless{}0.01), followed by \emph{Anopheles} (2.0 days; p=0.17)
-and \emph{Culex} (0.3 days; p=0.34). Overall, female mosquitoes were
-estimated to live 0.9 days longer than males (p=0.10).
+zero, p\textless{}0.01), followed by \emph{Anopheles} (2.2 days; p=0.17)
+and \emph{Culex} (0.2 days; p=0.34). Overall, female mosquitoes were
+estimated to live 1.2 days longer than males (p=0.10).
 
 The MRR experiments included information on whether mosquitoes were
 pre-fed with sugar (41 time series), blood (71), both (4) or
 alternatively unfed (116). We estimate that female mosquitoes that were
-fed on sugar pre-release lived on average for 0.7 days longer than those
-that were not fed (Fig. \ref{S-fig:mrr_female_blood_sugar}; a pattern that was consistent across the
+fed on sugar pre-release lived on average for 1.0 days (posterior mean) longer than those
+that were not fed ($p>0.05$; Fig. \ref{S-fig:mrr_female_blood_sugar}; a pattern that was consistent across the
 genera). There were insufficient males that were either fed or unfed
 with sugar prior to release to make a meaningful comparison. Females
-that were blood-fed prior to release on average lived 1.5 days longer
+that were blood-fed prior to release on average lived 1.7 days (posterior mean) longer
 than those who were not fed for \emph{Aedes} but this trend was reversed
-for \emph{Anopheles} meaning that there was little difference overall.
+for \emph{Anopheles} meaning that there was little difference overall (0.15 days; posterior mean; $p=0.44$).
 
 To access whether temperature is associated with LBL we used weather
 records to calculate average temperatures at the MRR sites (see
@@ -472,7 +472,7 @@ methods}\label{comparison-of-longevity-estimates-from-two-methods}
 
 To compare the two methods, we converted numbers of gonotrophic cycle
 (physiological age) into lifespan (chronological age) as described in
-the SOM using estimates of gonotrophic cycle duration (Fig. \ref{S-fig:dissection_gonotrophicCycleRaw}). Table \ref{S-tab:dissection_estimated_lifespans_chron} provides posterior summaries of chronological for the species and genera in the dissection dataset (see also Fig. ). For ten species, we had enough data from both species to make a comparison, and there was a positive correlation (not
+the SOM using estimates of gonotrophic cycle duration (Fig. \ref{S-fig:dissection_gonotrophicCycleRaw}). Table \ref{S-tab:dissection_estimated_lifespans_chron} provides posterior summaries of chronological for the species and genera in the dissection dataset (see also Fig. \ref{S-fig:dissection_lifetimes_exponential_chron}). For ten species, we had enough data from both species to make a comparison, and there was a positive correlation (not
 statistically significant; Pearson correlation $\rho=0.42$, $n=10$, $p=0.23$)
 between the two measures (Fig. \ref{fig:comparison}), and in only one case -- for \emph{A.
 darlingi} - there was a significant difference in the
@@ -717,7 +717,7 @@ dissection-based methods, we display the estimates of lifespan from
 those ten species occurring in both databases in a single plot (Fig. \ref{fig:comparison}). In is reassuring that there is correlation between estimates from both approaches, although the small sample size likely hindered our ability
 to determine statistical significance. In both cases, we estimate that
 \emph{A. sergentii} was amongst the longest lived of the anopheline
-species with a posterior median LBL of 12.4 days (mean estimate;
+species with an LBL of 12.4 days (mean estimate;
 25\%-75\% CI: 5.9-13.8 days) from the MRR analysis and 11.9 days (mean
 estimate; 25\%-50\% CI: 7.6-14.0 days) from the analysis of dissection
 studies. This species is a major vector of malaria in the Sahara \citep{sinka2010dominant}, where to act as a disease vector it must persevere
@@ -805,7 +805,7 @@ days) than typical estimates of wild mosquito lifespan.
 As ethical concerns of contributing to disease burden are more often
 considered, it is now less common for MRR experiments to release female
 mosquitoes versus males than historically (Fig. \ref{S-fig:mrr_sexReleasesOverTime}). Our analysis
-indicates that females outlive male mosquitoes by approximately 0.9 days
+indicates that females outlive male mosquitoes by approximately 1.2 days
 (Fig. \ref{fig:mrr_sexDifferences_without_sugar_nor_blood}), meaning that differences between the sexes may exist for
 other ecological parameters determinable by MRR. This suggests that
 continued field entomological work on contained releases of mosquitoes

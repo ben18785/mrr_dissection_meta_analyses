@@ -1049,6 +1049,12 @@ Fig. \ref{fig:mrr_female_blood_sugar} shows the lifespans obtained for each pre-
 	\label{fig:mrr_female_blood_sugar}
 \end{figure}
 
+\begin{figure}[h]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_genus_vs_species_vs_top.pdf}}
+	\caption{\textbf{The estimated predictive accuracy of the species- and overall-level models relative to the genus-level model.} The predictive accuracy was determined using K-Fold cross-validation as described in SOM; the measure of accuracy presented here by the central dots is the difference in estimated expected log pointwise predictive density compared to the exponential model. The lower and upper whiskers represent the lower and upper bounds of the 95\% confidence interval in predictive accuracy.}
+	\label{fig:mrr_genusTopLevel}
+\end{figure}
+
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/mrr_mcPowerAnalysis.pdf}}
 	\caption{\textbf{The average error in predicting mean lifespan as a function of study length (left) and number of released mosquitoes (right) in a Monte Carlo analysis.} For each parameter set we generated 400 simulated data series using the negative binomial sampling model with an exponential survival function as described in the text, and estimated the mean lifespan using maximum likelihood. The error bars show the standard deviation in the prediction error.}
