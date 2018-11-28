@@ -206,12 +206,13 @@ vectors, \emph{Anopheles, Aedes} (in its traditional sense) and
 
 \section{Results}\label{results}
 
+MRR estimates the length of time a mosquito remains alive and is still
+in the area available for recapture. In dissections of females, the majority of ovarioles have fewer dilations than the number of gonotrophic cycles an individual has experienced, also meaning that estimates derived from these data likely understand true physiological age \citep{hugo2008evaluations}. It is unclear which of these methods leads to lower estimates but in both cases we term our estimates lower bounds on lifespan, which we shall refer to as LBL.
+
 \subsection{Lifespan estimates from
 MRR}\label{lifespan-estimates-from-mrr}
 
-MRR estimates the length of time a mosquito remains alive and is still
-in the area available for recapture. It thus provides a lower bound to mean
-lifespan which we shall refer to as LBL. In 187 of the 230 MRR time
+In 187 of the 230 MRR time
 series the estimated LBL was less than 10 days (Fig. \ref{fig:mrr_lifespan_individualEstimates}). The smallest
 estimate was 1.1 days for the Asian malaria vector
 \emph{Anopheles subpictus s.l.} which is unfeasibly short and almost
@@ -229,8 +230,7 @@ sex and pre-release feeding: \emph{F}\textsubscript{37,194} = 2.5,
 \emph{p} \textless{}0.01; the non-parametric Kruskal Wallace:
 \({\chi^{2}}_{38}\), \emph{p}\textless{}0.01).
 
-The estimated mean LBL for female mosquitoes not pre-fed with blood or
-sugar before release for \emph{Culex, Anopheles} and \emph{Aedes} were
+Since female mosquitoes are most epidemiologically relevant, we start by discussing their estimated lifespan. Also, since the majority of mosquitoes were unfed with blood or sugar prior to release, unless otherwise stated, our estimates represent quantities for unfed mosquitoes. The estimated mean LBL for female mosquitoes for \emph{Culex, Anopheles} and \emph{Aedes} were
 2.9, 6.8 and 8.1 days respectively with an overall estimate of 6.0 days
 (Fig. \ref{fig:mrr_lifespans}; Table \ref{S-tab:mrr_estimated_lifespans}). Differences between genera were significant (ANOVA on median
 LBL controlling for sex and pre-release feeding:
@@ -309,9 +309,9 @@ the non-parametric Kruskal Wallace: \(\chi_{3}^{2} = 21.7\),
 \subsection{Comparison of longevity estimates from two
 methods}\label{comparison-of-longevity-estimates-from-two-methods}
 
-To compare the two methods, we converted numbers of gonotrophic cycles
+Using the data collected from a literature search, we estimated that the first gonotrophic cycle duration had a mean of 4.3 days (std. error: 0.4 days) and, for subsequent cycles, the mean was 3.9 days (std. error: 0.4 days; see SOM). To compare the two methods, we converted numbers of gonotrophic cycles
 (physiological age) into lifespan (chronological age) as described in
-the SOM using estimates of gonotrophic cycle duration (Fig. \ref{S-fig:dissection_gonotrophicCycleRaw}). Table \ref{S-tab:dissection_estimated_lifespans_chron} provides posterior summaries of chronological for the species and genera in the dissection dataset (see also Fig. \ref{S-fig:dissection_lifetimes_exponential_chron}). For ten species, we had enough data from both species to make a comparison, and there was a positive correlation (not
+the SOM using these estimates of gonotrophic cycle duration. Table \ref{S-tab:dissection_estimated_lifespans_chron} provides posterior summaries of chronological for the species and genera in the dissection dataset (see also Fig. \ref{S-fig:dissection_lifetimes_exponential_chron}). For ten species, we had enough data from both species to make a comparison, and there was a positive correlation (not
 statistically significant; Pearson correlation $\rho=0.42$, $n=10$, $p=0.23$)
 between the two measures (Fig. \ref{fig:comparison}), and in only one case -- for \emph{A.
 darlingi} - there was a significant difference in the
@@ -804,12 +804,27 @@ available as a Supplementary Online File.
 
 Most dissection studies recorded the distribution of the number of
 gonotrophic cycles in mosquito samples collected over a specific period
-of time. Overall, we found 568 time series in 72 published articles.
-Because seldom were sufficient ancillary data available to analyse
-trends over time, we aggregated the data from each time series. We
-further omitted time series with fewer than 100 mosquitoes and for
+of time. Overall, we found 568 physiological age cross-sections at recorded distinct times in 72 published articles. Our statistical approach relies on steady recruitment to the adult mosquito population. To guard against the effect of fluctuating population sizes on our analysis, we aggregated the data at a given location across cross-sections taken at different times. We further omitted time series with fewer than 100 mosquitoes and for
 species with only one data set leaving 131 studies of mosquitoes in the
 genera \emph{Anopheles, Aedes}, \emph{Culex} and \emph{Mansonia}.
+
+The data which we use provides measures of the age distribution of mosquitoes within each investigated population. By assuming that the population sizes were approximately fixed throughout the period of investigation, this allows us to estimate mean lifespan using a statistical model of mortality incorporating the probability of mosquito capture. We modelled the number of mosquitoes found by dissection to be of age
+\emph{a} using the negative binomial distribution with mean
+$\Psi S(a)$ and shape parameter $\kappa$, where
+$\Psi$ is the product of the recruitment rate of adult mosquitoes,
+which we assume is constant over time, and the probability of being
+captured for dissection, and \emph{S}(\emph{a}) is the probability of
+surviving until age \emph{a}. We used the number of females that have
+yet to lay eggs (nulliparous) to estimate the recruitment rate as
+described further in the SOM. Initial examination revealed that in some
+data sets the number of nulliparous females was anomalously low,
+something that has been noticed before \citep{gillies1965study}. As some
+studies have suggested that the first gonotrophic cycle tends to be
+longer than the subsequent ones, this is probably due to differences in
+capture probability. In data sets where the fraction of nulliparous
+females was less than 90\% the uniparous (completed on gonotrophic
+cycle) we excluded the nulliparous observation. Data was analysed using a Bayesian framework as with the MRR data with
+minor differences in the specification of the priors (see SOM). 
 
 To compare lifespan estimates from dissection and MRR studies we need to
 convert physiological age (the number of gonotrophic cycles) into
@@ -835,33 +850,6 @@ mosquito (we also explored sampling from this distribution to obtain the
 duration of \emph{each} gonotrophic cycle which increased the
 uncertainty in lifespan estimate but did not affect any of the
 conclusions).
-
-We modelled the number of mosquitoes found by dissection to be of age
-\emph{a} using the negative binomial distribution with mean
-$\Psi S(a)$ and shape parameter $\kappa$, where
-$\Psi$ is the product of the recruitment rate of adult mosquitoes,
-which we assume is constant over time, and the probability of being
-captured for dissection, and \emph{S}(\emph{a}) is the probability of
-surviving until age \emph{a}. We used the number of females that have
-yet to lay eggs (nulliparous) to estimate the recruitment rate as
-described further in the SOM. Initial examination revealed that in some
-data sets the number of nulliparous females was anomalously low,
-something that has been noticed before \citep{gillies1965study}. As some
-studies have suggested that the first gonotrophic cycle tends to be
-longer than the subsequent ones, this is probably due to differences in
-capture probability. In data sets where the fraction of nulliparous
-females was less than 90\% the uniparous (completed on gonotrophic
-cycle) we excluded the nulliparous observation.
-
-Data was analysed using a Bayesian framework as with the MRR data with
-minor differences in the specification of the priors (see SOM). Some
-published studies do not distinguish the number of gonotrophic studies
-beyond a threshold (the more ovariole dilations there are the harder it
-is to count them) which is akin to censoring the data. Because this
-censoring involves only a relatively small number of mosquitoes in each
-time series (median = 2\%), and because of the technical difficulties of
-allowing for censoring in our Bayesian estimation procedures, we assume
-the females died at the threshold age.
 
 \section{Acknowledgements}\label{acknowledgements}
 
