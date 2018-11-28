@@ -61,6 +61,7 @@
 \usepackage{xr}
 \externaldocument{figures}
 \externaldocument[S-]{supplementary_materials}
+\externaldocument[SM-]{supplementary_materials_methods}
 
 \bibliography{Malaria}
 \begin{document}
@@ -123,6 +124,12 @@ the analysis of databases of MRR and dissection-based experiments,
 allowing us to produce robust estimates of lower bounds on lifespan. It
 also enables us to critically appraise each field method, highlighting a need for alternative field methods for measuring this
 important mosquito characteristic.
+
+\section{Author summary}
+
+
+\section{Author contributions}
+HCJG, AN and BL were involved in conceptualising this study. BL was responsible for data curation and the formal analysis of the data. BL and AN developed the statistical methodology and conducted the investigation. All authors were involved in drafting the original manuscript and revising it.
 
 \section{Keywords}\label{keywords}
 
@@ -196,173 +203,6 @@ ourselves. We concentrated on the three major genera of mosquito
 vectors, \emph{Anopheles, Aedes} (in its traditional sense) and
 \emph{Culex}, which constitute the majority of the data.
 
-\section{Methods}\label{methods}
-
-In recent years many important vectors of disease have been shown to be
-complexes of closely related species, biotypes or forms that cannot
-be distinguished morphologically (for example the morphospecies
-\emph{Anopheles gambiae sensu lato} is now separated into the widespread
-\emph{gambiae, coluzzii, arabiensis} and a number of more local
-species). As the majority of studies analysed here took place before
-molecular techniques allowed these taxa to be separated we work here
-chiefly with morphospecies.
-
-\subsection{Mark-release-recapture}\label{mark-release-recapture}
-
-Data from MRR experiments in the Guerra et al. (2014) database were
-examined and those with fewer than six recaptures and species with only
-a single MRR study were excluded for the hierarchical analysis. Of the
-232 data sets, 179 involved only females, 35 males, and 18 both sex
-releases. For 102 data sets the age of the released mosquitoes was known
-(the average age of released mosquitoes was 4.0 days) while in the other
-cases it was unknown or unrecorded; in these cases we assumed the
-mosquitoes were newly emerged at the time of release and return to this
-assumption later. See Table \ref{S-tab:mrr_aggregateData} for a summary of other data characteristics.
-
-We analysed all MRR experiments within the same statistical framework
-(for full details see the Supplementary Online Material (SOM)). In the
-simplest case \emph{N\textsubscript{R}} mosquitoes are released on day
-zero and the probability that they remain in the recapture area until
-day \emph{t} is \emph{S}(\emph{t}) when they are recaptured with
-probability $\psi$. We model the number of mosquitoes recaptured on
-day \emph{t} using a negative binomial sampling model with mean
-\(\left( N_{R} - Y\left( t - 1 \right) \right)S\left( t \right)\psi\),
-where \(Y\left( t - 1 \right)\) is cumulative captures before day
-\emph{t}, and shape parameter $\kappa$. The negative binomial has been
-used previously in analyses of mosquito count data \citep{service1971studies,nedelman1983negative} because of its ability to
-represent temporal over-dispersion in recaptures most likely caused by
-variable weather. A slight modification was required for studies with
-multiple releases (see SOM).
-
-The simplest model for $S(t)$ assumes there is a constant
-probability ($\lambda$) that a mosquito dies or leaves the recapture area
-so that the numbers remaining after time \emph{t} are given by the
-exponential distribution, $\text{exp}( -\lambda t )$.
-We utilised this form extensively but in testing for senescence used
-five other models where $\lambda(t)$ varies with time so that,
-
-\begin{longtable}[]{@{}ll@{}}
-\(S\left( t \right) = e^{- \int_{0}^{t}{\lambda\left( \tau \right) \mathrm{d}\tau}}.\)
-\end{longtable}
-
-Details of the five models (Gompertz, Weibull, Gompertz-Makeham,
-Logistic and Logistic-Makeham), which vary in their ability to detect
-different forms of age-dependent mortality, are given in the SOM. Using
-multiple different types of models increased our chances of detecting
-senescence though, as discussed below, also increases the likelihood of
-false positives.
-
-Parameters were estimated using Bayesian techniques with relative
-uninformative priors for $\kappa$ and the parameters of
-$\lambda(t)$, but assuming a prior for $\psi$ indicating a low
-recapture probability (bounded in part by knowledge of the maximum daily
-recapture rates; see SOM). We used a Bayesian hierarchical model to estimate
-distributions of lifespan at the species and the genus levels, and
-across the complete data set. This procedure assumes that there is a
-distribution of lifespan parameters for each species from which those
-governing individual MRR time series are sampled, and similarly a
-distribution at the genus level from which those for individual species
-are derived (rather akin to random effects in classical statistics).
-Within this framework we can also allow the parameters for individual
-time series to be influenced by co-variates such as differences in
-experimental methodology. As in the estimation of the parameters of the
-individual experiments, relative uninformative priors were set for the
-parameters of the hierarchical models except for $\psi$ where again a
-distribution representing low recapture probabilities was assumed.
-Posterior distributions were derived using Markov Chain Monte Carlo
-(MCMC) methods with convergence assessed using the \(\hat{R}\) statistic
-\citep{gelman1992inference}. The predictive power of the model was assessed
-using \emph{K}-fold cross validation which tests the ability of the
-model fitted to part of the data to predict the rest using multiple
-different partitions. Further details of the prior specification,
-fitting and validation through posterior predictive checks \citep{lambert2018student} are given in
-the SOM.
-
-Two studies of \emph{Anopheles balabacensis} reported capture rates
-increasing with time, presumably reflecting a violation of our
-assumption of constant recapture probabilities. We omitted this species
-from the analysis.
-
-The Guerra et al., (2014) database included the latitude and longitude of each
-study along with the date when the study began. We used this information to find
-estimates of the air temperature for each study using the European Centre for Medium
-Range Weather Forecasts' ERA Interim Daily historical database. For each
-study we calculated the mean monthly temperature across a spatial area
-of (latitude $\pm$ 1 degree, longitude $\pm$ 1 degree), for the month at which
-each study was carried out. The records for this database begin in 1979,
-which pre-dates the study date for 65 of our 232 MRR time-series. For
-these time-series, we chose to estimate the air temperature by an
-average of the corresponding monthly temperatures over the years
-1979-89.
-
-\subsection{Dissection}\label{dissection}
-
-Studies using dissection to estimate mosquito longevity were located in
-literature databases using relevant keyword, citation and author
-searches, and by checking previous studies cited by the papers located
-(see SOM). The list of studies located with associated metadata is
-available as a Supplementary Online File.
-
-Most dissection studies recorded the distribution of the number of
-gonotrophic cycles in mosquito samples collected over a specific period
-of time. Overall, we found 568 time series in 72 published articles.
-Because seldom were sufficient ancillary data available to analyse
-trends over time, we aggregated the data from each time series. We
-further omitted time series with fewer than 100 mosquitoes and for
-species with only one data set leaving 131 studies of mosquitoes in the
-genera \emph{Anopheles, Aedes}, \emph{Culex} and \emph{Mansonia}.
-
-To compare lifespan estimates from dissection and MRR studies we need to
-convert physiological age (the number of gonotrophic cycles) into
-chronological age. Using a literature search and a review by Silver
-(2007) we found 79 estimates in 42 published articles. Most estimates
-were obtained by dissecting females recaptured in MRR studies or by
-observations in the laboratory, the latter tending to give longer
-durations. Studies differed greatly in how (if at all) they represented
-uncertainty in their estimate of the duration of the gonotrophic cycle.
-Where confidence limits were given we treated these as the relevant
-quantiles of a normal distribution, where a range was stated (e.g. ``4-6
-days'') we interpreted the bounds as the 2.5\% and 97.5\% quantiles of a
-normal distribution, and where a single figure was quoted we assumed
-this was the mean this distribution. Using the quantiles of the normal
-distribution, we estimated its mean and standard deviation by regression
-(see SOM). Initially we calculated distributions of gonotrophic cycle
-lengths at the species and then genus levels, but because of the paucity
-of data for many species and the lack of significant differences we
-aggregated the data into a single distribution. We converted
-physiological age to chronological age by sampling from this
-distribution to obtain a particular gonotrophic cycle length for each
-mosquito (we also explored sampling from this distribution to obtain the
-duration of \emph{each} gonotrophic cycle which increased the
-uncertainty in lifespan estimate but did not affect any of the
-conclusions).
-
-We modelled the number of mosquitoes found by dissection to be of age
-\emph{a} using the negative binomial distribution with mean
-$\Psi S(a)$ and shape parameter $\kappa$, where
-$\Psi$ is the product of the recruitment rate of adult mosquitoes,
-which we assume is constant over time, and the probability of being
-captured for dissection, and \emph{S}(\emph{a}) is the probability of
-surviving until age \emph{a}. We used the number of females that have
-yet to lay eggs (nulliparous) to estimate the recruitment rate as
-described further in the SOM. Initial examination revealed that in some
-data sets the number of nulliparous females was anomalously low,
-something that has been noticed before \citep{gillies1965study}. As some
-studies have suggested that the first gonotrophic cycle tends to be
-longer than the subsequent ones, this is probably due to differences in
-capture probability. In data sets where the fraction of nulliparous
-females was less than 90\% the uniparous (completed on gonotrophic
-cycle) we excluded the nulliparous observation.
-
-Data was analysed using a Bayesian framework as with the MRR data with
-minor differences in the specification of the priors (see SOM). Some
-published studies do not distinguish the number of gonotrophic studies
-beyond a threshold (the more ovariole dilations there are the harder it
-is to count them) which is akin to censoring the data. Because this
-censoring involves only a relatively small number of mosquitoes in each
-time series (median = 2\%), and because of the technical difficulties of
-allowing for censoring in our Bayesian estimation procedures, we assume
-the females died at the threshold age.
 
 \section{Results}\label{results}
 
@@ -434,19 +274,18 @@ records to calculate average temperatures at the MRR sites (see
 Methods). Using both linear and quadratic temperature terms in
 regressions, we found no significant relationship between study-site
 temperature and LBL (overall or within genus) for the 238 datasets we
-analysed (Fig. \ref{fig:mrr_temperature}). This result held if, instead of pooling results from
+analysed (Fig. \ref{S-fig:mrr_temperature}). This result held if, instead of pooling results from
 all time series, we considered the four species with the most data
 individually (\emph{Ae. aegypti}, \emph{Cx. tarsalis}, \emph{A. gambiae s.l.} and
 \emph{A. culicifacies s.l.}; Fig. \ref{S-fig:mrr_ThreeSpeciesVersusTemperature}).
 
-\subsection{Number of gonotrophic cycles estimates from
-dissection}\label{number-of-gonotrophic-cycles-estimates-from-dissection}
+\subsection{Number of gonotrophic cycles estimates from dissection}\label{number-of-gonotrophic-cycles-estimates-from-dissection}
 
 Dissection allows the number of completed gonotrophic cycles to be
 counted and from this the mean number of cycles before death was
 estimated. Overall, the mean number of cycles completed in a lifetime
 was 1.3 (posterior mean; Fig. \ref{fig:dissection_lifetimes_exponential}; Table \ref{S-tab:dissection_estimated_lifespans}) and across the 131 studies, 95\% of
-the individual time series estimates were less than 3 (Fig. \ref{fig:dissection_individualEstimates_allSpecies}). The
+the individual time series estimates were less than 3 (Fig. \ref{S-fig:dissection_individualEstimates_allSpecies}). The
 estimated greatest number of cycles was for \emph{Anopheles sergentii}
 (3.0 cycles; posterior mean) which is adapted to desert conditions (it
 is known as the ``oasis vector'' of malaria) and may have evolved
@@ -470,7 +309,7 @@ the non-parametric Kruskal Wallace: \(\chi_{3}^{2} = 21.7\),
 \subsection{Comparison of longevity estimates from two
 methods}\label{comparison-of-longevity-estimates-from-two-methods}
 
-To compare the two methods, we converted numbers of gonotrophic cycle
+To compare the two methods, we converted numbers of gonotrophic cycles
 (physiological age) into lifespan (chronological age) as described in
 the SOM using estimates of gonotrophic cycle duration (Fig. \ref{S-fig:dissection_gonotrophicCycleRaw}). Table \ref{S-tab:dissection_estimated_lifespans_chron} provides posterior summaries of chronological for the species and genera in the dissection dataset (see also Fig. \ref{S-fig:dissection_lifetimes_exponential_chron}). For ten species, we had enough data from both species to make a comparison, and there was a positive correlation (not
 statistically significant; Pearson correlation $\rho=0.42$, $n=10$, $p=0.23$)
@@ -776,7 +615,7 @@ We conducted a power analysis of MRR experiments to determine
 whether typical experimental characteristics could detect senescence.
 Here we calculated the power of a maximum likelihood estimator of the
 `senescence parameter' $\beta$ of the Gompertz survival function (see Table
-\ref{S-tab:mrr_survivalDescription}) for case study populations with three different levels of
+\ref{SM-tab:mrr_survivalDescription}) for case study populations with three different levels of
 senescence (Fig. \ref{S-fig:mrr_mcPowerAnalysis_senescence}A). This analysis indicated that power to detect
 senescence strongly depends on study length (Fig. \ref{S-fig:mrr_mcPowerAnalysis_senescence}B) but is
 insensitive to release size (Fig. \ref{S-fig:mrr_mcPowerAnalysis_senescence}C). Clements and Patterson (1981)
@@ -785,7 +624,7 @@ and found evidence of an increasing risk of mortality hazard with age
 that is similar in magnitude to that of the `mild' case considered
 above. For this case, detecting senescence with a power of 80\% requires
 a study length of at least 18 days. Since the median study duration for
-experiments included in our analysis was 10 days (Table \ref{S-tab:mrr_IndividualData}) this could
+experiments included in our analysis was 10 days (Table \ref{SM-tab:mrr_IndividualData}) this could
 partly explain our failure to detect senescence at the species level. A
 number of experiments have found evidence of age-dependence in
 laboratory populations \citep{styer2007mosquitoes,dawes2009anopheles}.
@@ -804,7 +643,7 @@ days) than typical estimates of wild mosquito lifespan.
 
 As ethical concerns of contributing to disease burden are more often
 considered, it is now less common for MRR experiments to release female
-mosquitoes versus males than historically (Fig. \ref{S-fig:mrr_sexReleasesOverTime}). Our analysis
+mosquitoes versus males than historically (Fig. \ref{SM-fig:mrr_sexReleasesOverTime}). Our analysis
 indicates that females outlive male mosquitoes by approximately 1.2 days
 (Fig. \ref{fig:mrr_sexDifferences_without_sugar_nor_blood}), meaning that differences between the sexes may exist for
 other ecological parameters determinable by MRR. This suggests that
@@ -827,7 +666,7 @@ locations and times of year over which the MRR studies were conducted
 encompassed a large range of average air temperatures, from
 approximately 10 \textsuperscript{o}C to 35 \textsuperscript{o}C and,
 within this, we determined no relationship between lifespan and
-temperature across all time series (Fig. \ref{fig:mrr_temperature}) or, for any of the species
+temperature across all time series (Fig. \ref{S-fig:mrr_temperature}) or, for any of the species
 with the most data (Fig. \ref{S-fig:mrr_ThreeSpeciesVersusTemperature}). It is possible that by considering a raw
 average of air temperature across the month, this ignored, more complex, interactions between temperature and lifespan. It is also possible that by ignoring the effects of
 rainfall (the historical data on rainfall is less likely to be reliable
@@ -855,6 +694,174 @@ novel control strategies. Without commensurate funding allocated to
 applied vector ecology, our lack of knowledge in this area threatens our
 opportunity to capitalise on molecular advances and potentially hinders
 our ability to control of mosquito-borne disease.
+
+\section{Methods}\label{methods}
+
+In recent years many important vectors of disease have been shown to be
+complexes of closely related species, biotypes or forms that cannot
+be distinguished morphologically (for example the morphospecies
+\emph{Anopheles gambiae sensu lato} is now separated into the widespread
+\emph{gambiae, coluzzii, arabiensis} and a number of more local
+species). As the majority of studies analysed here took place before
+molecular techniques allowed these taxa to be separated we work here
+chiefly with morphospecies.
+
+\subsection{Mark-release-recapture}\label{mark-release-recapture}
+
+Data from MRR experiments in the Guerra et al. (2014) database were
+examined and those with fewer than six recaptures and species with only
+a single MRR study were excluded for the hierarchical analysis. Of the
+232 data sets, 179 involved only females, 35 males, and 18 both sex
+releases. For 102 data sets the age of the released mosquitoes was known
+(the average age of released mosquitoes was 4.0 days) while in the other
+cases it was unknown or unrecorded; in these cases we assumed the
+mosquitoes were newly emerged at the time of release and return to this
+assumption later. See Table \ref{SM-tab:mrr_aggregateData} for a summary of other data characteristics.
+
+We analysed all MRR experiments within the same statistical framework
+(for full details see the Supplementary Online Material (SOM)). In the
+simplest case \emph{N\textsubscript{R}} mosquitoes are released on day
+zero and the probability that they remain in the recapture area until
+day \emph{t} is \emph{S}(\emph{t}) when they are recaptured with
+probability $\psi$. We model the number of mosquitoes recaptured on
+day \emph{t} using a negative binomial sampling model with mean
+\(\left( N_{R} - Y\left( t - 1 \right) \right)S\left( t \right)\psi\),
+where \(Y\left( t - 1 \right)\) is cumulative captures before day
+\emph{t}, and shape parameter $\kappa$. The negative binomial has been
+used previously in analyses of mosquito count data \citep{service1971studies,nedelman1983negative} because of its ability to
+represent temporal over-dispersion in recaptures most likely caused by
+variable weather. A slight modification was required for studies with
+multiple releases (see SOM).
+
+The simplest model for $S(t)$ assumes there is a constant
+probability ($\lambda$) that a mosquito dies or leaves the recapture area
+so that the numbers remaining after time \emph{t} are given by the
+exponential distribution, $\text{exp}( -\lambda t )$.
+We utilised this form extensively but in testing for senescence used
+five other models where $\lambda(t)$ varies with time so that,
+
+\begin{longtable}[]{@{}ll@{}}
+	\(S\left( t \right) = e^{- \int_{0}^{t}{\lambda\left( \tau \right) \mathrm{d}\tau}}.\)
+\end{longtable}
+
+Details of the five models (Gompertz, Weibull, Gompertz-Makeham,
+Logistic and Logistic-Makeham), which vary in their ability to detect
+different forms of age-dependent mortality, are given in the SOM. Using
+multiple different types of models increased our chances of detecting
+senescence though, as discussed below, also increases the likelihood of
+false positives.
+
+Parameters were estimated using Bayesian techniques with relative
+uninformative priors for $\kappa$ and the parameters of
+$\lambda(t)$, but assuming a prior for $\psi$ indicating a low
+recapture probability (bounded in part by knowledge of the maximum daily
+recapture rates; see SOM). We used a Bayesian hierarchical model to estimate
+distributions of lifespan at the species and the genus levels, and
+across the complete data set. This procedure assumes that there is a
+distribution of lifespan parameters for each species from which those
+governing individual MRR time series are sampled, and similarly a
+distribution at the genus level from which those for individual species
+are derived (rather akin to random effects in classical statistics).
+Within this framework we can also allow the parameters for individual
+time series to be influenced by co-variates such as differences in
+experimental methodology. As in the estimation of the parameters of the
+individual experiments, relative uninformative priors were set for the
+parameters of the hierarchical models except for $\psi$ where again a
+distribution representing low recapture probabilities was assumed.
+Posterior distributions were derived using Markov Chain Monte Carlo
+(MCMC) methods with convergence assessed using the \(\hat{R}\) statistic
+\citep{gelman1992inference}. The predictive power of the model was assessed
+using \emph{K}-fold cross validation which tests the ability of the
+model fitted to part of the data to predict the rest using multiple
+different partitions. Further details of the prior specification,
+fitting and validation through posterior predictive checks \citep{lambert2018student} are given in
+the SOM.
+
+Two studies of \emph{Anopheles balabacensis} reported capture rates
+increasing with time, presumably reflecting a violation of our
+assumption of constant recapture probabilities. We omitted this species
+from the analysis.
+
+The Guerra et al., (2014) database included the latitude and longitude of each
+study along with the date when the study began. We used this information to find
+estimates of the air temperature for each study using the European Centre for Medium
+Range Weather Forecasts' ERA Interim Daily historical database. For each
+study we calculated the mean monthly temperature across a spatial area
+of (latitude $\pm$ 1 degree, longitude $\pm$ 1 degree), for the month at which
+each study was carried out. The records for this database begin in 1979,
+which pre-dates the study date for 65 of our 232 MRR time-series. For
+these time-series, we chose to estimate the air temperature by an
+average of the corresponding monthly temperatures over the years
+1979-89.
+
+\subsection{Dissection}\label{dissection}
+
+Studies using dissection to estimate mosquito longevity were located in
+literature databases using relevant keyword, citation and author
+searches, and by checking previous studies cited by the papers located
+(see SOM). The list of studies located with associated metadata is
+available as a Supplementary Online File.
+
+Most dissection studies recorded the distribution of the number of
+gonotrophic cycles in mosquito samples collected over a specific period
+of time. Overall, we found 568 time series in 72 published articles.
+Because seldom were sufficient ancillary data available to analyse
+trends over time, we aggregated the data from each time series. We
+further omitted time series with fewer than 100 mosquitoes and for
+species with only one data set leaving 131 studies of mosquitoes in the
+genera \emph{Anopheles, Aedes}, \emph{Culex} and \emph{Mansonia}.
+
+To compare lifespan estimates from dissection and MRR studies we need to
+convert physiological age (the number of gonotrophic cycles) into
+chronological age. Using a literature search and a review by Silver
+(2007) we found 79 estimates in 42 published articles. Most estimates
+were obtained by dissecting females recaptured in MRR studies or by
+observations in the laboratory, the latter tending to give longer
+durations. Studies differed greatly in how (if at all) they represented
+uncertainty in their estimate of the duration of the gonotrophic cycle.
+Where confidence limits were given we treated these as the relevant
+quantiles of a normal distribution, where a range was stated (e.g. ``4-6
+days'') we interpreted the bounds as the 2.5\% and 97.5\% quantiles of a
+normal distribution, and where a single figure was quoted we assumed
+this was the mean this distribution. Using the quantiles of the normal
+distribution, we estimated its mean and standard deviation by regression
+(see SOM). Initially we calculated distributions of gonotrophic cycle
+lengths at the species and then genus levels, but because of the paucity
+of data for many species and the lack of significant differences we
+aggregated the data into a single distribution. We converted
+physiological age to chronological age by sampling from this
+distribution to obtain a particular gonotrophic cycle length for each
+mosquito (we also explored sampling from this distribution to obtain the
+duration of \emph{each} gonotrophic cycle which increased the
+uncertainty in lifespan estimate but did not affect any of the
+conclusions).
+
+We modelled the number of mosquitoes found by dissection to be of age
+\emph{a} using the negative binomial distribution with mean
+$\Psi S(a)$ and shape parameter $\kappa$, where
+$\Psi$ is the product of the recruitment rate of adult mosquitoes,
+which we assume is constant over time, and the probability of being
+captured for dissection, and \emph{S}(\emph{a}) is the probability of
+surviving until age \emph{a}. We used the number of females that have
+yet to lay eggs (nulliparous) to estimate the recruitment rate as
+described further in the SOM. Initial examination revealed that in some
+data sets the number of nulliparous females was anomalously low,
+something that has been noticed before \citep{gillies1965study}. As some
+studies have suggested that the first gonotrophic cycle tends to be
+longer than the subsequent ones, this is probably due to differences in
+capture probability. In data sets where the fraction of nulliparous
+females was less than 90\% the uniparous (completed on gonotrophic
+cycle) we excluded the nulliparous observation.
+
+Data was analysed using a Bayesian framework as with the MRR data with
+minor differences in the specification of the priors (see SOM). Some
+published studies do not distinguish the number of gonotrophic studies
+beyond a threshold (the more ovariole dilations there are the harder it
+is to count them) which is akin to censoring the data. Because this
+censoring involves only a relatively small number of mosquitoes in each
+time series (median = 2\%), and because of the technical difficulties of
+allowing for censoring in our Bayesian estimation procedures, we assume
+the females died at the threshold age.
 
 \section{Acknowledgements}\label{acknowledgements}
 
