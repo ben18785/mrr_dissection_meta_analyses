@@ -9,3 +9,4 @@ _minted*
 *.html
 *.xml
 *blx.bib
+.DS_Store
