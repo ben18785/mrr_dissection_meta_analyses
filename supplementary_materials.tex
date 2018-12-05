@@ -314,11 +314,19 @@ To conduct a comparison between the LBLs from the MRR analysis and from the diss
 
 \section{Evidence for senescence}
 
+
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/mrr_mcPowerAnalysis_senescence.pdf}}
 	\caption{\textbf{The statistical power to detect senescence for A. three case study populations as a function of B. study length and C. number released.} For each parameter set we generated 500 simulated data series using the negative binomial sampling model with a gompertz hazard function ($\lambda(t) = \alpha e^{\beta t}$), and estimated the $\beta$ parameter using maximum likelihood and tested the null hypothesis $\beta=0$ (constant mortality risk) against the alternative $\beta>0$ using an likelihood ratio test with a 5\% test size. The error bars show the standard deviation in the power for each parameter set. The recapture probability parameters ($\psi$ and $\kappa$) used were the averages of those estimated for the actual data.}
 	\label{fig:mrr_mcPowerAnalysis_senescence}
 \end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/elpd_comparison.pdf}}
+	\caption{\textbf{Comparing the evidence for age-dependent mortality by fitting the Gompertz model to data from the MRR versus dissection studies for the 12 species with data from both.} The points indicate the estimated predictive accuracy compared with the exponential model (see SOM Methods) and the lower and upper whiskers represent 2.5\% and 97.5\% quantiles on this quantity.}\label{fig:elpd_comparison}
+\end{figure}
+
+
 
 \section{Power analysis of MRR studies}
 Consider an ideal MRR experiment, where the assumptions of no emigration and harmless marking are fully satisfied. With these data, how accurately can we estimate mosquito lifespan? To address this question we generated artificial MRR data and attempted to estimate the (known) parameters by maximum likelihood (a `Monte Carlo' analysis). Specifically, we simulated releases of $N$ mosquitoes that are monitored for $m$ days in each case, and determined how statistical power to estimate lifespan depends on these two parameters (Fig. \ref{fig:mrr_mcPowerAnalysis}). In order to focus on estimating lifespan, we assumed the mosquitoes experience constant mortality, and recaptures follow the negative binomial sampling model (eqn. \ref{eq:NB}) where the recapture probability parameters ($\psi$ and $\kappa$) were the averages of those estimated for the actual data.
