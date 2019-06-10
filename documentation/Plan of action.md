@@ -8,7 +8,7 @@
   * Dissection
   * Parity (done)
 * Estimate individual lifespans for parity
-* Dissection SOM (I think I just wanted to look at senescence here?)
+* Dissection power analysis SOM (I think I just wanted to look at senescence here?)
 * Look at Github issues
 * Table of references for included studies (or does this exist in the Excel files?)
 * Quantify difference in lifespan from dissection vs parity
