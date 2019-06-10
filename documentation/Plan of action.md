@@ -2,7 +2,6 @@
 
 * Write up method and data description for parity analysis
 * Gonotrophic cycle estimates by genus (perhaps even revisit this approach as not convinced it's ideal)
-
 * Scrutinise species classifications:
   * MRR
   * Dissection
@@ -13,6 +12,7 @@
 * Table of references for included studies (or does this exist in the Excel files?)
 * Quantify difference in lifespan from dissection vs parity
   * Can do a power analysis too
+* Posterior predictive checks for parity analysis
 
 ## Nice to have
 

@@ -1014,7 +1014,20 @@ The estimates of lifespan produced from analysing the dissection data are in ter
 
 In the using the above methodology to convert from physiological to calendar age we implicitly assume that for each gonotrophic cycle after the first that the cycles are of the same length (we choose one $G_{2i}$ per sample). However since we allow a different $G_{2i}$ for each sample we nonetheless believe that the above approach allows for sufficient uncertainty in the estimates of subsequent gonotrophic cycle durations. If instead we believed that significant variation in gonotrophic cycle occurred within a particular mosquito's life (as well as between mosquitoes) then we could draw a new value of $G_{2i}$ for each subsequent cycle. This produces results with a little more uncertainty than previously (data not shown).
 
-\section{Detinova }
+\section{Detinova parity analysis}
+\cite{massey2016global} provide a global database for bionomic quantities for the dominant vector species of malaria. In this database, there are 
+
+\cite{detinova1962age} provided an alternative approach to estimate the lifespan of individual specimens, based on sampling the parous rate in a population (the proportion of adult females that have laid eggs) by separating parous from nulliparous females. In what follows, we follow the derivation given by \cite{davidson1954estimation}, to determine an expression for the proportion of nulliparous mosquitoes in terms of the gonotrophic cycle length $G$, here assumed the same for each cycle subsequent to an adult emerging. If a constant daily survival rate $p$ is assumed, the proportion of emerging adults surviving to become parous is $p^G$. If the rate of recruitment into the adult classes is constant over time, the proportion of nulliparous mosquitoes is,
+%
+\begin{equation}\label{eq:detinova}
+\begin{aligned}
+\mathbb{n} &= \frac{p^G}{p^G + p^{2G} + p^{3G} + \cdots}\\
+&= p^G / \frac{p^G}{1-p^G}\\
+&= 1-p^G.
+\end{aligned}
+\end{equation}
+%
+The daily survival rate can hence be calculated by inverting eq. (\ref{eq:detinova}): $p = \sqrt[G]{\mathcal{P}}$, where $\mathcal{P}=1-\mathbb{n}$ is the proportion parous sampled from the population.
 
 
 \section{EIPs of vector species of malaria, dengue fever, chikungunya and Zika}
