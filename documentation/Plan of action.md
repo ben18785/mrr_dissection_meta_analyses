@@ -1,11 +1,12 @@
 ## Essential
 
-* Write up method and data description for parity analysis
+* [ ] Write up method and data description for parity analysis
+  * [ ] Include Stan code for model fitting
 * Gonotrophic cycle estimates by genus (perhaps even revisit this approach as not convinced it's ideal)
 * Scrutinise species classifications:
-  * MRR
-  * Dissection
-  * Parity (done)
+  * [ ] MRR
+  * [ ] Dissection
+  * [x] Parity
 * Estimate individual lifespans for parity
 * Dissection power analysis SOM (I think I just wanted to look at senescence here?)
 * Look at Github issues
