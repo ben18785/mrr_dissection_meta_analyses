@@ -1014,7 +1014,7 @@ The estimates of lifespan produced from analysing the dissection data are in ter
 
 In the using the above methodology to convert from physiological to calendar age we implicitly assume that for each gonotrophic cycle after the first that the cycles are of the same length (we choose one $G_{2i}$ per sample). However since we allow a different $G_{2i}$ for each sample we nonetheless believe that the above approach allows for sufficient uncertainty in the estimates of subsequent gonotrophic cycle durations. If instead we believed that significant variation in gonotrophic cycle occurred within a particular mosquito's life (as well as between mosquitoes) then we could draw a new value of $G_{2i}$ for each subsequent cycle. This produces results with a little more uncertainty than previously (data not shown).
 
-\section{Detinova parity analysis}
+\section{Detinova parity analysis}\label{sec:detinova}
 \cite{detinova1962age} provided an alternative approach to estimate the lifespan of individual specimens, based on sampling the parous rate in a population (the proportion of adult females that have laid eggs) using dissection to determine parity of each specimen. In what follows, we follow the derivation given by \cite{davidson1954estimation}, to determine an expression for the proportion of nulliparous mosquitoes in terms of the gonotrophic cycle length $G$, here assumed the same for each cycle subsequent to an adult emerging. If a constant daily survival rate $p$ is assumed, the proportion of emerging adults surviving to become parous is $p^G$. If the rate of recruitment into the adult classes is constant over time, the proportion of nulliparous mosquitoes is,
 %
 \begin{equation}\label{eq:detinova}
@@ -1027,22 +1027,99 @@ In the using the above methodology to convert from physiological to calendar age
 %
 The daily survival rate can hence be calculated by inverting eq. (\ref{eq:detinova}): $p = \sqrt[G]{\mathcal{P}}$, where $\mathcal{P}=1-\mathbb{n}$ is the proportion parous sampled from the population.
 
-\cite{massey2016global} provide a global database of bionomic quantities for the dominant vector species of malaria. This database contains the number of parous and nulliparous samples in studies where Detinova's dissection approach was applied to field caught speciments ($n=1490$ non-missing observations) across Africa ($n=778$), Asia ($n=549$) and the Americas ($n=163$). 
+\cite{massey2016global} provide a global database of bionomic quantities for the dominant vector species of malaria. This database contains the number of parous and nulliparous samples in studies where Detinova's dissection approach was applied to field caught speciments ($n=1490$ non-missing observations for total number of parous individuals) across Africa ($n=778$), Asia ($n=549$) and the Americas ($n=163$). 
 
-We estimated lifespan at the species and complex / subgroup level (hereafter denoted as \textit{s.l.}) using a Bayesian hierarchical framework. The number of parous individuals $X_i^{\{s\}}$ in sample $i$ (consisting of species $s$) was modelled by a binomial sampling distribution,
+We estimated lifespan at the species and complex / subgroup level (hereafter denoted as \textit{s.l.}) using a Bayesian hierarchical framework. We denote this grouping variable by $s$ in what follows. The number of parous individuals $X_i^{\{s\}}$ in sample $i$ (consisting of individuals belonging to group $s$) was modelled by a binomial sampling distribution,
 %
 \begin{equation}
 X_i^{\{s\}} \sim \mathcal{B}(N, \mathcal{P}_i^{\{s\}}),
 \end{equation}
 %
-where $N$ is the sample size and $\mathcal{P}_i^{\{s\}}$ is the proportion parous in sample $i$ for species $s$. A hierarchical prior structure was used for the parous proportion in each sample,
+where $N$ is the sample size and $\mathcal{P}_i^{\{s\}}$ is the proportion parous in sample $i$ for group $s$. A hierarchical prior structure was used for the parous proportion in each sample,
 %
 \begin{equation}
 \mathcal{P}_i^{\{s\}}\sim \text{beta}\left(\phi^{\{s\}} \kappa^{\{s\}}, (1-\phi^{\{s\}})\kappa^{\{s\}}\right),
 \end{equation}
 %
-where $0\leq\phi^{\{s\}}\leq 1$ is the mean parous proportion and $\kappa^{\{s\}}>1$ is a concentration parameter (both of which are species-specific).
+where $0\leq\phi^{\{s\}}\leq 1$ is the mean parous proportion and $\kappa^{\{s\}}>1$ is a concentration parameter (both of which are group-specific).
 
+The priors we used in this model were: $\phi\sim \text{beta}(20, 14)$ and $\kappa\sim \text{Pareto}(1, 1.5)$. These were chosen because this yielded a prior predictive distribution with a median value close to 10 (see Fig. \ref{fig:detinova_priors}).
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_prior_predictive.pdf}}
+	\caption{\textbf{The prior predictive distribution of lifespan for the analysis of Detinova parity data.} Here, we used the estimates of first gonotrophic cycle duration, $G\sim \mathcal{N}(4.26, 0.38)$, resultant from the approach outlined in section \ref{sec:dissection_gonotrophicMethod}, to convert physiological survival to calendar days. The figure shows 100,000 samples from the prior predictive distribution.}\label{fig:detinova_priors}
+\end{figure}
+
+The Stan code used to fit the hierarchical model to data is shown below.
+
+\begin{minted}{stan}
+data{
+  int N;
+  int X[N];
+  int num[N];
+  int species[N];
+  int K;
+}
+
+parameters{
+  vector<lower=0, upper=1>[N] theta;
+  vector<lower=0, upper=1>[K] phi;
+  vector<lower=1>[K] kappa;
+}
+
+model{
+  for(i in 1:N){
+    X[i] ~ binomial(num[i], theta[i]);
+    theta[i] ~ beta(phi[species[i]] * kappa[species[i]],
+                    (1 - phi[species[i]]) * kappa[species[i]]);
+  }
+  kappa ~ pareto(1, 1.5);
+  phi ~ beta(20, 14);
+}
+\end{minted}
+
+
+\subsection{Model checking}
+To check the fit of the models to data, we simulated from the posterior predictive distribution for each grouping used in analysis. This means that we have two sets of posterior predictive figures: those where the check was performed at the species level; and those corresponding to the complex or subgroup level. In each of these figures, we plot observed parity versus quantiles of posterior predicted parity (black vertical error bars). The following describes which figures correspond to which geography and species grouping.
+
+\begin{itemize}
+	\item \textbf{Africa}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ppcs_africa_grouped}; the species-level graph in Figure \ref{fig:detinova_ppcs_africa_species}.
+	\item \textbf{Americas}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ppcs_americas_grouped}; the species-level graph in Figure \ref{fig:detinova_ppcs_americas_species}.
+	\item \textbf{Asia}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ppcs_asia_grouped}; the species-level graph in Figure \ref{fig:detinova_ppcs_asia_species}.
+\end{itemize}
+
+In most cases, the posterior predictive distribution overlaps with the observed data (when the black error bars overlap with the orange ${\text{observed}=\text{predicted}}$ lines), indicating that the model was a reasonable fit to the data. For the most extreme observations of parity - when either very few or most samples where parous - however, the model-estimated parity was moved closer to the grand mean. This effect is illustrated in the figures by the linear regression line fitted to the data (blue lines). In almost all cases, the regression line had a lower gradient than the orange ${\text{observed}=\text{predicted}}$ lines, indicating a degree of ``shrinkage to the mean''. This shrinkage to the mean is a common and desirable product of using hierarchical models and can improve the robustness of results by reducing the influence of outliers \citep{lambert2018student}. As such, we do not view this as evidence of model misfit.
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_africa_grouped.pdf}}
+	\caption{\textbf{Posterior predicted parity versus observed quantities for African anopheline samples at the complex level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_africa_grouped}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_africa_species.pdf}}
+	\caption{\textbf{Posterior predicted parity versus observed quantities for African anopheline samples at the species level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_africa_species}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_americas_grouped.pdf}}
+	\caption{\textbf{Posterior predicted parity versus observed quantities for American anopheline samples at the complex level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_americas_grouped}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_americas_species.pdf}}
+	\caption{\textbf{Posterior predicted parity versus observed quantities for American anopheline samples at the species level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_americas_species}
+\end{figure}
+
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_asia_grouped.pdf}}
+	\caption{\textbf{Posterior predicted parity versus observed quantities for Asian anopheline samples at the complex level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_asia_grouped}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_asia_species.pdf}}
+	\caption{\textbf{Posterior predicted parity versus observed quantities for Asian anopheline samples at the species level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_asia_species}
+\end{figure}
 
 \section{EIPs of vector species of malaria, dengue fever, chikungunya and Zika}
 The following anopheline species were identified as vector species of malaria,

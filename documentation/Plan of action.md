@@ -2,6 +2,10 @@
 
 * [ ] Write up method and data description for parity analysis
   * [ ] Include Stan code for model fitting
+  * [x] Include priors
+
+* [ ] For parity series, compare fit of species, group, geography (Africa, Asia, Americas), and overall models. 
+
 * Gonotrophic cycle estimates by genus (perhaps even revisit this approach as not convinced it's ideal)
 * Scrutinise species classifications:
   * [ ] MRR
