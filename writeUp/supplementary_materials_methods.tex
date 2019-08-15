@@ -860,23 +860,23 @@ The model used to estimate the lifespan in terms of gonotrophic cycles is provid
 
 \begin{minted}{stan}
 data{
-int N; // number of obs
-int K; // number of time series
-int Y[N]; // number captured
-int S[K]; // length of each series
-int threshold[K]; // age of censoring; if -1 then no censoring
-int Pos[K]; // position of start of each series in Y
-int species[K]; // index variable of species
-int nSpecies; // number of species
+  int N; // number of obs
+  int K; // number of time series
+  int Y[N]; // number captured
+  int S[K]; // length of each series
+  int threshold[K]; // age of censoring; if -1 then no censoring
+  int Pos[K]; // position of start of each series in Y
+  int species[K]; // index variable of species
+  int nSpecies; // number of species
 }
 
 parameters{
-real<lower=0> PopSize[K];
-real<lower=0> alpha[K];
-real alpha_mean[nSpecies];
-real<lower=0> alpha_sigma[nSpecies];
-real<lower=0> kappa[K];
-real<lower=0> p[nSpecies];
+  real<lower=0> PopSize[K];
+  real<lower=0> alpha[K];
+  real alpha_mean[nSpecies];
+  real<lower=0> alpha_sigma[nSpecies];
+  real<lower=0> kappa[K];
+  real<lower=0> p[nSpecies];
 }
 
 model{
@@ -904,7 +904,9 @@ for(i in 1:K){
     }
   }  
 }
+\end{minted}
 
+\begin{minted}{stan}
 // Priors
 for(i in 1:K){
   int aSpecies;
@@ -1027,6 +1029,7 @@ In the using the above methodology to convert from physiological to calendar age
 %
 The daily survival rate can hence be calculated by inverting eq. (\ref{eq:detinova}): $p = \sqrt[G]{\mathcal{P}}$, where $\mathcal{P}=1-\mathbb{n}$ is the proportion parous sampled from the population.
 
+\subsection{Data and model}\label{sec:detinova_datamodel}
 \cite{massey2016global} provide a global database of bionomic quantities for the dominant vector species of malaria. This database contains the number of parous and nulliparous samples in studies where Detinova's dissection approach was applied to field caught speciments ($n=1490$ non-missing observations for total number of parous individuals) across Africa ($n=778$), Asia ($n=549$) and the Americas ($n=163$). 
 
 We estimated lifespan at the species and complex / subgroup level (hereafter denoted as \textit{s.l.}) using a Bayesian hierarchical framework. We denote this grouping variable by $s$ in what follows. The number of parous individuals $X_i^{\{s\}}$ in sample $i$ (consisting of individuals belonging to group $s$) was modelled by a binomial sampling distribution,
@@ -1054,11 +1057,11 @@ The Stan code used to fit the hierarchical model to data is shown below.
 
 \begin{minted}{stan}
 data{
-  int N;
-  int X[N];
-  int num[N];
-  int species[N];
-  int K;
+  int N; // total obs
+  int X[N]; // number parous
+  int num[N]; // number of samples collected
+  int species[N]; // integer index array with group identity
+  int K; // number of different groups
 }
 
 parameters{
@@ -1078,47 +1081,70 @@ model{
 }
 \end{minted}
 
-
-\subsection{Model checking}
-To check the fit of the models to data, we simulated from the posterior predictive distribution for each grouping used in analysis. This means that we have two sets of posterior predictive figures: those where the check was performed at the species level; and those corresponding to the complex or subgroup level. In each of these figures, we plot observed parity versus quantiles of posterior predicted parity (black vertical error bars). The following describes which figures correspond to which geography and species grouping.
+\subsection{Data processing}
+In this section, we describe the data processing carried out on the \cite{massey2016global} dataset. For each of the three datasets (Africa, Americas and Asia) contained with the SOM of \cite{massey2016global}, we used only those observations which had a non-missing and positive total capture size. For each observation, we calculated observed parity ($=\text{parous count}/ \text{total capture size}$) and compared this quantity with the `parity percent' column in the datasets. If the difference between these two quantities was lower than 1\%, we considered the discrepancy to be due to numerical rounding and did not investigate further. In those cases where the difference exceeded 1\%, we did the following:
 
 \begin{itemize}
-	\item \textbf{Africa}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ppcs_africa_grouped}; the species-level graph in Figure \ref{fig:detinova_ppcs_africa_species}.
-	\item \textbf{Americas}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ppcs_americas_grouped}; the species-level graph in Figure \ref{fig:detinova_ppcs_americas_species}.
-	\item \textbf{Asia}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ppcs_asia_grouped}; the species-level graph in Figure \ref{fig:detinova_ppcs_asia_species}.
+	\item Africa: considering the database entry for \cite{ijumba2002malaria}, there was a difference of about 50\%. Reading the paper, it looks like there is a mistake in their Table 5, and that the parous number should be 131 and, as such, we changed this number in the database; considering the entry for \cite{bockarie46service}, there was a difference of around 5\%. We could not access the paper here, so assumed that the issue was with the `parity percent' entry.
+	\item Americas: no differences exceeding 1\%.
+	\item Asia: considering the entry for \cite{kitthawee1992relationship}, there was a difference of around 3\%. Reading the paper, it looks like there was a (small) error in the database, and the parous number should be 35 (rather than 36) - this adjustment was made for the ensuing analysis.
 \end{itemize}
 
-In most cases, the posterior predictive distribution overlaps with the observed data (when the black error bars overlap with the orange ${\text{observed}=\text{predicted}}$ lines), indicating that the model was a reasonable fit to the data. For the most extreme observations of parity - when either very few or most samples where parous - however, the model-estimated parity was moved closer to the grand mean. This effect is illustrated in the figures by the linear regression line fitted to the data (blue lines). In almost all cases, the regression line had a lower gradient than the orange ${\text{observed}=\text{predicted}}$ lines, indicating a degree of ``shrinkage to the mean''. This shrinkage to the mean is a common and desirable product of using hierarchical models and can improve the robustness of results by reducing the influence of outliers \citep{lambert2018student}. As such, we do not view this as evidence of model misfit.
+For the species- and complex-level estimates of lifespan, we considered only those groups with five or more parity experiments. For the continent-level and overall estimates, we used all data. In quite a few cases, a species was indicated as a complex (for example, `Anopheles gambiae complex'), presumably when insufficient information was available in the paper to identify the species. These data were dropped for the species-level analysis but were included for all other analyses.
+
+For the species-level analyses, there were, hence, $n=223$ observations for Africa across 4 species; $n=141$ observations for the Americas across 6 species; and $n=214$ observations for Asia across 8 species. For the complex-level analyses, there were, hence, $n=757$ observations for Africa across 3 groups; $n=77$ observations for the Americas across 3 groups; and $n=455$ observations for Asia across 11 groups. For the continent-level and overall analyses, there were $n=1490$ observations across Africa ($n=778$), the Americas ($n=163$) and Asia ($n=549$).
+
+
+
+
+\subsection{Model estimation by MCMC and cross validation}
+The statistical models were fit to data using Stan's NUTS algorithm \cite{carpenter2016stan}. In all cases, models were run for 2000 iterations on each of 4 chains, with the first half of the iterations discarded as warm-up. We monitored diagnosed convergence as per \cite{gelman1992inference}, with $\hat{R}<1.1$ on all parameters. In all model runs, there were fewer than a handful of divergent transitions out of 2000 total iterations. 
+
+To evaluate model fit to data, we used K-fold cross validation with 4 folds for each analysis. This means that, in a run, approximately $3/4$ of data was used to train models, and the remaining data used to evaluate out-of-sample predictive capability through the log-likelihood. To evaluate out-of-sample predictive log-likelihood for a given data point, we drew data-level parameters $\mathcal{P}_i^{\{s\}}$ from the relevant top-level distribution; for example, for a species-level fit, we drew data-level parameters from the species-level distribution relevant to the species for the data point in question. 
+
+The folds were chosen so that, at all levels of analysis, there was always at least a handful of data points belonging to a particular group in the training set. This meant that, to generate meaningful comparisons between the species-level, complex-level and continent-level models, we selected only those data points with at least 5 observations for each species and complex. This reduced the number of data points used for model comparison versus those used for model estimation. For Africa, we had $n=223$ data points; for the Americas, there were $n=141$; and for Asia, there were $n=214$.
+
+For the comparison between continent-level grouping and overall, we were able to use more data points since we were less constrained by the minimal numbers of data belonging to each group. This meant we had $n=1490$ data points, with $n=778$ for Africa, $n=163$ for the Americas, and $n=549$, for Asia.
+
+\subsection{Model checking}
+To check the fit of models to the data, we simulated from the posterior predictive distribution for each grouping used in analysis. This means that we have two sets of posterior predictive figures: those where the check was performed at the species level; and those corresponding to the complex or subgroup level. In each of these figures, we plot observed empirical cumulative distribution function (eCDF) for the proportion parous versus the equivalent from each posterior predictive dataset.
+
+\begin{itemize}
+	\item \textbf{Africa}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ecdf_africa_grouped}; the species-level graph in Figure \ref{fig:detinova_ecdf_africa_species}.
+	\item \textbf{Americas}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ecdf_americas_grouped}; the species-level graph in Figure \ref{fig:detinova_ecdf_americas_species}.
+	\item \textbf{Asia}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ecdf_asia_grouped}; the species-level graph in Figure \ref{fig:detinova_ecdf_asia_species}.
+\end{itemize}
+
+In all cases, the eCDF for the actual data was bounded by the range of the posterior predictive eCDFs. By this metric, we conclude that the model seems to represent the data well.
 
 \begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_africa_grouped.pdf}}
-	\caption{\textbf{Posterior predicted parity versus observed quantities for African anopheline samples at the complex level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_africa_grouped}
+	\centerline{\includegraphics[width=0.7\textwidth]{./Figure_files/detinova_ecdf_africa_grouped.pdf}}
+	\caption{\textbf{Africa, complex-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_grouped}
 \end{figure}
 
 \begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_africa_species.pdf}}
-	\caption{\textbf{Posterior predicted parity versus observed quantities for African anopheline samples at the species level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_africa_species}
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_africa_species.pdf}}
+	\caption{\textbf{Africa, species-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_species}
 \end{figure}
 
 \begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_americas_grouped.pdf}}
-	\caption{\textbf{Posterior predicted parity versus observed quantities for American anopheline samples at the complex level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_americas_grouped}
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_americas_grouped.pdf}}
+	\caption{\textbf{Americas, complex-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_grouped}
 \end{figure}
 
 \begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_americas_species.pdf}}
-	\caption{\textbf{Posterior predicted parity versus observed quantities for American anopheline samples at the species level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_americas_species}
-\end{figure}
-
-
-\begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_asia_grouped.pdf}}
-	\caption{\textbf{Posterior predicted parity versus observed quantities for Asian anopheline samples at the complex level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_asia_grouped}
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_americas_species.pdf}}
+	\caption{\textbf{Americas, species-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_species}
 \end{figure}
 
 \begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ppc_asia_species.pdf}}
-	\caption{\textbf{Posterior predicted parity versus observed quantities for Asian anopheline samples at the species level.} The upper and lower extent of the vertical error bars indicate 97.5\% and 2.5\% credible intervals and points indicate posterior medians. The blue lines show linear models fitted to pairs of posterior medians and observed parities, and orange ones show the ${\text{observed}=\text{predicted}}$ line. The analysis was run using 200 iterations per chain across 4 chains, with 100 of the initial samples discarded as warm-up.}\label{fig:detinova_ppcs_asia_species}
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_asia_grouped.pdf}}
+	\caption{\textbf{Asia, complex-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_grouped}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_asia_species.pdf}}
+	\caption{\textbf{Asia, species-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_species}
 \end{figure}
 
 \section{EIPs of vector species of malaria, dengue fever, chikungunya and Zika}
