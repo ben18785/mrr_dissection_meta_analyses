@@ -1,0 +1,29 @@
+\documentclass[]{article}
+
+%opening
+\title{Parity results}
+\author{Ben Lambert}
+
+\begin{document}
+
+\maketitle
+
+\section{Grouping level}
+See \verb|grouping_holdouts.xlsx| for fits of species-level versus complex-level vs continent-level and for continent-level vs overall-level. For the former, the only interesting case is for the Americas, where the species-level model fits better than the complex level grouping - driven by \textit{A. albitarsis} which has species with strongly varying lifespan estimates. For the continent vs overall fits, Africa was better fit by a model grouping all species together than one allowing continental differences in lifespan; for Asia, the opposite trend was found, with the data being better fit by a model allowing continental differences in lifespan.
+
+
+\section{Effect of temperature on lifespan}
+In all cases, see Table X (from `\verb|temperature_holdout.xlsx|) for a summary.
+
+\subsection{Mean temperature}
+The overall hold-out log-likelihood was: 20,400.3 for the model without temperature terms; -20,164.61 for the model with linear temperature terms; and -19,131.74 for the model with up to quadratic temperature terms. The p values comparing to the model without temperature terms were: for the linear model, $p=0.18 (n=724, z=0.91)$; and for the quadratic model, $p<0.01 (n=724, z=3.64)$. The quadratic fit, however, is almost entirely driven by the result for \textit{A. albitarsis s.l.} (see `\verb|detinova_temperature_fits|'), which had significantly higher lifespan at both low or high mean temperatures. When this species is removed from the results, the difference versus the model without temperature terms is no longer significant ($p=0.38 (n=666, z=0.30)$.
+
+\subsection{Daily (nightly) temperature range}
+This is the model where we compare min-max for temperature extracted at midnight each day. The overall hold-out log-likelihood was: 20,400.3 for the model without temperature terms; -19,222.3 ($p=0.01, n=724, z=2.33$) for the model with linear temperature terms; and -18,741.22 ($p<0.01, n=724, z=3.60$) for the model with up to quadratic temperature terms. This result was driven by the fit of \textit{A. gambiae s.l.}, where our estimation determined that lifespan increased with daily temperature range.
+
+\section{Anopheles gambiae investigations}
+\subsection{Malaria prevalence vs parity}
+There were only $n=142$ studies between 2000-2015 (when MAP estimates are available). For these cases, I've plotted 2-10 prevalence versus parity and find no correlation (see \verb|detinova_gambiae_pfpr.pdf|).
+
+
+\end{document}

@@ -1027,7 +1027,7 @@ In the using the above methodology to convert from physiological to calendar age
 \end{aligned}
 \end{equation}
 %
-The daily survival rate can hence be calculated by inverting eq. (\ref{eq:detinova}): $p = \sqrt[G]{\mathcal{P}}$, where $\mathcal{P}=1-\mathbb{n}$ is the proportion parous sampled from the population.
+The daily survival rate can hence be calculated by inverting eq. (\ref{eq:detinova}): $p = \sqrt[G]{\mathcal{P}}$, where $\mathcal{P}=1-\mathbb{n}$ is the proportion parous sampled from the population. The distribution of mosquitoes dying each day follows a geometric distribution, with probability of dying on a given day equal to $1-p$. The mean lifespan is, hence, given by $1/(1-p)$.
 
 \subsection{Data and model}\label{sec:detinova_datamodel}
 \cite{massey2016global} provide a global database of bionomic quantities for the dominant vector species of malaria. This database contains the number of parous and nulliparous samples in studies where Detinova's dissection approach was applied to field caught speciments ($n=1490$ non-missing observations for total number of parous individuals) across Africa ($n=778$), Asia ($n=549$) and the Americas ($n=163$). 
@@ -1035,18 +1035,18 @@ The daily survival rate can hence be calculated by inverting eq. (\ref{eq:detino
 We estimated lifespan at the species and complex / subgroup level (hereafter denoted as \textit{s.l.}) using a Bayesian hierarchical framework. We denote this grouping variable by $s$ in what follows. The number of parous individuals $X_i^{\{s\}}$ in sample $i$ (consisting of individuals belonging to group $s$) was modelled by a binomial sampling distribution,
 %
 \begin{equation}
-X_i^{\{s\}} \sim \mathcal{B}(N, \mathcal{P}_i^{\{s\}}),
+X_i^{\{s\}} \sim \mathcal{B}(N_i, \mathcal{P}_i^{\{s\}}),
 \end{equation}
 %
-where $N$ is the sample size and $\mathcal{P}_i^{\{s\}}$ is the proportion parous in sample $i$ for group $s$. A hierarchical prior structure was used for the parous proportion in each sample,
+where $N_i$ is the sample size and $\mathcal{P}_i^{\{s\}}$ is the proportion parous in sample $i$ for group $s$. A hierarchical prior structure was used for the parous proportion in each sample,
 %
-\begin{equation}
+\begin{equation}\label{eq:detinova_prior}
 \mathcal{P}_i^{\{s\}}\sim \text{beta}\left(\phi^{\{s\}} \kappa^{\{s\}}, (1-\phi^{\{s\}})\kappa^{\{s\}}\right),
 \end{equation}
 %
 where $0\leq\phi^{\{s\}}\leq 1$ is the mean parous proportion and $\kappa^{\{s\}}>1$ is a concentration parameter (both of which are group-specific).
 
-The priors we used in this model were: $\phi\sim \text{beta}(20, 14)$ and $\kappa\sim \text{Pareto}(1, 1.5)$. These were chosen because this yielded a prior predictive distribution with a median value close to 10 (see Fig. \ref{fig:detinova_priors}).
+The priors we used in this model were: $\phi\sim \text{beta}(20, 14)$ and $\kappa\sim \text{Pareto}(1, 1.5)$. These were chosen because this yielded a prior predictive distribution with a median lifespan close to 10 (see Fig. \ref{fig:detinova_priors}).
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_prior_predictive.pdf}}
@@ -1105,6 +1105,72 @@ To evaluate model fit to data, we used K-fold cross validation with 4 folds for 
 The folds were chosen so that, at all levels of analysis, there was always at least a handful of data points belonging to a particular group in the training set. This meant that, to generate meaningful comparisons between the species-level, complex-level and continent-level models, we selected only those data points with at least 5 observations for each species and complex. This reduced the number of data points used for model comparison versus those used for model estimation. For Africa, we had $n=223$ data points; for the Americas, there were $n=141$; and for Asia, there were $n=214$.
 
 For the comparison between continent-level grouping and overall, we were able to use more data points since we were less constrained by the minimal numbers of data belonging to each group. This meant we had $n=1490$ data points, with $n=778$ for Africa, $n=163$ for the Americas, and $n=549$, for Asia.
+
+To investigate the effect of measures of temperature, we extracted daily data from the ERA-interim re-analysis by ECMWF \citep{dee2011era} through their website using the Python API. This data included: 
+
+\begin{itemize}
+	\item Two-meter surface temperature of air at 2m above the surface of land, sea or in-land waters.
+	\item Daily minimum two-meter surface temperature.
+	\item Daily maximum two-meter surface temperature.
+\end{itemize}
+
+For this analysis, we included only those studies where the start month listed in the database coincided with the end date - meaning the study took place within a given month - resulting in $n=742$ data points. The temperature data was extracted for the GPS position of each study ($\pm 0.1 \text{ degrees}$) for each day of the month over which mosquito sampling took place, with a grid size of 0.05 degrees. The Python script to extract this information is given below.
+
+\begin{minted}{python}
+from ecmwfapi import ECMWFDataServer
+import time
+def extract_meanminmax_temperature(a_area, a_date_start,
+		a_date_end):
+  server = ECMWFDataServer()
+  date_range = str(a_date_start) + "/to/" + str(a_date_end)
+  date_file = str(a_date_start) + "_to_" + str(a_date_end)
+  area=(str(a_area["north"]) + '/' + str(a_area["west"]) +
+       '/' + str(a_area["south"]) + '/' + str(a_area["east"])) 
+  area_file = (str(a_area["north"]) + '_' + str(a_area["west"])
+  + '_' + str(a_area["south"]) + '_' + str(a_area["east"]))
+  a_filename = ("../data/raw/weather/temperature_" +
+  	str(area_file) + "_" + date_file + ".nc")
+  server.retrieve({
+    "class": "ei",
+    "dataset": "interim",
+    "date": str(date_range),
+    "expver": "1",
+    "grid": "0.05/0.05",
+    "levtype": "sfc",
+    "area" : str(area),
+    "param": "167.128/201.128/202.128",
+    "step": "3",
+    "stream": "oper",
+    "time": "00:00:00",
+    "type": "fc",
+    "target":  str(a_filename),
+    "format" : "netcdf",
+  })
+\end{minted}
+
+To determine the impact of temperature on mosquito lifespan, we estimated a generalised linear model using a logit link, with hierarchical complex-level intercepts and either no temperature term, and linear temperature terms with or without quadratic temperature terms. In each case, these temperature terms were allowed to vary at the complex level (non-hierarchically). This meant our likelihood had the form,
+%
+\begin{equation}
+X_i^{\{s\}} \sim \mathcal{B}(N_i, \text{inv-logit}(\alpha_i^{\{s\}})),
+\end{equation}
+%
+where,
+%
+\begin{equation}
+\alpha_i^{\{s\}} = \text{logit} (\mathcal{P}_i^{\{s\}}) + \delta_1^{\{s\}} T_i + \delta_2^{\{s\}} T_i^2.
+\end{equation}
+%
+Here $T_i$ is a measure of temperature at study location $i$ (measures described below); $\mathcal{P}_i$ was set a prior according to eq. \eqref{eq:detinova_prior} and $\delta_1^{\{s\}}\sim \mathcal{N}(0, 1)$ and $\delta_2^{\{s\}}\sim \mathcal{N}(0, 1)$.
+
+The temperature measures ($T_i$), we investigated were summary statistics calculated across the daily data for all days within the month each study took place and across all grid points falling within the area centred on the GPS location of each study (described above),
+
+\begin{itemize}
+	\item Average two meter temperature (average of mean daily data for each grid point),
+	\item Minimum two meter temperature (average of minimum daily data for each grid point),
+	\item Maximum two meter temperature (average of maximum daily data for each grid point),
+	\item Standard deviation in two meter temperature (average of standard deviation in temperature for each grid point),
+	\item Daily range in two meter temperature (average of maximum minus minimum daily temperature for each grid point).
+\end{itemize}
 
 \subsection{Model checking}
 To check the fit of models to the data, we simulated from the posterior predictive distribution for each grouping used in analysis. This means that we have two sets of posterior predictive figures: those where the check was performed at the species level; and those corresponding to the complex or subgroup level. In each of these figures, we plot observed empirical cumulative distribution function (eCDF) for the proportion parous versus the equivalent from each posterior predictive dataset.
