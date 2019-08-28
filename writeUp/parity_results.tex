@@ -25,5 +25,11 @@ This is the model where we compare min-max for temperature extracted at midnight
 \subsection{Malaria prevalence vs parity}
 There were only $n=142$ studies between 2000-2015 (when MAP estimates are available). For these cases, I've plotted 2-10 prevalence versus parity and find no correlation (see \verb|detinova_gambiae_pfpr.pdf|).
 
+\subsection{Country-level estimates}
+I have estimated country-level lifespans for the $n=541$ data points where GPS location was available. The lifespans are plotted in \verb|detinova_lifespan_gambiae_country.pdf|, which determines that Senegal has, on average, the longest lifespan. K-fold CV, however, indicated that these country-level differences were not significant, since a model grouping at the continent level performed better on out-of-sample prediction. This better performance was almost uniformly observed across the countries in the dataset.
+
+\subsection{With or without Reunion}
+On inspection of the plots of lifespan against temperature range (see \verb|detinova_gambiae_daynight_range_lifespan_country.pdf|), it looked as if the results may hinge on the data from Reunion. I, hence, repeated the analysis with/without this country. With this country included (see \verb|fit_complex_daynightmax.rds|), the models with linear and quadratic temperature terms fitted the data better. Without Reunion, the linear model fitted the data best but the difference in fit was weaker (compare \verb|detinova_gambiae_daynight_range_lifespan_country.pdf| with \verb|detinova_gambiae_daynight_range_lifespan_noreunion_country.pdf|) and no longer significant at the 5\% level (\verb|fit_complex_daynightmax_noreunion.rds|).
+
 
 \end{document}

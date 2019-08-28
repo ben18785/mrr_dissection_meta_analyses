@@ -19,8 +19,8 @@
 * [x] Posterior predictive checks for parity analysis. Redo with eCDFs and include in SOM
 * [ ] Individual lifespan estimates
 * [x] Write up results in 'parity_results.tex' file.
-* [ ] Gambiae:
-  * [ ] Estimate gambiae s.l. lifespan by country (for countries with at least a minimum number of studies) and compare with grouped estimates via k-fold CV
+* [x] Gambiae:
+  * [x] Estimate gambiae s.l. lifespan by country (for countries with at least a minimum number of studies) and compare with grouped estimates via k-fold CV
   * [ ] Estimate lifespan by month in a particular location/country
 * [ ] Weather vs lifespan investigations:
   * [x] Night temperature range (00:00)
