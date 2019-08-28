@@ -30,7 +30,12 @@
   * [ ] Monthly min
   * [ ] Monthly max
   * [ ] Precipitation
-  * [ ] Wet vs dry season
+  * [ ] Wet vs dry season from downloaded data
+  * [ ] Wet vs dry season from database
+* [ ] Insecticide use (recorded in database)
+* [ ] Gonotrophic cycle estimation using citations
+  * [ ] Need to determine what measures these were and what method was used (29 references in total)
+  * [ ] Combine with my literature search for physiological age
 
 ### Physiological age
 
