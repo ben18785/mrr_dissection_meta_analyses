@@ -34,6 +34,8 @@
   * [ ] Wet vs dry season from database
 * [ ] Insecticide use (recorded in database)
 * [ ] Gonotrophic cycle estimation using citations
+  * [ ] Recheck for duplicates
+  * [ ] Review methods for each gonotrophic cycle estimate
   * [ ] Need to determine what measures these were and what method was used (29 references in total)
   * [ ] Combine with my literature search for physiological age
 
