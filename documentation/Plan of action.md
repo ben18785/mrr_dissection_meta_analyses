@@ -54,6 +54,17 @@
 - [ ] Group results by complex
 - [ ] Group according to Africa, Asia, the Americas (and potentially estimate at this level)
 
+## Gonotrophic cycle estimates
+
+- [ ] Replace old gonotrophic cycle figure in SOM with new ones with updated data
+- [ ] ANOVA on medians:
+  - [ ] Genus differences for both 1st and 2nd durations
+  - [ ] No differences between 1st and 2nd durations when controlling for Genus
+- [ ] Update SOM text:
+  - [ ] on method used to analyse
+  - [ ] literature search (explain inclusion criteria and how the Massey database was included); describe how - if no mention was made of 1st or subsequent cycle, we assumed it was a measure of both -- meaning the observations often overlapped
+- [ ] Include Mathematica plots of the estimated densities for 1st and subsequent gonotrophic cycle durations
+
 ### Overall
 
 * Gonotrophic cycle estimates by genus (perhaps even revisit this approach as not convinced it's ideal)
