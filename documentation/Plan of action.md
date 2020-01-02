@@ -80,3 +80,12 @@
 * Do model fitting for MRR:
   * Male / female vs no differences (have I done this before?)
   * Pre-feeding
+
+## Needed for write up
+
+* Lifespan estimates (use posterior medians!):
+  * gambiae s.l.:
+    * [ ] MRR: 4.4 days
+    * [ ] Detinova: table done but will need to be updated with new gonotrophic cycle estimates: 10.1 days
+    * [ ] Polovodova: needs updating (with new gonotrophic cycle estimates)
+  * funestus s.l.
