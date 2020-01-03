@@ -33,11 +33,11 @@
   * [ ] Wet vs dry season from downloaded data
   * [ ] Wet vs dry season from database
 * [ ] Insecticide use (recorded in database)
-* [ ] Gonotrophic cycle estimation using citations
-  * [ ] Recheck for duplicates
-  * [ ] Review methods for each gonotrophic cycle estimate
-  * [ ] Need to determine what measures these were and what method was used (29 references in total)
-  * [ ] Combine with my literature search for physiological age
+* [x] Gonotrophic cycle estimation using citations
+  * [x] Recheck for duplicates
+  * [x] Review methods for each gonotrophic cycle estimate
+  * [x] Need to determine what measures these were and what method was used (29 references in total); no need, I think
+  * [x] Combine with my literature search for physiological age
 
 ### Physiological age
 
@@ -85,7 +85,21 @@
 
 * Lifespan estimates (use posterior medians!):
   * gambiae s.l.:
-    * [ ] MRR: 4.4 days
-    * [ ] Detinova: table done but will need to be updated with new gonotrophic cycle estimates: 10.1 days
-    * [ ] Polovodova: needs updating (with new gonotrophic cycle estimates)
-  * funestus s.l.
+    * [x] MRR: 4.4 days
+    * [x] Detinova: 8.7 days
+    * [x] Polovodova: 6.4 days
+  * funestus s.l.:
+    * MRR: 4.2 days
+    * Detinova: 13 days
+  * albopictus:
+    * MRR: 11.6
+    * Polovodova: NA
+  * aegypti: 
+    * MRR: 6.2
+    * Polo: 4.7
+  * Male vs female: shouldn't have changed as based only on MRRs
+* Add notes on:
+  * Mansonia: assumed overall gonotrophic estimates parameters
+  * Add notes on conversion from parity to chronological age: assumed a single gonotrophic cycle length
+  * Add notes on physiological age conversion
+  * Change gonotrophic cycle length quoted in MS
