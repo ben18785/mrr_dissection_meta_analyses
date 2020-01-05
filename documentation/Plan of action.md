@@ -99,7 +99,17 @@
     * Polo: 4.7
   * Male vs female: shouldn't have changed as based only on MRRs
 * Add notes on:
-  * Mansonia: assumed overall gonotrophic estimates parameters
-  * Add notes on conversion from parity to chronological age: assumed a single gonotrophic cycle length
-  * Add notes on physiological age conversion
-  * Change gonotrophic cycle length quoted in MS
+  * [x] Mansonia: assumed overall gonotrophic estimates parameters
+  * [x] Add notes on conversion from parity to chronological age: assumed a single gonotrophic cycle length
+  * [x] Add notes on physiological age conversion
+  * [ ] Change gonotrophic cycle length quoted in MS
+* Replace figures:
+  * [ ] Dissection lifespans
+  * [ ] Gonotrophic cycle plots and estimates
+* [ ] Check MCMC running characteristics (number of chains, iterations):
+  * [x] Parity (think this is wrong in SOM)
+  * [ ] Polovodova
+  * [ ] MRR
+* [ ] Add notes on truncation for Polovodova dissection analysis: used 14 age classes if there was no thresholding, so should be a reasonable approximation in those cases; where thresholding occurs, there is no difference
+* [ ] Update PPCs for parity data
+* [ ] Create a file that runs Polovodova analysis
