@@ -114,3 +114,4 @@
 * [ ] Update PPCs for parity data
 * [ ] Create a file that runs Polovodova analysis
 * [ ] Add glossary of terms: MRR, Polovodova-type dissection, Detinova-type
+* [ ] Do k fold with new kappa prior for gambiae sl
