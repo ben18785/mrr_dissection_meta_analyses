@@ -113,3 +113,4 @@
 * [x] Add notes on truncation for Polovodova dissection analysis: used 14 age classes if there was no thresholding, so should be a reasonable approximation in those cases; where thresholding occurs, there is no difference
 * [ ] Update PPCs for parity data
 * [ ] Create a file that runs Polovodova analysis
+* [ ] Add glossary of terms: MRR, Polovodova-type dissection, Detinova-type
