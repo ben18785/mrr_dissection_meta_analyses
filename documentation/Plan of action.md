@@ -113,5 +113,6 @@
 * [x] Add notes on truncation for Polovodova dissection analysis: used 14 age classes if there was no thresholding, so should be a reasonable approximation in those cases; where thresholding occurs, there is no difference
 * [ ] Update PPCs for parity data
 * [ ] Create a file that runs Polovodova analysis
-* [ ] Add glossary of terms: MRR, Polovodova-type dissection, Detinova-type
-* [ ] Do k fold with new kappa prior for gambiae sl
+* [x] Add glossary of terms: MRR, Polovodova-type dissection, Detinova-type
+* [x] Do k fold with new kappa prior for gambiae sl
+* [ ] Go through SOM gonotrophic cycle duration bit and update numbers
