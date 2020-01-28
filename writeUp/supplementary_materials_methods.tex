@@ -1011,17 +1011,15 @@ The estimates of lifespan produced from analysing the dissection data are in ter
 In the using the above methodology to convert from physiological to calendar age, we implicitly assume that all gonotrophic cycles after the first are of the same length (i.e. we choose one $G_{2i}$ per sample). However, since we allow a different $G_{2i}$ for each sample, we nonetheless believe that the above approach allows for sufficient uncertainty in the estimates of subsequent gonotrophic cycle durations. If instead we believed that significant variation in gonotrophic cycle occurred within a particular mosquito's life (as well as between mosquitoes) then we could draw a new value of $G_{2i}$ for each subsequent cycle. This produces results with indistinguishable uncertainty than the results we report (data not shown).
 
 \section{Detinova dissection experiments}\label{sec:detinova}
-\cite{detinova1962age} provided an alternative approach to estimate the lifespan of individual specimens, based on sampling the parous rate in a population (the proportion of adult females that have laid eggs) using dissection to determine parity of each specimen. In what follows, we follow the derivation given by \cite{davidson1954estimation}, to determine an expression for the proportion of nulliparous mosquitoes in terms of the gonotrophic cycle length $G$, here assumed the same for each cycle subsequent to an adult emerging. If a constant daily survival rate $p$ is assumed, the proportion of emerging adults surviving to become parous is $p^G$. If the rate of recruitment into the adult classes is constant over time, the proportion of nulliparous mosquitoes is,
+\cite{detinova1962age} provided an alternative approach to estimate the lifespan of individual specimens, based on sampling the parous rate in a population (the proportion of adult females that have laid eggs) using dissection to determine parity of each specimen. In what follows, we follow the derivation given by \cite{davidson1954estimation}, to determine an expression for the mean lifespan of a mosquito in terms of gonotrophic cycles (all assumed to be of the same duration, $G$). If the probability of dying in a given cycle, $p$, is assumed constant (i.e. there is no age-dependent mortality), then the probability a mosquito completes $Y$ cycles, is geometrically distributed,
 %
-\begin{equation}\label{eq:detinova}
-\begin{aligned}
-\mathbb{n} &= \frac{p^G}{p^G + p^{2G} + p^{3G} + \cdots}\\
-&= p^G / \frac{p^G}{1-p^G}\\
-&= 1-p^G.
-\end{aligned}
+\begin{equation}
+Pr(Y=k) = (1-p)^k p,
 \end{equation}
 %
-The daily survival rate can hence be calculated by inverting eq. (\ref{eq:detinova}): $p = \sqrt[G]{\mathcal{P}}$, where $\mathcal{P}=1-\mathbb{n}$ is the proportion parous sampled from the population. The distribution of mosquitoes dying each day follows a geometric distribution, with probability of dying on a given day equal to $1-p$. The mean lifespan is, hence, given by $1/(1-p)$.
+where $k= 0,1,2,...$. This implies that the proportion of adults surviving to become parous is $Pr(Y\geq 1) = 1 - Pr(Y=0) = 1-p=\mathcal{P}$. Therefore, the proportion of parous mosquitoes in any given sample $i$ of wild-caught mosquitoes, $\mathcal{P}^{\{i\}}$ is a direct estimator of the probability of surviving a given cycle, $1-p$. The mean lifespan of a mosquito in terms of completed gonotrophic cycles is then given by $(1-p)/p= \mathcal{P}/(1-\mathcal{P})$.
+
+If, instead, we choose chronological time as our measure of lifespan, the above analysis still holds, although with $q$ now representing the probability of dying on a particular day, meaning $(1-q)^G$ is the probability of surviving a cycle. The daily survival probability $1-q$ is, hence, equal to $\sqrt[G]{\mathcal{P}}$, and the mean lifespan is given by $q/(1-q)=\sqrt[G]{\mathcal{P}}/(1-\sqrt[G]{\mathcal{P}})$.
 
 \subsection{Data and model}\label{sec:detinova_datamodel}
 \cite{massey2016global} provide a global database of bionomic quantities for the dominant vector species of malaria. This database contains the number of parous and nulliparous samples in studies where Detinova's dissection approach was applied to field caught speciments ($n=1490$ non-missing observations for total number of parous individuals) across Africa ($n=778$), Asia ($n=549$) and the Americas ($n=163$). 
