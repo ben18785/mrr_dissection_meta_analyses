@@ -115,4 +115,7 @@
 * [ ] Create a file that runs Polovodova analysis
 * [x] Add glossary of terms: MRR, Polovodova-type dissection, Detinova-type
 * [x] Do k fold with new kappa prior for gambiae sl
-* [ ] Go through SOM gonotrophic cycle duration bit and update numbers
+* [ ] Go through SOM gonotrophic cycle duration bit and update numbers of studies included
+* [ ] Make all axes labels match (e.g. detinova boxplot and polovodova boxplot)
+* [ ] Make all axis titles capitalised
+* [ ] Update table of chronological lifespan with new Detinova estimates
