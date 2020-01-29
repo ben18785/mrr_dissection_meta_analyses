@@ -119,3 +119,4 @@
 * [ ] Make all axes labels match (e.g. detinova boxplot and polovodova boxplot)
 * [ ] Make all axis titles capitalised
 * [ ] Update table of chronological lifespan with new Detinova estimates
+* [ ] Look why moucheti doesn't seem to be being fit with species / complex fits. Think this is a mistake because Moucheti has only a single species. Need to rerun!
