@@ -1074,7 +1074,7 @@ generated quantities{
     theta_average[i] = beta_rng(phi[i] * kappa[i],
 										       (1 - phi[i]) * kappa[i]);
     survival[i] = theta_average[i] ^ (1.0 / gon);
-    lifespan[i] = 1.0 / (1.0 - survival[i]); 
+    lifespan[i] = survival[i] / (1.0 - survival[i]); 
   }
 }
 \end{minted}
