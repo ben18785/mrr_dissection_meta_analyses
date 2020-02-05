@@ -121,3 +121,5 @@
 * [ ] Update table of chronological lifespan with new Detinova estimates
 * [x] Look why moucheti doesn't seem to be being fit with species / complex fits. Think this is a mistake because Moucheti has only a single species. Need to rerun! Has been rerun. No need to rerun k-fold for species vs grouped since Moucheti not in species. Nor for group vs continent as seems I was using 778 data points before.
 * [x] Added estimates for Detinova without insecticide
+* [x] check that quadrimaculatus isn't being missed off of detinova estimates: it gets removed since it has too few data
+
