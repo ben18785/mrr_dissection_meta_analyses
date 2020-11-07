@@ -124,3 +124,7 @@
 * [x] check that quadrimaculatus isn't being missed off of detinova estimates: it gets removed since it has too few data
 * [ ] Check that Polovodova estimates of senescence in main figure are up to date.
 
+# November picking things up
+
+* [x] Add details of insecticide analysis to supplementary
+* [ ] Check out Polovodova estimates for whether or not we do actually record insecticide use (we say we do in the supplementary methods) 

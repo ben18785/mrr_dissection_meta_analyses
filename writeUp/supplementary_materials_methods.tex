@@ -1021,9 +1021,27 @@ where $k= 0,1,2,...$. This implies that the proportion of adults surviving to be
 
 If, instead, we choose chronological time as our measure of lifespan, the above analysis still holds, although with $q$ now representing the probability of dying on a particular day, meaning $(1-q)^G$ is the probability of surviving a cycle. The daily survival probability $1-q$ is, hence, equal to $\sqrt[G]{\mathcal{P}}$, and the mean lifespan is given by $q/(1-q)=\sqrt[G]{\mathcal{P}}/(1-\sqrt[G]{\mathcal{P}})$.
 
-\subsection{Data and model}\label{sec:detinova_datamodel}
-\cite{massey2016global} provide a global database of bionomic quantities for the dominant vector species of malaria. This database contains the number of parous and nulliparous samples in studies where Detinova's dissection approach was applied to field caught speciments ($n=1490$ non-missing observations for total number of parous individuals) across Africa ($n=778$), Asia ($n=549$) and the Americas ($n=163$). 
+\subsection{Data processing}
+In this section, we describe the data processing carried out on the \cite{massey2016global} dataset, which provides a global database of bionomic quantities for the dominant vector species of malaria. Included in this database is the number of parous and nulliparous samples in studies where Detinova's dissection approach was applied to field caught specimens.
 
+For each of the three datasets (Africa, Americas and Asia) contained with the SOM of \cite{massey2016global}, we used only those observations which had a non-missing and positive total capture size. For each observation, we calculated observed parity ($=\text{parous count}/ \text{total capture size}$) and compared this quantity with the `parity percent' column in the datasets. If the difference between these two quantities was lower than 1\%, we considered the discrepancy to be due to numerical rounding and did not investigate further. In those cases where the difference exceeded 1\%, we did the following:
+
+\begin{itemize}
+	\item Africa: considering the database entry for \cite{ijumba2002malaria}, there was a difference of about 50\%. Reading the paper, it looks like there is a mistake in their Table 5, and that the parous number should be 131 and, as such, we changed this number in the database; considering the entry for \cite{bockarie46service}, there was a difference of around 5\%. We could not access the paper here, so assumed that the issue was with the `parity percent' entry.
+	\item Americas: no differences exceeding 1\%.
+	\item Asia: considering the entry for \cite{kitthawee1992relationship}, there was a difference of around 3\%. Reading the paper, it looks like there was a (small) error in the database, and the parous number should be 35 (rather than 36) - this adjustment was made for the ensuing analysis.
+\end{itemize}
+
+For the species- and complex-level estimates of lifespan, we considered only those groups with five or more parity experiments. For the continent-level and overall estimates, we used all data. In a number of cases, a species was indicated as a complex (for example, `Anopheles gambiae complex'), presumably when insufficient information was available in the paper to identify the species. These data were dropped for the species-level analysis but were included for all other analyses.
+
+
+The \cite{massey2016global} database included a variable for each observation determining whether insecticide-based controls were in place at the specified location and time period of the study. For $n=883$ observations, this information was recorded, allowing us to estimate the impact of these interventions on lifespan (see \ref{sec:detinova_insecticide}). This analysis determined that insecticidal interventions reduced lifespan, and, thus, studies where insecticides were in place ($n=364$) were removed from our main analysis.
+
+
+For the species-level analyses, there were, hence, $n=198$ observations for Africa across 4 species; $n=107$ observations for the Americas across 6 species; and $n=108$ observations for Asia across 4 species. For the complex-level analyses, there were, hence, $n=679$ observations for Africa across 4 groups; $n=121$ observations for the Americas across 5 groups; and $n=318$ observations for Asia across 13 groups. For the continent-level and overall analyses, there were $n=1126$ observations across Africa ($n=679$), the Americas ($n=126$) and Asia ($n=321$).
+
+
+\subsection{Models}\label{sec:detinova_datamodel}
 We estimated lifespan at the species and complex / subgroup level (hereafter denoted as \textit{s.l.}) using a Bayesian hierarchical framework. We denote this grouping variable by $s$ in what follows. The number of parous individuals $y_i^{\{s\}}$ in sample $i$ (consisting of individuals belonging to group $s$) was modelled by a binomial sampling distribution,
 %
 \begin{equation}
@@ -1086,21 +1104,70 @@ generated quantities{
 \end{figure}
 
 
-\subsection{Data processing}
-In this section, we describe the data processing carried out on the \cite{massey2016global} dataset. For each of the three datasets (Africa, Americas and Asia) contained with the SOM of \cite{massey2016global}, we used only those observations which had a non-missing and positive total capture size. For each observation, we calculated observed parity ($=\text{parous count}/ \text{total capture size}$) and compared this quantity with the `parity percent' column in the datasets. If the difference between these two quantities was lower than 1\%, we considered the discrepancy to be due to numerical rounding and did not investigate further. In those cases where the difference exceeded 1\%, we did the following:
+\subsubsection{Impact of insecticide interventions on lifespan}\label{sec:detinova_insecticide}
+To determine the impact of insecticidal interventions on lifespan, we modified the model described in \S\ref{sec:detinova_datamodel} to estimate effects at the species level. To do so, we allowed a logit-linear impact of insecticide. Further, the species-level effects were modelled hierarchically using normal priors, allowing the impact of resistance to vary at the observation level within each study. The model to estimate this is shown below (where the variable metering the impact of insecticide at the observational level is `delta').
 
-\begin{itemize}
-	\item Africa: considering the database entry for \cite{ijumba2002malaria}, there was a difference of about 50\%. Reading the paper, it looks like there is a mistake in their Table 5, and that the parous number should be 131 and, as such, we changed this number in the database; considering the entry for \cite{bockarie46service}, there was a difference of around 5\%. We could not access the paper here, so assumed that the issue was with the `parity percent' entry.
-	\item Americas: no differences exceeding 1\%.
-	\item Asia: considering the entry for \cite{kitthawee1992relationship}, there was a difference of around 3\%. Reading the paper, it looks like there was a (small) error in the database, and the parous number should be 35 (rather than 36) - this adjustment was made for the ensuing analysis.
-\end{itemize}
+\begin{minted}{stan}
+data{
+  int N;
+  int X[N];
+  int num[N];
+  int species[N];
+  int K;
+  real z[N];
+}
 
-For the species- and complex-level estimates of lifespan, we considered only those groups with five or more parity experiments. For the continent-level and overall estimates, we used all data. In a number of cases, a species was indicated as a complex (for example, `Anopheles gambiae complex'), presumably when insufficient information was available in the paper to identify the species. These data were dropped for the species-level analysis but were included for all other analyses.
+parameters{
+  vector<lower=0, upper=1>[N] theta;
+  vector<lower=0, upper=1>[K] phi;
+  vector<lower=5>[K] kappa;
+  vector[K] delta_raw;
+  real delta_top;
+  real<lower=0> delta_sigma;
+}
 
-For the species-level analyses, there were, hence, $n=223$ observations for Africa across 4 species; $n=141$ observations for the Americas across 6 species; and $n=214$ observations for Asia across 8 species. For the complex-level analyses, there were, hence, $n=778$ observations for Africa across 4 groups; $n=77$ observations for the Americas across 3 groups; and $n=455$ observations for Asia across 11 groups. For the continent-level and overall analyses, there were $n=1490$ observations across Africa ($n=778$), the Americas ($n=163$) and Asia ($n=549$).
+transformed parameters{
+  vector[K] delta;
+  for(i in 1:K)
+    delta[i] = delta_top + delta_sigma * delta_raw[i];
+}
 
+model{
+  real theta_eff;
+  for(i in 1:N){
+    theta_eff = logit(theta[i]) + delta[species[i]] * z[i];
+    X[i] ~ binomial_logit(num[i], theta_eff);
+    theta[i] ~ beta(phi[species[i]] * kappa[species[i]],
+                   (1 - phi[species[i]]) * kappa[species[i]]);
+  }
+  kappa ~ pareto(5, 1.5);
+  phi ~ beta(20, 15);
+  delta_raw ~ normal(0, 1);
+  delta_top ~ normal(0, 1);
+  delta_sigma ~ normal(0, 1);
+}
+\end{minted}
 
-
+\begin{minted}{stan}
+generated quantities{
+  real lifespan_without_insecticide[K];
+  real lifespan_with_insecticide[K];
+  for(i in 1:K){
+    real theta_eff;
+    real theta_eff_without;
+    real gon = normal_rng(3.65, 0.4);
+    real survival;
+    real survival_without;
+    theta_eff = logit(theta[i]) + delta[species[i]];
+    theta_eff_without = logit(theta[i]);
+    survival = inv_logit(theta_eff)^(1.0/gon);
+    survival_without = inv_logit(theta_eff_without)^(1.0/gon);
+    lifespan_with_insecticide[i] = survival / (1.0 - survival);
+    lifespan_without_insecticide[i] = survival_without /
+                                    (1.0 - survival_without);
+  }
+}
+\end{minted}
 
 \subsection{Model estimation by MCMC and cross validation}
 The statistical models were fit to data using Stan's NUTS algorithm \cite{carpenter2016stan}. In all cases, models were run for 1000 iterations on each of 12 chains, with the first half of the iterations discarded as warm-up. We monitored diagnosed convergence as per \cite{gelman1992inference}, with $\hat{R}<1.1$ on all parameters. In all model runs, there were fewer than a handful of divergent transitions. 
