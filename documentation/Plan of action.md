@@ -102,29 +102,50 @@
   * [x] Mansonia: assumed overall gonotrophic estimates parameters
   * [x] Add notes on conversion from parity to chronological age: assumed a single gonotrophic cycle length
   * [x] Add notes on physiological age conversion
-  * [ ] Change gonotrophic cycle length quoted in MS
 * Replace figures:
   * [x] Dissection lifespans
   * [x] Gonotrophic cycle plots and estimates
 * [ ] Check MCMC running characteristics (number of chains, iterations):
   * [x] Parity (think this is wrong in SOM)
-  * [ ] Polovodova
+  * [x] Polovodova
   * [ ] MRR
 * [x] Add notes on truncation for Polovodova dissection analysis: used 14 age classes if there was no thresholding, so should be a reasonable approximation in those cases; where thresholding occurs, there is no difference
-* [ ] Update PPCs for parity data
-* [ ] Create a file that runs Polovodova analysis
+* [x] Create a file that runs Polovodova analysis: no need.
 * [x] Add glossary of terms: MRR, Polovodova-type dissection, Detinova-type
 * [x] Do k fold with new kappa prior for gambiae sl
-* [ ] Go through SOM gonotrophic cycle duration bit and update numbers of studies included
 * [ ] Make all axes labels match (e.g. detinova boxplot and polovodova boxplot)
 * [ ] Make all axis titles capitalised
-* [ ] Update table of chronological lifespan with new Detinova estimates
 * [x] Look why moucheti doesn't seem to be being fit with species / complex fits. Think this is a mistake because Moucheti has only a single species. Need to rerun! Has been rerun. No need to rerun k-fold for species vs grouped since Moucheti not in species. Nor for group vs continent as seems I was using 778 data points before.
 * [x] Added estimates for Detinova without insecticide
 * [x] check that quadrimaculatus isn't being missed off of detinova estimates: it gets removed since it has too few data
-* [ ] Check that Polovodova estimates of senescence in main figure are up to date.
 
 # November picking things up
 
 * [x] Add details of insecticide analysis to supplementary
-* [ ] Check out Polovodova estimates for whether or not we do actually record insecticide use (we say we do in the supplementary methods) 
+* [x] Check out Polovodova estimates for whether or not we do actually record insecticide use (we say we do in the supplementary methods): we do but going to leave out as it seems unreliable.
+* [x] Rerun Polovodova with more iterations: actually looks fine in terms of Rhat with 16 chains
+* [x] Find latest Detinova estimates: they are generated in "s_fitting_insecticide" but the Stan fits no longer exist! I must have deleted them. There are no summary lifespans, so I need to regenerate these.
+* [x] Rerun Detinova fits with 4000 iterations (some hadn't converged before)
+  * [x] Check Rhat for each fit (all below 1.1)
+  * [x] If Rhat ok, update SOM with new numbers of iterations
+* [x] Regenerate Detinova lifespans: it's in combined_lifespans_no_insecticide
+  * [x] gonotrophic cycles
+  * [x] calendar
+* [x] Detinova: Update numbers of observations in cross-validation of SOM to reflect no insecticide case
+* [ ] Detinova: Rerun k-fold cross validation with more iterations (and update SOM if needs be)
+  * [ ] Update main text with numbers from this
+* [ ] Check and include Polovodova senescence estimates
+* [x] Update main Detinova lifespan figure and move to write up repo
+* [x] Update Detinova lifespan comparison figure and include in figure file
+* [x] Include Detinova in EIP figure
+* [x] Check and probably change gonotrophic cycle length quoted in main text
+* [ ] Check all tables have updated lifespan estimates:
+  * [ ] Detinova definitely isn't as I've just reestimated these
+  * [ ] Polovodova
+  * [ ] MRR
+* [x] Go through SOM gonotrophic cycle duration bit and update numbers of studies included. Looks fine.
+* [ ] Update PPCs for parity data
+* [ ] Go through all numbers in text. To indicate that they have been checked this time, I am using a green colour.
+* [ ] Update text about pairwise figure
+* [ ] Update text about EIP figure
+* [ ] Fill in "navigating_analyses" markdown figure
