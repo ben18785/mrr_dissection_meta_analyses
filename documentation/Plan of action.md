@@ -145,7 +145,7 @@
 * [ ] Update text about pairwise figure
 * [ ] Update text about EIP figure
 * [ ] Fill in "navigating_analyses" markdown figure.
-  * [ ] Also add to it the locations of the three main folders
+  * [x] Also add to it the locations of the three main folders
 * [ ] Make all axes labels match (e.g. detinova boxplot and polovodova boxplot)
 * [ ] Make all axis titles capitalised
 * [ ] Check all tables have updated lifespan estimates:
