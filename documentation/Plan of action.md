@@ -105,15 +105,13 @@
 * Replace figures:
   * [x] Dissection lifespans
   * [x] Gonotrophic cycle plots and estimates
-* [ ] Check MCMC running characteristics (number of chains, iterations):
+* [x] Check MCMC running characteristics (number of chains, iterations):
   * [x] Parity (think this is wrong in SOM)
   * [x] Polovodova
-  * [ ] MRR
 * [x] Add notes on truncation for Polovodova dissection analysis: used 14 age classes if there was no thresholding, so should be a reasonable approximation in those cases; where thresholding occurs, there is no difference
 * [x] Create a file that runs Polovodova analysis: no need.
 * [x] Add glossary of terms: MRR, Polovodova-type dissection, Detinova-type
 * [x] Do k fold with new kappa prior for gambiae sl
-* [ ] Make all axes labels match (e.g. detinova boxplot and polovodova boxplot)
 * [ ] Make all axis titles capitalised
 * [x] Look why moucheti doesn't seem to be being fit with species / complex fits. Think this is a mistake because Moucheti has only a single species. Need to rerun! Has been rerun. No need to rerun k-fold for species vs grouped since Moucheti not in species. Nor for group vs continent as seems I was using 778 data points before.
 * [x] Added estimates for Detinova without insecticide
@@ -132,20 +130,25 @@
   * [x] gonotrophic cycles
   * [x] calendar
 * [x] Detinova: Update numbers of observations in cross-validation of SOM to reflect no insecticide case
-* [ ] Detinova: Rerun k-fold cross validation with more iterations (and update SOM if needs be)
-  * [ ] Update main text with numbers from this
 * [ ] Check and include Polovodova senescence estimates
 * [x] Update main Detinova lifespan figure and move to write up repo
 * [x] Update Detinova lifespan comparison figure and include in figure file
 * [x] Include Detinova in EIP figure
 * [x] Check and probably change gonotrophic cycle length quoted in main text
-* [ ] Check all tables have updated lifespan estimates:
-  * [ ] Detinova definitely isn't as I've just reestimated these
-  * [ ] Polovodova
-  * [ ] MRR
 * [x] Go through SOM gonotrophic cycle duration bit and update numbers of studies included. Looks fine.
+* [ ] Detinova: sort k fold
+  * [x] Rerun k-fold cross validation with more iterations (and update SOM if needs be). Some issue with Africa-species -- sorted
+  * [ ] Update main text with numbers from this
+* [ ] Check and include Polovodova senescence estimates
 * [ ] Update PPCs for parity data
 * [ ] Go through all numbers in text. To indicate that they have been checked this time, I am using a green colour.
 * [ ] Update text about pairwise figure
 * [ ] Update text about EIP figure
-* [ ] Fill in "navigating_analyses" markdown figure
+* [ ] Fill in "navigating_analyses" markdown figure.
+  * [ ] Also add to it the locations of the three main folders
+* [ ] Make all axes labels match (e.g. detinova boxplot and polovodova boxplot)
+* [ ] Make all axis titles capitalised
+* [ ] Check all tables have updated lifespan estimates:
+  * [ ] Detinova definitely isn't as I've just reestimated these
+  * [ ] Polovodova
+  * [ ] MRR
