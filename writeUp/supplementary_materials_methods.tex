@@ -116,11 +116,9 @@ This section describes the amendments made by MRR ID (the unique identifier that
 	\item 334: Data starts on day 3, thus have added this number of days to our time variable in this case.
 \end{itemize}
 
-The R file \verb|s_clean_data.R| cleans the data, makes the above amendments and outputs the data in a form amenable for estimation using Stan \citep{carpenter2016stan}.
-
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/mrr_mapGenusCropped.pdf}}
-	\caption{\textbf{The location and number of separate time-series for the MRR studies included in this analysis.} The area of each circle indicates the number of time-series at each study site. The colour shows the genus of the mosquitoes in each study.}
+	\caption{\textbf{MRR: location of studies included in the analysis.} The area of each circle indicates the number of time-series at each study site. The colour shows the genus of the mosquitoes in each study.}
 	\label{fig:mrr_lifetimes_map}
 \end{figure}
 
@@ -146,7 +144,7 @@ The R file \verb|s_clean_data.R| cleans the data, makes the above amendments and
 		MRR time-series & 232 \\
 		\bottomrule
 	\end{tabular}%
-	\caption{\textbf{Summary of variables across all MRR time-series used in hierarchical analyses.} For the `Species' and `Genera' rows, the counts represent the number of distinct entries in the database; otherwise the counts represent the number of time series.}
+	\caption{\textbf{MRR: summary of time-series used in hierarchical analyses.} For the `Species' and `Genera' rows, the counts represent the number of distinct entries in the database; otherwise the counts represent the number of time series.}
 	\label{tab:mrr_aggregateData}%
 \end{table}%
 
@@ -167,14 +165,14 @@ The R file \verb|s_clean_data.R| cleans the data, makes the above amendments and
 			Age at release, days & 0   & 1.8   & 0   & 13    & 2.8 \\
 			\bottomrule
 		\end{tabularx}%
-		\caption{\textbf{Summary of data from individual MRR time-series used in hierarchical analyses.}}
+		\caption{\textbf{MRR: summary of data from individual time-series used in hierarchical analyses.}}
 		\label{tab:mrr_IndividualData}%
 	\end{adjustwidth}
 \end{table}%
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_sexReleasesOverTime.pdf}}
-	\caption{\textbf{The number of MRR time-series by date and sex of released mosquitoes.} The numbers represent by-decade totals of the 232 time-series we used in the main analysis.}
+	\caption{\textbf{MRR: time-series by date and sex of released mosquitoes.} The numbers represent by-decade totals of the 232 time-series we used in the main analysis.}
 	\label{fig:mrr_sexReleasesOverTime}
 \end{figure}
 
@@ -203,7 +201,7 @@ where the factor of $(1-\psi)^{t-1}$ represents the probability that a mosquito 
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/mrr_exampleMRRSeries.pdf}}
-	\caption{\textbf{Example MRR time-series for three different studies from the \cite{guerra2014global} database.} In all the above experiments, there was a single release of marked mosquitoes on day zero.}
+	\caption{\textbf{MRR: time-series for three different studies from the \cite{guerra2014global} database.} In all the above experiments, there was a single release of marked mosquitoes on day zero.}
 	\label{fig:mrr_exampleMRRSeries}
 \end{figure}
 
@@ -229,7 +227,7 @@ We first treat each time-series separately, and estimate individual $(\lambda,\p
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/mrr_individualTimeSeries_priors.pdf}}
-	\caption{\textbf{The prior probability distributions used for lifespan (A), recapture probability (B) and dispersal parameter (C) in the individual time-series analysis for the MRR studies.} Note: the prior for the recapture probability was truncated at $\psi=0.1$ since most MRR day one recapture fractions were significantly below this threshold.}
+	\caption{\textbf{MRR: prior probability distributions used for lifespan (A), recapture probability (B) and dispersal parameter (C) in the individual time-series analysis.} Note: the prior for the recapture probability was truncated at $\psi=0.1$ since most MRR day one recapture fractions were significantly below this threshold.}
 	\label{fig:mrr_individualTimeSeries_priors}
 \end{figure}
 
@@ -239,7 +237,7 @@ We synthesise information from across all MRR experiments to produce more robust
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_methodDiagramHierarchy.pdf}}
-	\caption{\textbf{A representation of the hierarchical Bayesian model, for the constant mortality model case when considering the species-level grouping.} Here `pdf' indicates `probability density function', and $\lambda_i$, $\psi_i$, and $\kappa_i$ represent the force of mortality for the exponential distribution, daily recapture probability and over-dispersion parameter of the negative binomial distribution for time-series $i$ in the dataset; $\mu_i(t)= \psi_i e^{-\lambda_i t}$ is the mean number of mosquitoes recaptured on day $t$.}
+	\caption{\textbf{MRR: structure of hierarchical Bayesian model.} This diagram represents the structure of the model for the constant mortality model case with the species-level grouping. Here `pdf' indicates `probability density function', and $\lambda_i$, $\psi_i$, and $\kappa_i$ represent the force of mortality for the exponential distribution, daily recapture probability and over-dispersion parameter of the negative binomial distribution for time-series $i$ in the dataset; $\mu_i(t)= \psi_i e^{-\lambda_i t}$ is the mean number of mosquitoes recaptured on day $t$.}
 	\label{fig:mrr_methodDiagramHierarchy}
 \end{figure}
 
@@ -263,13 +261,13 @@ The relatively complex nature of priors in hierarchical models make it important
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_lifespan_priors.pdf}}
-	\caption{\textbf{Samples from the prior predictive distribution of mean lifespan across the six models of mosquito mortality introduced in Table \ref{tab:mrr_survivalDescription}.} In all cases, 10,000 samples were generated using the priors indicated in Table \ref{tab:mrr_priors}, resulting in distributions with a mean close to 10 days.}
+	\caption{\textbf{MRR: prior predictive distribution of mean lifespan across the six models of mosquito mortality.} In all cases, 10,000 samples were generated using the priors indicated in Table \ref{tab:mrr_priors}, resulting in distributions with a mean close to 10 days.}
 	\label{fig:mrr_meanLifespanPrior}
 \end{figure}
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_priors_PsiKappa.pdf}}
-	\caption{\textbf{Samples from the priors for daily recapture probability ($\psi$) and over-dispersion parameter ($\kappa$).} In both panels, 10,000 samples were generated using the following hierarchical priors: for the individual time series parameters, $\psi_i \sim \text{exp}(r)$ (with $\psi$ constrained to be less than 0.1 - encompassing the upper limit of day one recapture fractions observed in most data series) and $\kappa_i \sim \text{exp}(p)$; for the top-level parameters: $r\sim \text{gamma}(100, 2)$ and $p\sim \text{log-normal}(1.5, 1)$.}\label{fig:mrr_PsiKappaPriors}
+	\caption{\textbf{MRR: samples from the priors for daily recapture probability ($\psi$) and over-dispersion parameter ($\kappa$).} In both panels, 10,000 samples were generated using the following hierarchical priors: for the individual time series parameters, $\psi_i \sim \text{exp}(r)$ (with $\psi$ constrained to be less than 0.1 - encompassing the upper limit of day one recapture fractions observed in most data series) and $\kappa_i \sim \text{exp}(p)$; for the top-level parameters: $r\sim \text{gamma}(100, 2)$ and $p\sim \text{log-normal}(1.5, 1)$.}\label{fig:mrr_PsiKappaPriors}
 \end{figure}
 
 \subsection{Testing for age-dependent mortality in wild mosquitoes}\label{sec:mrr_age_dependence}
@@ -323,7 +321,7 @@ The parameters of the survival function of each model were assigned hierarchical
 			\midrule
 			Logistic-Makeham & $\alpha,\beta,s,c\sim$ log-normal$(\mu_{\alpha|\beta|s|c},0.2)$ &$\mu_\alpha\sim N(-3.2,1)\text{,}\; \mu_\beta\sim N(-3.2,1)\text{,}\; \mu_s\sim N(-3,0.5)\text{,}\; \mu_c\sim N(-4,0.5)$\\
 			\bottomrule
-	\end{tabularx}}\caption{\textbf{The priors used on parameters of each different survival model.} For the exponential model, the `group-level' priors were the same for the genus and `overall' models that were also estimated. The exponential model was the only model that was simple enough to allow the scale parameter of the log-normal ($\sigma$) to be estimated by the data. The notation $\alpha,\beta\sim \text{log-normal}(\mu_{\alpha|\beta},0.2)$ means that $\alpha$ and $\beta$ were assigned independent log-normal priors with location parameters $\mu_\alpha$ and $\mu_\beta$ respectively, and a scale parameter of 0.2 in both cases.}\label{tab:mrr_priors}
+	\end{tabularx}}\caption{\textbf{MRR: priors used on parameters of each survival model.} For the exponential model, the `group-level' priors were the same for the genus and `overall' models that were also estimated. The exponential model was the only model that was simple enough to allow the scale parameter of the log-normal ($\sigma$) to be estimated by the data. The notation $\alpha,\beta\sim \text{log-normal}(\mu_{\alpha|\beta},0.2)$ means that $\alpha$ and $\beta$ were assigned independent log-normal priors with location parameters $\mu_\alpha$ and $\mu_\beta$ respectively, and a scale parameter of 0.2 in both cases.}\label{tab:mrr_priors}
 \end{table}
 
 
@@ -613,20 +611,20 @@ To check the fit of the model to the data, we simulated from the posterior predi
 
 {%
 	\includegraphics[page=1,scale=.6]{./Figure_files/mrr_ppcs_all}
-	\captionof{figure}{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the time series. For the rest of the posterior predictive checks for the MRR models, see the file referenced in the text.}
+	\captionof{figure}{\textbf{MRR: posterior predictive distribution versus actual data.} The figure shows the numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the time series. For the rest of the posterior predictive checks for the MRR models, see the file referenced in the text.}
 	\label{fig:mrr_ppc1}
 	\par
 
 {%
 	\includegraphics[page=2,scale=.6]{./Figure_files/mrr_ppcs_all}
-	\captionof{figure}{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the time series. For the rest of the posterior predictive checks for the MRR models, see the file referenced in the text.}
+	\captionof{figure}{\textbf{MRR: posterior predictive distribution versus actual data.} The figure shows the numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the time series. For the rest of the posterior predictive checks for the MRR models, see the file referenced in the text.}
 	\label{fig:mrr_ppc2}
 	\par
 }
 
 {%
 	\includegraphics[page=3,scale=.6]{./Figure_files/mrr_ppcs_all}
-	\captionof{figure}{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the time series. For the rest of the posterior predictive checks for the MRR models, see the file referenced in the text.}
+	\captionof{figure}{\textbf{MRR: posterior predictive distribution versus actual data.} The figure shows the numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the time series. For the rest of the posterior predictive checks for the MRR models, see the file referenced in the text.}
 	\label{fig:mrr_ppc3}
 	\par
 }
@@ -648,13 +646,13 @@ The data collection method resulted in 568 separate dissection series, across 72
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=0.8\textwidth]{./Figure_files/dissection_timeSeries.pdf}}
-	\caption{\textbf{The numbers of published studies that estimate gonotrophic age by Polovodova's dissection method across the study period.}}\label{fig:dissection_timeSeries}
+	\caption{\textbf{Polovodova dissection: numbers of published studies that estimate gonotrophic age by this method.}}\label{fig:dissection_timeSeries}
 \end{figure}
 
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/dissection_map.pdf}}
-	\caption{\textbf{The geographic location of each of the Polovodova datasets included in the meta-analysis.} The area of the bubbles indicates the number of unique data series available.}\label{fig:dissection_map}
+	\caption{\textbf{Polovodova dissection: the geographic location of each of the datasets included in the meta-analysis.} The area of the bubbles indicates the number of unique data series available.}\label{fig:dissection_map}
 \end{figure}
 
 \begin{table}[htbp]
@@ -696,7 +694,7 @@ The data collection method resulted in 568 separate dissection series, across 72
 		\bottomrule
 		\textbf{Total} &  & \textbf{131} \\
 	\end{tabular}%
-	\caption{\textbf{The numbers of Polovodova dissection series for each species or genus included in the overall dataset.} Note, these counts represent numbers of series analysed by the hierarchical models -- that is, after aggregating the individual series as described in Section \ref{sec:dissection_dissectionData}.}\label{tab:dissection_speciesNumbers}%
+	\caption{\textbf{Polovodova dissection: numbers of dissection series included in the overall dataset.} Note, these counts represent numbers of series analysed by the hierarchical models -- that is, after aggregating the individual series as described in Section \ref{sec:dissection_dissectionData}.}\label{tab:dissection_speciesNumbers}%
 \end{table}%
 
 
@@ -716,22 +714,22 @@ The data collection method resulted in 568 separate dissection series, across 72
 			\bottomrule
 		\end{tabularx}%
 	\end{adjustwidth}
-	\caption{\textbf{Summaries of the characteristics of the 131 individual Polovodova dissection data series that are included in this analysis.} Note when series are censored (see Section \ref{sec:dissection_censored}) we assume that all mosquitoes dissected over the threshold are of this age when calculating summary statistics.}\label{tab:dissection_summaryStats}
+	\caption{\textbf{Polovodova dissection: summaries of the data series included in this analysis.} Note when series are censored (see Section \ref{sec:dissection_censored}) we assume that all mosquitoes dissected over the threshold are of this age when calculating summary statistics.}\label{tab:dissection_summaryStats}
 \end{table}
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1.3\textwidth]{./Figure_files/dissection_parity_data1.png}}
-	\caption{\textbf{The normalised physiological age series for nine species in the database.} Each different coloured line represents an individual series. In each cas,e the count for all ages has been normalised by the nulliparous count. In all cases, we do not include any data for censored observations (see Section \ref{sec:dissection_censored}).}\label{fig:dissection_exampleData1}
+	\caption{\textbf{Polovodova dissection: normalised physiological age series for nine species in the database.} Each different coloured line represents an individual series. In each cas,e the count for all ages has been normalised by the nulliparous count. In all cases, we do not include any data for censored observations (see Section \ref{sec:dissection_censored}).}\label{fig:dissection_exampleData1}
 \end{figure}
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1.3\textwidth]{./Figure_files/dissection_parity_data2.png}}
-	\caption{\textbf{The normalised physiological age series for nine species in the database.} Each different coloured line represents an individual series. In each case, the count for all ages has been normalised by the nulliparous count. In all cases, we do not include any data for censored observations (see Section \ref{sec:dissection_censored}).}\label{fig:dissection_exampleData2}
+	\caption{\textbf{Polovodova dissection: normalised physiological age series for nine species in the database.} Each different coloured line represents an individual series. In each case, the count for all ages has been normalised by the nulliparous count. In all cases, we do not include any data for censored observations (see Section \ref{sec:dissection_censored}).}\label{fig:dissection_exampleData2}
 \end{figure}
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1.3\textwidth]{./Figure_files/dissection_parity_data3.png}}
-	\caption{\textbf{The normalised physiological age series for seven species in the database.} Each different coloured line represents an individual series. In each case, the count for all ages has been normalised by the nulliparous count. In all cases, we do not include any data for censored observations (see Section \ref{sec:dissection_censored}).}\label{fig:dissection_exampleData3}
+	\caption{\textbf{Polovodova dissection: normalised physiological age series for nine species in the database.} Each different coloured line represents an individual series. In each case, the count for all ages has been normalised by the nulliparous count. In all cases, we do not include any data for censored observations (see Section \ref{sec:dissection_censored}).}\label{fig:dissection_exampleData3}
 \end{figure}
 
 
@@ -794,7 +792,7 @@ To determine whether mosquitoes experience age-dependent mortality, we compared 
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_lifespanPriorsParity.pdf}}
-	\caption{\textbf{The priors for mean lifespan used to analyse the Polovodova dissection data for each of the hierarchical models.} The distributional form of the priors is given in Table \ref{tab:dissection_priors}. In all cases, the plots show data for 10,000 samples from the relevant prior distribution.}\label{fig:dissection_lifespanPriorsParity}
+	\caption{\textbf{Polovodova dissection: prior predictive mean lifespan for each mortality model.} The distributional form of the priors is given in Table \ref{tab:dissection_priors}. In all cases, the plots show data for 10,000 samples from the relevant prior distribution.}\label{fig:dissection_lifespanPriorsParity}
 \end{figure}
 
 \begin{table}
@@ -815,7 +813,7 @@ To determine whether mosquitoes experience age-dependent mortality, we compared 
 			\midrule
 			Logistic-Makeham & $\alpha,\beta,s,c\sim$ log-normal$(\mu_{\alpha|\beta|s|c},0.2)$ &$\mu_\alpha\sim N(-3,1)\text{,}\; \mu_\beta\sim N(-1.3,1)\text{,}\; \mu_s\sim N(-2,0.5)\text{,}\; \mu_c\sim N(-4,0.5)$\\
 			\bottomrule
-	\end{tabularx}}\caption{\textbf{The priors used on parameters of each different survival model for the Polovodova dissection data analysis.} For the exponential model the `group-level' priors were the same for the genus and `overall' models that were also estimated. The exponential model was the only model that was simple enough to allow the scale parameter of the log-normal ($\sigma$) to be estimated by the data. The notation $\alpha,\beta\sim \text{log-normal}(\mu_{\alpha|\beta},0.2)$ means that $\alpha$ and $\beta$ were assigned independent log-normal priors with location parameters $\mu_\alpha$ and $\mu_\beta$ respectively, and a scale parameter of 0.2 in both cases.}\label{tab:dissection_priors}
+	\end{tabularx}}\caption{\textbf{Polovodova dissection: priors used on parameters of each different survival model.} For the exponential model the `group-level' priors were the same for the genus and `overall' models that were also estimated. The exponential model was the only model that was simple enough to allow the scale parameter of the log-normal ($\sigma$) to be estimated by the data. The notation $\alpha,\beta\sim \text{log-normal}(\mu_{\alpha|\beta},0.2)$ means that $\alpha$ and $\beta$ were assigned independent log-normal priors with location parameters $\mu_\alpha$ and $\mu_\beta$ respectively, and a scale parameter of 0.2 in both cases.}\label{tab:dissection_priors}
 \end{table}
 
 
@@ -826,7 +824,7 @@ To demonstrate that the results we obtained are not sensitive to the particular 
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_lifespanPrior_individual.pdf}}
-	\caption{\textbf{The priors for A. mean lifespan and B. the over-dispersion parameter used to analyse the individual dissection series.} The prior on the rate parameter of the exponential distribution was $\lambda\sim \text{log-normal}(-1.8,1)$. The prior on the dispersion parameter was $\kappa\sim \text{log-normal}(1,1)$.}\label{fig:dissection_lifespanPrior_individual}
+	\caption{\textbf{Polovodova dissection: priors for A. mean lifespan and B. the over-dispersion parameter used to analyse the individual dissection series.} The prior on the rate parameter of the exponential distribution was $\lambda\sim \text{log-normal}(-1.8,1)$. The prior on the dispersion parameter was $\kappa\sim \text{log-normal}(1,1)$.}\label{fig:dissection_lifespanPrior_individual}
 \end{figure}
 
 \subsubsection{Analysis of censored data series}\label{sec:dissection_censored}
@@ -931,7 +929,7 @@ As for the MRR experiments, we simulated from the posterior predictive distribut
 {%
 	\centering
 	\includegraphics[page=1,scale=.7]{./Figure_files/dissection_ppcs_all}
-	\captionof{figure}{\textbf{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the Polovodova dissection series.} The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
+	\captionof{figure}{\textbf{Polovodova dissection: posterior predictive checks.} The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the Polovodova dissection series. The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
 	\label{fig:dissection_ppc_all1}
 	\par
 }
@@ -942,7 +940,7 @@ As for the MRR experiments, we simulated from the posterior predictive distribut
 {%
 	\centering
 	\includegraphics[page=2,scale=.7]{./Figure_files/dissection_ppcs_all}
-	\captionof{figure}{\textbf{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the Polovodova dissection series.} The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
+	\captionof{figure}{\textbf{Polovodova dissection: posterior predictive checks.} The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the Polovodova dissection series. The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
 	\label{fig:dissection_ppc_all2}
 	\par
 }
@@ -953,7 +951,7 @@ As for the MRR experiments, we simulated from the posterior predictive distribut
 {%
 	\centering
 	\includegraphics[page=3,scale=.7]{./Figure_files/dissection_ppcs_all}
-	\captionof{figure}{\textbf{The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the Polovodova dissection series.} The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
+	\captionof{figure}{\textbf{Polovodova dissection: posterior predictive checks.} The numbers of mosquitoes recaptured (black lines) versus the 95\% central posterior interval of the posterior predictive distribution (blue shading) for a selection of the Polovodova dissection series. The titles correspond to the unique combination of "identifier - physiological-experiment-id" in the database. For the rest of the posterior predictive checks for the dissection data models, see the file referenced in the text.}
 	\label{fig:dissection_ppc_all3}
 	\par
 }
@@ -1100,7 +1098,7 @@ generated quantities{
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_prior_predictive.pdf}}
-	\caption{\textbf{The prior predictive distribution of lifespan for the analysis of Detinova parity data in terms of (left) physiological age and (right) chronological age.} Here, we used the gonotrophic cycle duration estimated for \textit{Anopheles}, $G\sim \mathcal{N}(3.65, 0.40)$, to convert physiological survival to calendar days. The figure shows 100,000 samples from the prior predictive distribution. The mean lifespan in terms of gonotrophic cycles is approximately 3; in terms of chronological age, it is approximately 10.}\label{fig:detinova_priors}
+	\caption{\textbf{Detinova dissection: prior predictive distribution of lifespan in terms of (left) physiological age and (right) chronological age.} Here, we used the gonotrophic cycle duration estimated for \textit{Anopheles}, $G\sim \mathcal{N}(3.65, 0.40)$, to convert physiological survival to calendar days. The figure shows 100,000 samples from the prior predictive distribution. The mean lifespan in terms of gonotrophic cycles is approximately 3; in terms of chronological age, it is approximately 10.}\label{fig:detinova_priors}
 \end{figure}
 
 
@@ -1257,32 +1255,32 @@ In all cases, the eCDF for the actual data was bounded by the range of the poste
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=0.7\textwidth]{./Figure_files/detinova_ecdf_africa_grouped.pdf}}
-	\caption{\textbf{Africa, complex-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_grouped}
+	\caption{\textbf{Detinova dissection: posterior predictive check for Africa, at the complex-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_grouped}
 \end{figure}
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_africa_species.pdf}}
-	\caption{\textbf{Africa, species-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_species}
+	\caption{\textbf{Detinova dissection: posterior predictive check for Africa, at the species-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_species}
 \end{figure}
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_americas_grouped.pdf}}
-	\caption{\textbf{Americas, complex-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_grouped}
+	\caption{\textbf{Detinova dissection: posterior predictive check for the Americas, at the complex-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_grouped}
 \end{figure}
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_americas_species.pdf}}
-	\caption{\textbf{Americas, species-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_species}
+	\caption{\textbf{Detinova dissection: posterior predictive check for the Americas, at the species-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_species}
 \end{figure}
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_asia_grouped.pdf}}
-	\caption{\textbf{Asia, complex-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_grouped}
+	\caption{\textbf{Detinova dissection: posterior predictive check for Asia, at the complex-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_grouped}
 \end{figure}
 
 \begin{figure}[ht]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_asia_species.pdf}}
-	\caption{\textbf{Asia, species-level: empirical cumulative distribution function for observations (orange) and posterior predictive simulations (green).} In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_species}
+	\caption{\textbf{Detinova dissection: posterior predictive check for Asia, at the species-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_species}
 \end{figure}
 
 \section{EIPs of vector species of malaria, dengue fever, chikungunya and Zika}

@@ -130,21 +130,21 @@
   * [x] gonotrophic cycles
   * [x] calendar
 * [x] Detinova: Update numbers of observations in cross-validation of SOM to reflect no insecticide case
-* [ ] Check and include Polovodova senescence estimates
 * [x] Update main Detinova lifespan figure and move to write up repo
 * [x] Update Detinova lifespan comparison figure and include in figure file
 * [x] Include Detinova in EIP figure
 * [x] Check and probably change gonotrophic cycle length quoted in main text
 * [x] Go through SOM gonotrophic cycle duration bit and update numbers of studies included. Looks fine.
-* [ ] Detinova: sort k fold
+* [x] Detinova: sort k fold
   * [x] Rerun k-fold cross validation with more iterations (and update SOM if needs be). Some issue with Africa-species -- sorted
-  * [ ] Update main text with numbers from this
-* [ ] Check and include Polovodova senescence estimates
+  * [x] Update main text with numbers from this
+* [x] Check and include Polovodova senescence estimates
+* [x] Update titles for supplementary figures
 * [ ] Update PPCs for parity data
 * [ ] Go through all numbers in text. To indicate that they have been checked this time, I am using a green colour.
-* [ ] Update text about pairwise figure
-* [ ] Update text about EIP figure
-* [ ] Fill in "navigating_analyses" markdown figure.
+* [x] Update text about pairwise figure
+* [x] Update text about EIP figure
+* [x] Fill in "navigating_analyses" markdown text.
   * [x] Also add to it the locations of the three main folders
 * [ ] Make all axes labels match (e.g. detinova boxplot and polovodova boxplot)
 * [ ] Make all axis titles capitalised
