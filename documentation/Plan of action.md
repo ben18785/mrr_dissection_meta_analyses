@@ -152,3 +152,4 @@
   * [ ] Detinova definitely isn't as I've just reestimated these
   * [ ] Polovodova
   * [ ] MRR
+* [ ] Go through manuscript and add references to relevant SOM figures
