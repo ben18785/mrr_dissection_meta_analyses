@@ -94,8 +94,7 @@
 \begin{document}
 \maketitle
 
-\section{MRR experments}
-
+\section{Lifespan estimates}
 
 \begin{table}[htbp]
 	\begin{tabular}{l|l|l|l|l|l|l|l|l}
@@ -140,7 +139,7 @@
 		\hline
 		\textbf{Overall} & \text{} & 1.4 & 2.8 & 4.6 & 7.5 & 15.4 & 6.0 & 5.2 \\
 	\end{tabular}
-	\caption{\textbf{Posterior summaries of mean unfed female mosquito lifespan from the MRR analysis.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
+	\caption{\textbf{MRR: mean unfed female mosquito lifespan estimates.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan. Units of lifespan are days.}
 	\label{tab:mrr_estimated_lifespans}%
 \end{table}%
 
@@ -149,6 +148,12 @@
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_genus_vs_species_vs_top.pdf}}
 	\caption{\textbf{MRR: predictive accuracy of the species- and overall-level models relative to the genus-level model.} The predictive accuracy was determined using K-Fold cross-validation as described in SOM; the measure of accuracy presented here by the central dots is the difference in estimated expected log pointwise predictive density compared to the exponential model. The lower and upper whiskers represent the lower and upper bounds of the 95\% confidence interval in predictive accuracy.}
 	\label{fig:mrr_genusTopLevel}
+\end{figure}
+
+\begin{figure}[h]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_female_blood_sugar.pdf}}
+	\caption{\textbf{MRR: female mosquito mean lifespan by pre-release feeding status.} The lifespans shown are for mosquitoes that were not fed with sugar or blood (for females) before release. The middle line in each box shows the median estimates and the solid dot indicates the mean. The left and right box edges show the 25\%, and 75\% posterior quantiles respectively. The whiskers show the range of the data, excluding points lying more than 1.5 times the interquartile range away from each edge of the box. The numbers before the start of the left whisker indicate the number of individual time-series within each species. All estimates were obtained using the hierarchical exponential survival model.}
+	\label{fig:mrr_female_blood_sugar}
 \end{figure}
 
 \begin{figure}[h]
@@ -164,10 +169,23 @@
 \end{figure}
 
 \begin{figure}[h]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_female_blood_sugar.pdf}}
-	\caption{\textbf{MRR: female mosquito mean lifespan by pre-release feeding status.} The lifespans shown are for mosquitoes that were not fed with sugar or blood (for females) before release. The middle line in each box shows the median estimates and the solid dot indicates the mean. The left and right box edges show the 25\%, and 75\% posterior quantiles respectively. The whiskers show the range of the data, excluding points lying more than 1.5 times the interquartile range away from each edge of the box. The numbers before the start of the left whisker indicate the number of individual time-series within each species. All estimates were obtained using the hierarchical exponential survival model.}
-	\label{fig:mrr_female_blood_sugar}
+	\centerline{\includegraphics[width=1.3\textwidth]{./Figure_files/dissection_individualEstimates_allSpecies.pdf}}
+	\caption{\textbf{Polovodova dissection: individual time-series estimates of adult mosquito mean lifespan.} The middle line in each box shows the median estimates. The left and right box whiskers show the 25\%, and 75\% posterior quantiles respectively. All estimates were obtained using the non-hierarchical exponential survival model.}
+	\label{fig:dissection_individualEstimates_allSpecies}
 \end{figure}
+
+\begin{figure}[h]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_insecticide.pdf}}
+	\caption{\textbf{Detinova dissection: estimated impact of insecticide on lifespan.} The middle line in each box shows the median estimates. The left and right box whiskers show the 10\%, and 90\% posterior quantiles respectively.}
+	\label{fig:detinova_insecticide}
+\end{figure}
+
+\begin{figure}[h]
+	\centerline{\includegraphics[width=1.3\textwidth]{./Figure_files/detinova_individual_lifespan_no_insecticide.pdf}}
+	\caption{\textbf{Detinova dissection: individual time-series estimates of adult mosquito mean lifespan.} The middle line in each box shows the median estimates. The left and right box whiskers show the 25\%, and 75\% posterior quantiles respectively. Note, that a handful of observations are not shown in the plot since their estimates exceeded the reasonable range (here deemed to be up to 12 cycles).}
+	\label{fig:detinova_lifespan_individual}
+\end{figure}
+
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_lifeSpanVsTemperature.pdf}}
@@ -179,13 +197,8 @@
 	\caption{\textbf{MRR: mean mosquito lifespan versus average monthly air temperature by species.} Here, we include only those four species with the most data. The markers show the median posterior lifespan estimates for each time series with the lower and upper bounds indicating the 25\% and 75\% quantiles, respectively. The black line shows a regression line with linear and quadratic terms estimated using the median posterior lifetimes, with the grey shading indicating 95\% confidence intervals. All estimates of lifespan were obtained using the non-hierarchical exponential survival model.}\label{fig:mrr_ThreeSpeciesVersusTemperature}
 \end{figure}
 
-\section{Polovodova dissection analysis}
 
-\begin{figure}[h]
-	\centerline{\includegraphics[width=1.3\textwidth]{./Figure_files/dissection_individualEstimates_allSpecies.pdf}}
-	\caption{\textbf{Polovodova dissection: individual time-series estimates of adult mosquito mean lifespan.} The middle line in each box shows the median estimates. The left and right box whiskers show the 25\%, and 75\% posterior quantiles respectively. All estimates were obtained using the non-hierarchical exponential survival model.}
-	\label{fig:dissection_individualEstimates_allSpecies}
-\end{figure}
+
 
 \begin{table}[htbp]
 	\begin{tabular}{l|l|l|l|l|l|l|l|l}
@@ -224,7 +237,7 @@
 		\hline
 		\textbf{Overall} & \textit{} & 0.5 & 0.8 & 1.2 & 1.7 & 2.7 & 1.3 & 0.7 \\
 	\end{tabular}
-	\caption{\textbf{Posterior summaries of mean female mosquito lifespan in terms of gonotrophic cycles from dissection studies.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
+	\caption{\textbf{Polovodova dissection: mean female mosquito lifespan in terms of gonotrophic cycles.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
 	\label{tab:dissection_estimated_lifespans}%
 \end{table}
 
@@ -233,43 +246,82 @@
 	\caption{\textbf{Raw gonotrophic cycle duration estimates for A. the 1st cycle and B. subsequent cycles.} When present, the confidence intervals represent our estimates of the 95\% confidence interval on gonotrophic cycle duration (see Section \ref{sec:dissection_gonotrophicMethod} for a discussion of how we handle this issue); if our estimate of the lower limit was below zero, we deemed this unbiological and set it to 1 day for this graph. If no statement of uncertainty was given in the estimates then we indicate this by a triangle marker. The studies are ordered within each Genus according to the central estimate of gonotrophic duration.}\label{fig:dissection_gonotrophicCycleRaw}
 \end{figure}
 
-
-
-\begin{figure}[h]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/dissection_lifetimes_exponential_chron.pdf}}
-	\caption{\textbf{Polovodova dissection: female mosquito mean chronological lifespan estimates.} The lifespans shown are for mosquitoes that were not fed with sugar or blood (for females) before release. The middle line in each box shows the median estimates and the solid dot indicates the mean. The left and right box edges show the 25\%, and 75\% posterior quantiles respectively. The whiskers show the range of the data, excluding points lying more than 1.5 times the interquartile range away from each edge of the box. The numbers before the start of the left whisker indicate the number of individual time-series within each species. All estimates were obtained using the hierarchical exponential survival model.}
-	\label{fig:dissection_lifetimes_exponential_chron}
-\end{figure}
+\begin{table}[htbp!]
+	\begin{tabular}{l|l|l|l|l|l|l|l|l}
+		\textbf{Genus} & \textbf{Species} & \textbf{5$\%$} & \textbf{25$\%$} & \textbf{50$\%$} &
+		\textbf{75$\%$} & \textbf{95$\%$} & \textbf{Mean} & \textbf{Std. dev.} \\
+		\hline
+	\textit{Anopheles} & \textit{gambiae (Form M)} & 0.9 & 1.8 & 2.6 & 3.6 & 6.7 & 3.2 & 4.6 \\
+	\textit{Anopheles} & \textit{gambiae} & 0.6 & 1.1 & 1.7 & 2.7 & 5.6 & 2.2 & 2.2 \\
+	\textit{Anopheles} & \textit{arabiensis} & 0.4 & 0.9 & 1.5 & 2.6 & 6.3 & 2.3 & 3.9 \\
+	\textit{Anopheles} & \textit{gambiae s.l.} & 0.7 & 1.7 & 3.1 & 6.3 & 21.2 & 7.3 & 56.1 \\
+	\textit{Anopheles} & \textit{moucheti} & 1.0 & 1.9 & 2.8 & 4.2 & 8.9 & 3.8 & 6.3 \\
+	\textit{Anopheles} & \textit{funestus} & 0.8 & 1.6 & 2.7 & 4.4 & 10.6 & 4.0 & 10.6 \\
+	\textit{Anopheles} & \textit{funestus s.l.} & 0.6 & 1.2 & 2.1 & 3.7 & 9.8 & 3.3 & 4.8 \\
+	\textit{Anopheles} & \textit{nili s.l.} & 1.0 & 1.4 & 1.7 & 2.1 & 2.8 & 1.8 & 0.6 \\
+	\textit{Anopheles} & \textit{subpictus s.l.} & 0.9 & 1.5 & 2.1 & 2.8 & 4.8 & 2.4 & 1.8 \\
+	\textit{Anopheles} & \textit{dirus (formerly Sp. A)} & 0.5 & 1.0 & 1.5 & 2.2 & 4.2 & 1.8 &
+	1.5 \\
+	\textit{Anopheles} & \textit{dirus s.l.} & 0.6 & 1.2 & 2.0 & 3.1 & 7.4 & 2.9 & 6.8 \\
+	\textit{Anopheles} & \textit{aconitus} & 0.5 & 1.1 & 1.8 & 2.8 & 6.3 & 2.5 & 4.7 \\
+	\textit{Anopheles} & \textit{sundaicus s.l.} & 0.4 & 0.9 & 1.6 & 2.9 & 7.5 & 2.7 & 7.4 \\
+	\textit{Anopheles} & \textit{minimus s.l.} & 0.5 & 1.1 & 1.6 & 2.5 & 5.8 & 2.3 & 5.6 \\
+	\textit{Anopheles} & \textit{fluviatilis s.l.} & 0.4 & 0.9 & 1.4 & 2.3 & 5.1 & 2.0 & 3.0 \\
+	\textit{Anopheles} & \textit{maculatus s.l.} & 0.6 & 1.0 & 1.2 & 1.6 & 2.5 & 1.4 & 0.8 \\
+	\textit{Anopheles} & \textit{farauti s.l.} & 0.3 & 0.7 & 1.2 & 2.0 & 4.9 & 1.8 & 2.3 \\
+	\textit{Anopheles} & \textit{annularis s.l.} & 0.3 & 0.7 & 1.2 & 2.0 & 4.7 & 1.7 & 1.9 \\
+	\textit{Anopheles} & \textit{sinensis} & 0.4 & 0.8 & 1.1 & 1.7 & 3.0 & 1.4 & 1.0 \\
+	\textit{Anopheles} & \textit{culicifacies s.l.} & 0.5 & 0.8 & 1.1 & 1.5 & 2.3 & 1.2 & 0.6 \\
+	\textit{Anopheles} & \textit{anthropophagus (lesteri)} & 0.4 & 0.9 & 1.4 & 2.3 & 5.1 & 2.0 &
+	3.0 \\
+	\textit{Anopheles} & \textit{lesteri s.l.} & 0.3 & 0.6 & 1.1 & 1.9 & 4.7 & 1.7 & 2.4 \\
+	\textit{Anopheles} & \textit{barbirostris s.l.} & 0.4 & 0.7 & 1.0 & 1.4 & 2.8 & 1.2 & 1.3 \\
+	\textit{Anopheles} & \textit{albitarsis (formerly Sp C)} & 0.8 & 2.0 & 3.9 & 8.4 &
+	32.6 & 13.3 & \text{$>$100} \\
+	\textit{Anopheles} & \textit{albitarsis (formerly Sp A)} & 0.2 & 0.4 & 0.6 & 1.0 & 2.3 & 0.8
+	& 0.9 \\
+	\textit{Anopheles} & \textit{albitarsis (Sp. B)} & 0.1 & 0.3 & 0.6 & 0.9 & 1.9 & 0.7 & 0.8
+	\\
+	\textit{Anopheles} & \textit{albitarsis s.l.} & 0.4 & 0.9 & 1.5 & 3.0 & 8.3 & 2.8 & 5.8 \\
+	\textit{Anopheles} & \textit{nuneztovari s.l.} & 0.3 & 0.6 & 1.1 & 1.9 & 4.4 & 1.6 & 2.3 \\
+	\textit{Anopheles} & \textit{darlingi} & 0.2 & 0.7 & 1.2 & 2.4 & 6.7 & 2.2 & 4.2 \\
+	\textit{Anopheles} & \textit{albimanus} & 0.2 & 0.5 & 0.9 & 1.6 & 3.6 & 1.3 & 1.6 \\
+	\textit{Anopheles} & \textit{aquasalis} & 0.3 & 0.6 & 1.1 & 1.8 & 4.4 & 1.6 & 4.0 \\
+	\textit{Anopheles} & \textit{aquasalis s.l.} & 0.2 & 0.4 & 0.7 & 1.0 & 2.4 & 0.9 & 1.3 \\
+\end{tabular}
+\caption{\textbf{Detinova dissection: mean female mosquito lifespan estimates in terms of gonotrophic cycles.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
+\label{tab:detinova_lifespan_gonotrophic}%
+\end{table}
 
 \begin{table}[htbp!]
 	\begin{tabular}{l|l|l|l|l|l|l|l|l}
 		\textbf{Genus} & \textbf{Species} & \textbf{5$\%$} & \textbf{25$\%$} & \textbf{50$\%$} & \textbf{75$\%$} & \textbf{95\%} &  \textbf{Mean} & \textbf{Std. dev.}\\
 		\hline
-	\textit{Culex} & \textit{thalassius} & 5.7 & 8.2 & 9.4 & 11.0 & 15.6 & 10.1 & 5.2 \\
-	\textit{Anopheles} & \textit{sergentii} & 3.7 & 6.4 & 8.5 & 11.5 & 20.6 & 10.1 & 8.1 \\
-	\textit{Culex} & \textit{pipiens} & 5.7 & 6.6 & 7.2 & 7.8 & 8.9 & 7.2 & 1.0 \\
-	\textit{Anopheles} & \textit{gambiae s.l.} & 2.4 & 4.3 & 6.4 & 9.8 & 18.3 & 8.0 & 6.3 \\
-	\textit{Anopheles} & \textit{farauti s.l.} & 4.8 & 5.5 & 5.9 & 6.3 & 6.9 & 5.9 & 0.6 \\
-	\textit{Anopheles} & \textit{minimus} & 2.7 & 4.4 & 5.8 & 7.7 & 13.7 & 6.9 & 8.1 \\
-	\textit{Anopheles} & \textit{maculipennis} & 2.8 & 4.0 & 5.1 & 6.4 & 9.6 & 5.5 & 2.3 \\
-	\textit{Culex} & \textit{quinquefasciatus} & 2.0 & 3.4 & 4.8 & 6.9 & 11.7 & 5.6 & 3.3 \\
-	\textit{Aedes} & \textit{aegypti} & 2.3 & 3.7 & 4.7 & 5.6 & 9.3 & 5.6 & 12.3 \\
-	\textit{Culex} & \textit{annulirostris} & 2.7 & 3.9 & 4.6 & 5.4 & 7.5 & 4.9 & 2.4 \\
-	\textit{Culex} & \textit{tritaeniorhynchus} & 1.6 & 3.2 & 4.6 & 7.2 & 22.8 & 13.0 & 174.0 \\
-	\textit{Mansonia} & \textit{uniformis} & 3.4 & 4.0 & 4.4 & 4.9 & 5.5 & 4.5 & 0.7 \\
-	\textit{Aedes} & \textit{polynesiensis} & 3.2 & 3.7 & 4.1 & 4.5 & 5.1 & 4.1 & 0.6 \\
-	\textit{Anopheles} & \textit{rivulorum} & 2.8 & 3.4 & 3.8 & 4.2 & 5.0 & 3.9 & 0.7 \\
-	\textit{Anopheles} & \textit{melas} & 2.8 & 3.3 & 3.7 & 4.1 & 4.8 & 3.8 & 0.7 \\
-	\textit{Anopheles} & \textit{culicifacies s.l.} & 2.8 & 3.3 & 3.7 & 4.1 & 4.7 & 3.7 & 0.6 \\
-	\textit{Anopheles} & \textit{subpictus s.l.} & 2.2 & 3.1 & 3.7 & 4.5 & 7.0 & 4.3 & 6.6 \\
-	\textit{Aedes} & \textit{samoanus} & 2.7 & 3.2 & 3.6 & 4.0 & 4.9 & 3.7 & 1.0 \\
-	\textit{Anopheles} & \textit{quadrimaculatus} & 2.4 & 3.1 & 3.5 & 4.0 & 4.8 & 3.6 & 0.8 \\
-	\textit{Anopheles} & \textit{stephensi} & 2.1 & 2.9 & 3.5 & 4.2 & 5.7 & 3.7 & 1.5 \\
-	\textit{Anopheles} & \textit{darlingi} & 2.3 & 2.9 & 3.4 & 3.8 & 4.7 & 3.4 & 0.9 \\
-	\textit{Aedes} & \textit{sollicitans} & 1.6 & 2.3 & 2.9 & 3.6 & 6.1 & 3.3 & 2.5 \\
-	\textit{Aedes} & \textit{vexans} & 1.7 & 2.2 & 2.7 & 3.1 & 4.2 & 3.0 & 3.3 \\
-	\textit{Anopheles} & \textit{cruzii} & 1.2 & 1.6 & 2.0 & 2.5 & 4.0 & 2.2 & 1.3 \\
-	\textit{Anopheles} & \textit{bellator} & 1.0 & 1.4 & 1.7 & 2.1 & 3.6 & 2.1 & 5.4 \\
+		\textit{Culex} & \textit{thalassius} & 5.7 & 8.2 & 9.4 & 11.0 & 15.6 & 10.1 & 5.2 \\
+		\textit{Anopheles} & \textit{sergentii} & 3.7 & 6.4 & 8.5 & 11.5 & 20.6 & 10.1 & 8.1 \\
+		\textit{Culex} & \textit{pipiens} & 5.7 & 6.6 & 7.2 & 7.8 & 8.9 & 7.2 & 1.0 \\
+		\textit{Anopheles} & \textit{gambiae s.l.} & 2.4 & 4.3 & 6.4 & 9.8 & 18.3 & 8.0 & 6.3 \\
+		\textit{Anopheles} & \textit{farauti s.l.} & 4.8 & 5.5 & 5.9 & 6.3 & 6.9 & 5.9 & 0.6 \\
+		\textit{Anopheles} & \textit{minimus} & 2.7 & 4.4 & 5.8 & 7.7 & 13.7 & 6.9 & 8.1 \\
+		\textit{Anopheles} & \textit{maculipennis} & 2.8 & 4.0 & 5.1 & 6.4 & 9.6 & 5.5 & 2.3 \\
+		\textit{Culex} & \textit{quinquefasciatus} & 2.0 & 3.4 & 4.8 & 6.9 & 11.7 & 5.6 & 3.3 \\
+		\textit{Aedes} & \textit{aegypti} & 2.3 & 3.7 & 4.7 & 5.6 & 9.3 & 5.6 & 12.3 \\
+		\textit{Culex} & \textit{annulirostris} & 2.7 & 3.9 & 4.6 & 5.4 & 7.5 & 4.9 & 2.4 \\
+		\textit{Culex} & \textit{tritaeniorhynchus} & 1.6 & 3.2 & 4.6 & 7.2 & 22.8 & 13.0 & 174.0 \\
+		\textit{Mansonia} & \textit{uniformis} & 3.4 & 4.0 & 4.4 & 4.9 & 5.5 & 4.5 & 0.7 \\
+		\textit{Aedes} & \textit{polynesiensis} & 3.2 & 3.7 & 4.1 & 4.5 & 5.1 & 4.1 & 0.6 \\
+		\textit{Anopheles} & \textit{rivulorum} & 2.8 & 3.4 & 3.8 & 4.2 & 5.0 & 3.9 & 0.7 \\
+		\textit{Anopheles} & \textit{melas} & 2.8 & 3.3 & 3.7 & 4.1 & 4.8 & 3.8 & 0.7 \\
+		\textit{Anopheles} & \textit{culicifacies s.l.} & 2.8 & 3.3 & 3.7 & 4.1 & 4.7 & 3.7 & 0.6 \\
+		\textit{Anopheles} & \textit{subpictus s.l.} & 2.2 & 3.1 & 3.7 & 4.5 & 7.0 & 4.3 & 6.6 \\
+		\textit{Aedes} & \textit{samoanus} & 2.7 & 3.2 & 3.6 & 4.0 & 4.9 & 3.7 & 1.0 \\
+		\textit{Anopheles} & \textit{quadrimaculatus} & 2.4 & 3.1 & 3.5 & 4.0 & 4.8 & 3.6 & 0.8 \\
+		\textit{Anopheles} & \textit{stephensi} & 2.1 & 2.9 & 3.5 & 4.2 & 5.7 & 3.7 & 1.5 \\
+		\textit{Anopheles} & \textit{darlingi} & 2.3 & 2.9 & 3.4 & 3.8 & 4.7 & 3.4 & 0.9 \\
+		\textit{Aedes} & \textit{sollicitans} & 1.6 & 2.3 & 2.9 & 3.6 & 6.1 & 3.3 & 2.5 \\
+		\textit{Aedes} & \textit{vexans} & 1.7 & 2.2 & 2.7 & 3.1 & 4.2 & 3.0 & 3.3 \\
+		\textit{Anopheles} & \textit{cruzii} & 1.2 & 1.6 & 2.0 & 2.5 & 4.0 & 2.2 & 1.3 \\
+		\textit{Anopheles} & \textit{bellator} & 1.0 & 1.4 & 1.7 & 2.1 & 3.6 & 2.1 & 5.4 \\
 		\hline
 		\textit{Culex} & \textit{} & 2.5 & 4.0 & 5.4 & 7.6 & 12.3 & 6.2 & 3.2 \\
 		\textit{Anopheles} & \textit{} & 2.1 & 3.6 & 4.9 & 6.8 & 10.8 & 5.5 & 2.9 \\
@@ -278,69 +330,57 @@
 		\hline
 		\textit{Overall} & \textit{} & 2.0 & 3.3 & 4.7 & 6.4 & 10.2 & 5.2 & 2.6 \\
 	\end{tabular}
-	\caption{\textbf{Posterior summaries of mean female mosquito lifespan in terms of chronological time from dissection studies.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
+	\caption{\textbf{Polovodova dissection: mean female mosquito lifespan estimates in terms of chronological time.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan. Units of lifespan are days.}
 	\label{tab:dissection_estimated_lifespans_chron}%
 \end{table}
 
-\section{Detinova parity analysis}
 
 \begin{table}[htbp!]
-\begin{tabular}{l|l|l|l|l|l|l|l|l}
-	\textbf{Genus} & \textbf{Species} & \textbf{5$\%$} & \textbf{25$\%$} & \textbf{50$\%$} &
-	\textbf{75$\%$} & \textbf{95$\%$} & \textbf{Mean} & \textbf{Std. dev.} \\
-	\hline
-	\textit{Anopheles} & \textit{funestus} & 5.1 & 8.3 & 11.9 & 18.2 & 41.5 & 16.7 & 20.8 \\
-	\textit{Anopheles} & \textit{funestus s.l.} & 4.4 & 7.8 & 13.2 & 24.0 & 75.5 & 25.5 & 58.3
+	\begin{tabular}{l|l|l|l|l|l|l|l|l}
+		\textbf{Genus} & \textbf{Species} & \textbf{5$\%$} & \textbf{25$\%$} & \textbf{50$\%$} &
+		\textbf{75$\%$} & \textbf{95$\%$} & \textbf{Mean} & \textbf{Std. dev.} \\
+		\hline
+	\textit{Anopheles} & \textit{gambiae (Form M)} & 3.3 & 6.2 & 8.7 & 11.9 & 22.3 & 10.7 & 14.9
 	\\
-	\textit{Anopheles} & \textit{nili s.l.} & 5.6 & 8.9 & 12.4 & 17.7 & 36.1 & 16.0 & 17.0 \\
-	\textit{Anopheles} & \textit{gambiae} & 4.0 & 6.1 & 8.3 & 12.0 & 22.1 & 10.3 & 8.5 \\
-	\textit{Anopheles} & \textit{gambiae (Form M)} & 3.5 & 5.6 & 8.2 & 12.4 & 27.4 & 11.2 & 14.0
+	\textit{Anopheles} & \textit{gambiae} & 2.0 & 3.8 & 5.8 & 9.0 & 18.4 & 7.6 & 7.1 \\
+	\textit{Anopheles} & \textit{arabiensis} & 1.4 & 3.2 & 5.3 & 8.8 & 20.8 & 7.7 & 11.9 \\
+	\textit{Anopheles} & \textit{gambiae s.l.} & 2.5 & 5.7 & 10.3 & 20.6 & 68.4 & 23.9 &
+	\text{$>$100} \\
+	\textit{Anopheles} & \textit{moucheti} & 3.5 & 6.4 & 9.2 & 13.9 & 29.0 & 12.5 & 19.7 \\
+	\textit{Anopheles} & \textit{funestus} & 2.9 & 5.7 & 9.0 & 14.5 & 34.4 & 13.4 & 31.0 \\
+	\textit{Anopheles} & \textit{funestus s.l.} & 2.0 & 4.3 & 7.1 & 12.5 & 32.2 & 11.1 & 15.6 \\
+	\textit{Anopheles} & \textit{nili s.l.} & 3.6 & 4.8 & 5.8 & 7.1 & 9.6 & 6.1 & 2.0 \\
+	\textit{Anopheles} & \textit{subpictus s.l.} & 3.4 & 5.3 & 7.1 & 9.5 & 16.2 & 8.2 & 6.2 \\
+	\textit{Anopheles} & \textit{dirus (formerly Sp. A)} & 1.9 & 3.6 & 5.1 & 7.4 & 13.8 & 6.2 &
+	5.0 \\
+	\textit{Anopheles} & \textit{dirus s.l.} & 2.0 & 4.4 & 6.8 & 10.5 & 24.1 & 9.8 & 23.0 \\
+	\textit{Anopheles} & \textit{aconitus} & 1.9 & 4.0 & 6.2 & 9.6 & 20.7 & 8.5 & 15.4 \\
+	\textit{Anopheles} & \textit{sundaicus s.l.} & 1.5 & 3.4 & 5.6 & 9.7 & 24.7 & 9.1 & 23.6 \\
+	\textit{Anopheles} & \textit{minimus s.l.} & 1.9 & 3.8 & 5.5 & 8.3 & 19.2 & 7.9 & 17.8 \\
+	\textit{Anopheles} & \textit{fluviatilis s.l.} & 1.6 & 3.2 & 5.0 & 7.8 & 16.9 & 6.8 & 9.6 \\
+	\textit{Anopheles} & \textit{maculatus s.l.} & 2.2 & 3.5 & 4.5 & 5.6 & 8.6 & 4.9 & 2.6 \\
+	\textit{Anopheles} & \textit{farauti s.l.} & 1.2 & 2.6 & 4.3 & 6.9 & 16.0 & 6.1 & 7.5 \\
+	\textit{Anopheles} & \textit{annularis s.l.} & 1.1 & 2.5 & 4.3 & 6.9 & 15.6 & 5.8 & 6.2 \\
+	\textit{Anopheles} & \textit{sinensis} & 1.6 & 2.8 & 4.1 & 5.9 & 10.3 & 4.8 & 3.2 \\
+	\textit{Anopheles} & \textit{culicifacies s.l.} & 1.9 & 3.0 & 4.0 & 5.2 & 8.0 & 4.3 & 2.0 \\
+	\textit{Anopheles} & \textit{anthropophagus (lesteri)} & 1.6 & 3.2 & 5.0 & 7.7 & 16.9 & 6.8
+	& 9.9 \\
+	\textit{Anopheles} & \textit{lesteri s.l.} & 0.9 & 2.2 & 3.9 & 6.5 & 15.6 & 5.7 & 7.8 \\
+	\textit{Anopheles} & \textit{barbirostris s.l.} & 1.4 & 2.5 & 3.5 & 4.9 & 9.6 & 4.3 & 4.1 \\
+	\textit{Anopheles} & \textit{albitarsis (formerly Sp C)} & 3.0 & 6.8 & 13.0 & 27.3
+	& \text{$>$100} & 44.2 & \text{$>$100} \\
+	\textit{Anopheles} & \textit{albitarsis (formerly Sp A)} & 0.6 & 1.3 & 2.2 & 3.7 & 7.7 & 3.0
+	& 3.1 \\
+	\textit{Anopheles} & \textit{albitarsis (Sp. B)} & 0.5 & 1.2 & 2.0 & 3.3 & 6.6 & 2.6 & 2.6
 	\\
-	\textit{Anopheles} & \textit{arabiensis} & 3.2 & 4.9 & 7.2 & 11.2 & 24.0 & 9.8 & 10.0 \\
-	\textit{Anopheles} & \textit{gambiae s.l.} & 3.4 & 5.7 & 8.8 & 14.4 & 35.7 & 13.3 & 19.7 \\
-	\textit{Anopheles} & \textit{leucosphyrus} & 5.0 & 8.1 & 11.0 & 15.4 & 29.0 & 13.8 & 26.4 \\
-	\textit{Anopheles} & \textit{leucosphyrus s.l.} & 5.0 & 7.9 & 11.0 & 15.8 & 29.7 & 14.1 &
-	25.3 \\
-	\textit{Anopheles} & \textit{aconitus} & 3.9 & 6.6 & 9.5 & 13.7 & 29.4 & 13.4 & 65.1 \\
-	\textit{Anopheles} & \textit{dirus (Sp. A)} & 4.9 & 7.4 & 10.3 & 14.9 & 30.2 & 13.1
-	& 10.7 \\
-	\textit{Anopheles} & \textit{dirus s.l.} & 4.3 & 6.6 & 9.4 & 14.3 & 28.8 & 12.3 & 10.5 \\
-	\textit{Anopheles} & \textit{minimus (Sp. A)} & 4.1 & 6.9 & 10.2 & 16.0 & 37.2 &
-	15.0 & 24.5 \\
-	\textit{Anopheles} & \textit{minimus s.l.} & 3.9 & 5.8 & 7.9 & 11.2 & 20.5 & 9.6 & 6.7 \\
-	\textit{Anopheles} & \textit{barbirostris s.l.} & 3.8 & 5.9 & 7.9 & 11.2 & 23.1 & 10.4 &
-	11.9 \\
-	\textit{Anopheles} & \textit{maculatus} & 3.2 & 5.0 & 7.0 & 10.5 & 21.7 & 9.2 & 8.8 \\
-	\textit{Anopheles} & \textit{maculatus s.l.} & 3.4 & 5.3 & 7.6 & 11.7 & 25.6 & 10.3 & 10.5
-	\\
-	\textit{Anopheles} & \textit{sundaicus s.l.} & 3.2 & 4.9 & 6.9 & 10.6 & 22.4 & 9.3 & 9.3 \\
-	\textit{Anopheles} & \textit{subpictus s.l.} & 2.9 & 4.6 & 6.8 & 11.0 & 25.6 & 10.0 & 13.6
-	\\
-	\textit{Anopheles} & \textit{anthropophagus (lesteri)} & 3.2 & 4.7 & 6.4 & 9.1 & 18.1 & 8.1
-	& 9.3 \\
-	\textit{Anopheles} & \textit{annularis s.l.} & 4.3 & 5.4 & 6.3 & 7.4 & 10.1 & 6.7 & 2.1 \\
-	\textit{Anopheles} & \textit{sinensis} & 3.5 & 4.8 & 6.2 & 8.2 & 13.1 & 7.0 & 3.6 \\
-	\textit{Anopheles} & \textit{fluviatilis s.l.} & 3.6 & 4.8 & 6.0 & 7.5 & 11.0 & 6.5 & 2.6 \\
-	\textit{Anopheles} & \textit{culicifacies s.l.} & 2.6 & 4.1 & 5.9 & 9.4 & 20.1 & 8.3 & 10.2
-	\\
-	\textit{Anopheles} & \textit{farauti (No.1)} & 3.6 & 4.7 & 5.5 & 6.6 & 9.3 & 5.9 &
-	2.1 \\
-	\textit{Anopheles} & \textit{farauti s.l.} & 3.9 & 4.9 & 5.6 & 6.6 & 8.7 & 5.9 & 1.6 \\
-	\textit{Anopheles} & \textit{darlingi} & 3.1 & 4.9 & 7.4 & 12.0 & 27.6 & 10.8 & 13.4 \\
-	\textit{Anopheles} & \textit{pseudopunctipennis s.l.} & 3.9 & 5.4 & 6.5 & 8.0 & 13.0 & 7.4 &
-	4.5 \\
-	\textit{Anopheles} & \textit{aquasalis} & 3.0 & 4.6 & 6.5 & 9.7 & 20.0 & 8.5 & 8.0 \\
-	\textit{Anopheles} & \textit{albitarsis (Sp C)} & 5.2 & 9.5 & 16.4 & 32.6
-	& \text{$>$100} & 66.8 & \text{$>$100} \\
-	\textit{Anopheles} & \textit{albitarsis (Sp A)} & 2.3 & 3.3 & 4.3 & 5.9 & 10.1 &
-	5.1 & 3.3 \\
-	\textit{Anopheles} & \textit{albitarsis (Sp. B)} & 2.2 & 3.1 & 4.1 & 5.4 & 9.0 & 4.7 & 2.7
-	\\
-	\textit{Anopheles} & \textit{albitarsis s.l.} & 2.6 & 4.0 & 5.8 & 9.2 & 19.9 & 8.2 & 9.5 \\
-	\textit{Anopheles} & \textit{albimanus} & 2.7 & 4.1 & 5.5 & 8.0 & 15.0 & 6.8 & 4.8 \\
-	\textit{Anopheles} & \textit{nuneztovari s.l.} & 2.6 & 3.6 & 4.5 & 6.1 & 11.4 & 5.5 & 3.8 \\
+	\textit{Anopheles} & \textit{albitarsis s.l.} & 1.2 & 3.1 & 5.4 & 9.9 & 26.9 & 9.3 & 18.6 \\
+	\textit{Anopheles} & \textit{nuneztovari s.l.} & 1.0 & 2.3 & 3.9 & 6.4 & 14.7 & 5.6 & 7.6 \\
+	\textit{Anopheles} & \textit{darlingi} & 0.9 & 2.4 & 4.5 & 8.1 & 22.0 & 7.4 & 13.6 \\
+	\textit{Anopheles} & \textit{albimanus} & 0.9 & 2.0 & 3.3 & 5.4 & 12.0 & 4.5 & 5.3 \\
+	\textit{Anopheles} & \textit{aquasalis} & 1.0 & 2.3 & 3.9 & 6.3 & 14.4 & 5.6 & 12.9 \\
+	\textit{Anopheles} & \textit{aquasalis s.l.} & 0.8 & 1.6 & 2.4 & 3.8 & 8.2 & 3.3 & 4.1 \\
 \end{tabular}
-\caption{\textbf{Posterior summaries of mean female mosquito lifespan in terms of chronological time from Detinova-type dissection.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.}
+\caption{\textbf{Detinova dissection: mean female mosquito lifespan estimates in terms of chronological time.} The 5\%, 25\%, 50\%, 75\% and 95\% columns indicate the respective quantiles of the posterior distribution for mean lifespan, and the `Mean' and `Std. dev.' columns indicate the posterior mean and standard deviation of mean lifespan.  Units of lifespan are days.}
 \label{tab:detinova_lifespan_chronological}%
 \end{table}
 

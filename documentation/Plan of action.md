@@ -140,16 +140,20 @@
   * [x] Update main text with numbers from this
 * [x] Check and include Polovodova senescence estimates
 * [x] Update titles for supplementary figures
-* [ ] Update PPCs for parity data
 * [ ] Go through all numbers in text. To indicate that they have been checked this time, I am using a green colour.
 * [x] Update text about pairwise figure
 * [x] Update text about EIP figure
-* [x] Fill in "navigating_analyses" markdown text.
+* [x] Fill in "navigating_analyses" markdown text
   * [x] Also add to it the locations of the three main folders
-* [ ] Make all axes labels match (e.g. detinova boxplot and polovodova boxplot)
-* [ ] Make all axis titles capitalised
-* [ ] Check all tables have updated lifespan estimates:
-  * [ ] Detinova definitely isn't as I've just reestimated these
-  * [ ] Polovodova
-  * [ ] MRR
+* [x] Make all axes labels match (e.g. detinova boxplot and polovodova boxplot)
+* [ ] Make all axis titles capitalised:
+  * [x] Main figures
+  * [ ] SOM materials figures
+* [x] Check all tables have updated lifespan estimates:
+  * [x] Detinova
+  * [x] Polovodova
+  * [x] MRR
+* [ ] Weather analysis section update
 * [ ] Go through manuscript and add references to relevant SOM figures
+* [ ] Update PPCs for parity data
+* [ ] Go through all numbers in text. To indicate that they have been checked this time, I am using a green colour
