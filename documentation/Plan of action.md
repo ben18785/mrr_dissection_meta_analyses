@@ -153,7 +153,9 @@
   * [x] Detinova
   * [x] Polovodova
   * [x] MRR
-* [ ] Weather analysis section update
+* [x] Weather analysis section update
+* [ ] Clear up comments
+* [ ] Add references to text as comments
 * [ ] Go through manuscript and add references to relevant SOM figures
 * [ ] Update PPCs for parity data
 * [ ] Go through all numbers in text. To indicate that they have been checked this time, I am using a green colour

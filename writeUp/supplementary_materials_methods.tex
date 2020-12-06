@@ -1101,9 +1101,59 @@ generated quantities{
 	\caption{\textbf{Detinova dissection: prior predictive distribution of lifespan in terms of (left) physiological age and (right) chronological age.} Here, we used the gonotrophic cycle duration estimated for \textit{Anopheles}, $G\sim \mathcal{N}(3.65, 0.40)$, to convert physiological survival to calendar days. The figure shows 100,000 samples from the prior predictive distribution. The mean lifespan in terms of gonotrophic cycles is approximately 3; in terms of chronological age, it is approximately 10.}\label{fig:detinova_priors}
 \end{figure}
 
+\subsection{Model estimation by MCMC and cross validation}
+The statistical models were fit to data using Stan's NUTS algorithm \cite{carpenter2016stan}. In all cases, models were run for 4000 iterations on each of 12 chains, with the first half of the iterations discarded as warm-up. We monitored diagnosed convergence as per \cite{gelman1992inference}, with $\hat{R}<1.1$ on all parameters. In all model runs, there were fewer than a handful of divergent transitions. 
 
-\subsubsection{Impact of insecticide interventions on lifespan}\label{sec:detinova_insecticide}
-To determine the impact of insecticidal interventions on lifespan, we modified the model described in \S\ref{sec:detinova_datamodel} to estimate effects at the species level. To do so, we allowed a logit-linear impact of insecticide. Further, the species-level effects were modelled hierarchically using normal priors, allowing the impact of resistance to vary at the observation level within each study. The model to estimate this is shown below (where the variable metering the impact of insecticide at the observational level is `delta').
+To evaluate model fit to data, we used K-fold cross validation with 4 folds for each analysis. This means that, in a run, approximately $3/4$ of data was used to train models, and the remaining data used to evaluate out-of-sample predictive capability through the log-likelihood. To evaluate out-of-sample predictive log-likelihood for a given data point, we drew data-level parameters $\mathcal{P}_i^{\{s\}}$ from the relevant top-level distribution; for example, for a species-level fit, we drew data-level parameters from the species-level distribution relevant to the species for the data point in question. 
+
+The folds were chosen so that, at all levels of analysis, there was always at least a handful of data points belonging to a particular group in the training set. This meant that, to generate meaningful comparisons between the species-level, complex-level and continent-level models, we selected only those data points with at least 5 observations for each species and complex. This reduced the number of data points used for model comparison versus those used for model estimation. For Africa, we had $n=217$ data points; for the Americas, there were $n=107$; and for Asia, there were $n=108$.
+
+For the comparison between continent-level grouping and overall, we were able to use more data points since we were less constrained by the minimal numbers of data belonging to each group. This meant we had $n=1126$ data points, with $n=679$ for Africa, $n=126$ for the Americas, and $n=321$, for Asia.
+
+\subsection{Model checking}
+To check the fit of models to the data, we simulated from the posterior predictive distribution for each grouping used in analysis. This means that we have two sets of posterior predictive figures: those where the check was performed at the species level; and those corresponding to the complex or subgroup level. In each of these figures, we plot observed empirical cumulative distribution function (eCDF) for the proportion parous versus the equivalent from each posterior predictive dataset.
+
+\begin{itemize}
+	\item \textbf{Africa}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ecdf_africa_grouped}; the species-level graph in Figure \ref{fig:detinova_ecdf_africa_species}.
+	\item \textbf{Americas}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ecdf_americas_grouped}; the species-level graph in Figure \ref{fig:detinova_ecdf_americas_species}.
+	\item \textbf{Asia}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ecdf_asia_grouped}; the species-level graph in Figure \ref{fig:detinova_ecdf_asia_species}.
+\end{itemize}
+
+In all cases, the eCDF for the actual data was bounded by the range of the posterior predictive eCDFs. By this metric, we conclude that the model seems to represent the data well.
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=0.7\textwidth]{./Figure_files/detinova_ecdf_africa_grouped.pdf}}
+	\caption{\textbf{Detinova dissection: posterior predictive check for Africa, at the complex-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_grouped}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_africa_species.pdf}}
+	\caption{\textbf{Detinova dissection: posterior predictive check for Africa, at the species-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_species}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_americas_grouped.pdf}}
+	\caption{\textbf{Detinova dissection: posterior predictive check for the Americas, at the complex-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_grouped}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_americas_species.pdf}}
+	\caption{\textbf{Detinova dissection: posterior predictive check for the Americas, at the species-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_species}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_asia_grouped.pdf}}
+	\caption{\textbf{Detinova dissection: posterior predictive check for Asia, at the complex-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_grouped}
+\end{figure}
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_asia_species.pdf}}
+	\caption{\textbf{Detinova dissection: posterior predictive check for Asia, at the species-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_species}
+\end{figure}
+
+
+\subsection{Association of insecticide interventions on lifespan}\label{sec:detinova_insecticide}
+To determine the association of insecticidal interventions with lifespan, we modified the model described in \S\ref{sec:detinova_datamodel} to estimate effects at the species level. To do so, we allowed a logit-linear impact of insecticide. Further, the species-level effects were modelled hierarchically using normal priors, allowing the impact of resistance to vary at the observation level within each study. The model to estimate this is shown below (where the variable metering the impact of insecticide at the observational level is `delta'). This model was estimated using 1000 iterations per chain (500 of which were warm-up) across 12 chains.
 
 \begin{minted}{stan}
 data{
@@ -1167,15 +1217,7 @@ generated quantities{
 }
 \end{minted}
 
-\subsection{Model estimation by MCMC and cross validation}
-The statistical models were fit to data using Stan's NUTS algorithm \cite{carpenter2016stan}. In all cases, models were run for 4000 iterations on each of 12 chains, with the first half of the iterations discarded as warm-up. We monitored diagnosed convergence as per \cite{gelman1992inference}, with $\hat{R}<1.1$ on all parameters. In all model runs, there were fewer than a handful of divergent transitions. 
-
-To evaluate model fit to data, we used K-fold cross validation with 4 folds for each analysis. This means that, in a run, approximately $3/4$ of data was used to train models, and the remaining data used to evaluate out-of-sample predictive capability through the log-likelihood. To evaluate out-of-sample predictive log-likelihood for a given data point, we drew data-level parameters $\mathcal{P}_i^{\{s\}}$ from the relevant top-level distribution; for example, for a species-level fit, we drew data-level parameters from the species-level distribution relevant to the species for the data point in question. 
-
-The folds were chosen so that, at all levels of analysis, there was always at least a handful of data points belonging to a particular group in the training set. This meant that, to generate meaningful comparisons between the species-level, complex-level and continent-level models, we selected only those data points with at least 5 observations for each species and complex. This reduced the number of data points used for model comparison versus those used for model estimation. For Africa, we had $n=217$ data points; for the Americas, there were $n=107$; and for Asia, there were $n=108$.
-
-For the comparison between continent-level grouping and overall, we were able to use more data points since we were less constrained by the minimal numbers of data belonging to each group. This meant we had $n=1126$ data points, with $n=679$ for Africa, $n=126$ for the Americas, and $n=321$, for Asia.
-
+\subsection{Association of weather covariates with temperature}
 To investigate the effect of measures of temperature, we extracted daily data from the ERA-interim re-analysis by ECMWF \citep{dee2011era} through their website using the Python API. This data included: 
 
 \begin{itemize}
@@ -1184,38 +1226,40 @@ To investigate the effect of measures of temperature, we extracted daily data fr
 	\item Daily maximum two-meter surface temperature.
 \end{itemize}
 
-For this analysis, we included only those studies where the start month listed in the database coincided with the end date - meaning the study took place within a given month - resulting in $n=742$ data points. The temperature data was extracted for the GPS position of each study ($\pm 0.1 \text{ degrees}$) for each day of the month over which mosquito sampling took place, with a grid size of 0.05 degrees. The Python script to extract this information is given below.
+For this analysis, we included only those studies where the start month listed in the database coincided with the end date, meaning the study took place within a given month. We also omitted those data points where insecticide use was recorded. To ensure that we had sufficient data points for each fold used for model comparison, we considered only those species with over 100 observations. This resulted in $n=366$ observations across 2 species complexes: \textit{A. gambiae s.l.} ($n=257$) and \textit{A. funestus s.l.} ($n=109$).
+
+The temperature data was extracted for the GPS position of each study ($\pm 0.1 \text{ degrees}$) for each day of the month over which mosquito sampling took place, with a grid size of 0.05 degrees. The Python script to extract this information is given below.
 
 \begin{minted}{python}
 from ecmwfapi import ECMWFDataServer
 import time
 def extract_meanminmax_temperature(a_area, a_date_start,
-		a_date_end):
-  server = ECMWFDataServer()
-  date_range = str(a_date_start) + "/to/" + str(a_date_end)
-  date_file = str(a_date_start) + "_to_" + str(a_date_end)
-  area=(str(a_area["north"]) + '/' + str(a_area["west"]) +
-       '/' + str(a_area["south"]) + '/' + str(a_area["east"])) 
-  area_file = (str(a_area["north"]) + '_' + str(a_area["west"])
-  + '_' + str(a_area["south"]) + '_' + str(a_area["east"]))
-  a_filename = ("../data/raw/weather/temperature_" +
-  	str(area_file) + "_" + date_file + ".nc")
-  server.retrieve({
-    "class": "ei",
-    "dataset": "interim",
-    "date": str(date_range),
-    "expver": "1",
-    "grid": "0.05/0.05",
-    "levtype": "sfc",
-    "area" : str(area),
-    "param": "167.128/201.128/202.128",
-    "step": "3",
-    "stream": "oper",
-    "time": "00:00:00",
-    "type": "fc",
-    "target":  str(a_filename),
-    "format" : "netcdf",
-  })
+a_date_end):
+server = ECMWFDataServer()
+date_range = str(a_date_start) + "/to/" + str(a_date_end)
+date_file = str(a_date_start) + "_to_" + str(a_date_end)
+area=(str(a_area["north"]) + '/' + str(a_area["west"]) +
+'/' + str(a_area["south"]) + '/' + str(a_area["east"])) 
+area_file = (str(a_area["north"]) + '_' + str(a_area["west"])
++ '_' + str(a_area["south"]) + '_' + str(a_area["east"]))
+a_filename = ("../data/raw/weather/temperature_" +
+str(area_file) + "_" + date_file + ".nc")
+server.retrieve({
+"class": "ei",
+"dataset": "interim",
+"date": str(date_range),
+"expver": "1",
+"grid": "0.05/0.05",
+"levtype": "sfc",
+"area" : str(area),
+"param": "167.128/201.128/202.128",
+"step": "3",
+"stream": "oper",
+"time": "00:00:00",
+"type": "fc",
+"target":  str(a_filename),
+"format" : "netcdf",
+})
 \end{minted}
 
 To determine the impact of temperature on mosquito lifespan, we estimated a generalised linear model using a logit link, with hierarchical complex-level intercepts and either no temperature term, and linear temperature terms with or without quadratic temperature terms. In each case, these temperature terms were allowed to vary at the complex level (non-hierarchically). This meant our likelihood had the form,
@@ -1236,52 +1280,10 @@ The temperature measures ($T_i$), we investigated were summary statistics calcul
 
 \begin{itemize}
 	\item Average two meter temperature (average of mean daily data for each grid point),
-	\item Minimum two meter temperature (average of minimum daily data for each grid point),
-	\item Maximum two meter temperature (average of maximum daily data for each grid point),
-	\item Standard deviation in two meter temperature (average of standard deviation in temperature for each grid point),
-	\item Daily range in two meter temperature (average of maximum minus minimum daily temperature for each grid point).
+	\item Daily range in two meter temperature (average of maximum minus minimum daily temperature for each grid point). This likely reflects the average day-night temperature range.
 \end{itemize}
 
-\subsection{Model checking}
-To check the fit of models to the data, we simulated from the posterior predictive distribution for each grouping used in analysis. This means that we have two sets of posterior predictive figures: those where the check was performed at the species level; and those corresponding to the complex or subgroup level. In each of these figures, we plot observed empirical cumulative distribution function (eCDF) for the proportion parous versus the equivalent from each posterior predictive dataset.
-
-\begin{itemize}
-	\item \textbf{Africa}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ecdf_africa_grouped}; the species-level graph in Figure \ref{fig:detinova_ecdf_africa_species}.
-	\item \textbf{Americas}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ecdf_americas_grouped}; the species-level graph in Figure \ref{fig:detinova_ecdf_americas_species}.
-	\item \textbf{Asia}: the complex-level posterior predictive distribution graph is shown in Figure \ref{fig:detinova_ecdf_asia_grouped}; the species-level graph in Figure \ref{fig:detinova_ecdf_asia_species}.
-\end{itemize}
-
-In all cases, the eCDF for the actual data was bounded by the range of the posterior predictive eCDFs. By this metric, we conclude that the model seems to represent the data well.
-
-\begin{figure}[ht]
-	\centerline{\includegraphics[width=0.7\textwidth]{./Figure_files/detinova_ecdf_africa_grouped.pdf}}
-	\caption{\textbf{Detinova dissection: posterior predictive check for Africa, at the complex-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_grouped}
-\end{figure}
-
-\begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_africa_species.pdf}}
-	\caption{\textbf{Detinova dissection: posterior predictive check for Africa, at the species-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_africa_species}
-\end{figure}
-
-\begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_americas_grouped.pdf}}
-	\caption{\textbf{Detinova dissection: posterior predictive check for the Americas, at the complex-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_grouped}
-\end{figure}
-
-\begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_americas_species.pdf}}
-	\caption{\textbf{Detinova dissection: posterior predictive check for the Americas, at the species-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_americas_species}
-\end{figure}
-
-\begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_asia_grouped.pdf}}
-	\caption{\textbf{Detinova dissection: posterior predictive check for Asia, at the complex-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_grouped}
-\end{figure}
-
-\begin{figure}[ht]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/detinova_ecdf_asia_species.pdf}}
-	\caption{\textbf{Detinova dissection: posterior predictive check for Asia, at the species-level.} Plots show the empirical cumulative distribution functions for observations (orange) and posterior predictive simulations (green). In each case, we ran 4 Markov chains, with 200 iterations per chain; discarding the first 100 iterations as warm-up.}\label{fig:detinova_ecdf_asia_species}
-\end{figure}
+Each of these two models were estimated in Stan using 1000 iterations per chain (500 of each were warm-up) across 4 chains and thinned samples by a factor of 20. To determine whether each covariate was predictive for lifespan, we undertook K-fold cross-validation (using 4 folds with a given fold holding roughly equal numbers of each species). 
 
 \section{EIPs of vector species of malaria, dengue fever, chikungunya and Zika}
 The following anopheline species were identified as vector species of malaria,
