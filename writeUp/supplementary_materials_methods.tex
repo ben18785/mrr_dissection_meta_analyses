@@ -96,7 +96,7 @@
 
 \section{MRR experiments}
 \subsection{Data}
-The MRR database in \cite{guerra2014global} contains 393 individual time-series, along with meta-data for a range of factors for each experiment (for example, species, geography, and date of study). We  cleaned the data, making a number of amendments to it (see Section \ref{sec:amendments}), and transformed the data into a form amenable for our statistical model. We removed time-series with fewer than six separate recapture observations, resulting in 238 time series. For the species-level analyses, we required at least two time series per species, resulting in loss of six series, meaning that the data used in the Bayesian hierarchical analysis comprised 232 individual time series (see Section \ref{sec:appendix_mrrStudyList} for a list of the studies included). Tables \ref{tab:mrr_aggregateData} and \ref{tab:mrr_IndividualData} summarise the data used in the Bayesian hierarchical analysis. This data encompassed time-series from MRR experiments across 33 different species and three genera: \textit{Aedes} (91 separate time-series), \textit{Anopheles} (94), and \textit{Culex} (47), and spanning a wide geographical range (Fig. \ref{fig:mrr_lifetimes_map}).
+The MRR database in \cite{guerra2014global} contains 393 individual time-series, along with meta-data for a range of factors for each experiment (for example, species, geography, and date of study). We  cleaned the data, making a number of amendments to it (see Section \ref{sec:amendments}) and transformed the data into a form amenable for our statistical model. We removed time-series with fewer than six separate recapture observations, resulting in 238 time series. For the species-level analyses, we required at least two time series per species, resulting in loss of six series, meaning that the data used in the Bayesian hierarchical analysis comprised 232 individual time series (see Section \ref{sec:appendix_mrrStudyList} for a list of the studies included). Tables \ref{tab:mrr_aggregateData} and \ref{tab:mrr_IndividualData} summarise the data used in the Bayesian hierarchical analysis. This data encompassed time-series from MRR experiments across 33 different species and three genera: \textit{Aedes} (91 separate time-series), \textit{Anopheles} (94), and \textit{Culex} (47), and spanning a wide geographical range (Fig. \ref{fig:mrr_lifetimes_map}).
 
 \subsection{Amendments by MRR ID}\label{sec:amendments}
 This section describes the amendments made by MRR ID (the unique identifier that \cite{guerra2014global} use for each MRR record). Where there was ambiguity in the data, we attempted to consult the original publication. The amendments to the dataset are described below:
@@ -107,14 +107,20 @@ This section describes the amendments made by MRR ID (the unique identifier that
 	\item 483: There are three studies in the paper \cite[]{rawlings1981influence}, (by dye colour: there is one for `M\&Y', another for white, and a third for green), whereas the database only contains one release series. In this analysis, we analyse all three time series separately.
 	\item 578: A null observation was removed on day 12, since it isn't present in the original paper \cite[]{eyles1943experiment}.
 	\item 585: It is not clear from the original paper \cite[]{smith1941observations} whether missing recapture observations on certain days are because no mosquitoes were found on those days, or because no efforts were made to recapture them on those days. We have assumed that the number recaptured were as stated in the database on those days (missing, because no recapture efforts were made on those days).
-	\item 586: It was unclear from database whether the missing observations are due to lack of recapture, or no effort. Have assumed that zero mosquitoes were captured on these days (the paper could not be accessed).
-	\item 342: Changed number of released from 6,000 to 12,000 following the original publication \cite[]{bryan1991anopheles}.
+	\item 586: It was unclear from the database whether the missing observations were due to lack of recapture, or no recapture effort being made on those days. Have assumed that zero mosquitoes were captured on these days (the paper could not be accessed).
+	\item 342: Changed number of released from 6000 to 12,000 following the original publication \cite[]{bryan1991anopheles}.
 	\item 246: Moved the observations from captures to recaptures following the original publication \cite[]{arredondo1998gonotrophic}.
 	\item 55: Corrected a mistake in release data; the actual number released is 739, not 749 \cite[]{midega2007estimating}.
 	\item 478-481: All four of these series give releases not disaggregated by gender, whereas the recaptures are split this way. Have combined the recapture series to yield a single release-recapture series in each case.
 	\item 154: Moved captured male series to recaptured following original paper \cite[]{tsuda2001movement}. 
 	\item 334: Data starts on day 3, thus have added this number of days to our time variable in this case.
 \end{itemize}
+
+\begin{figure}[h]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_sexReleasesOverTime.pdf}}
+	\caption{\textbf{MRR: time-series by date and sex of released mosquitoes.} The numbers represent by-decade totals of the 232 time-series we used in the main analysis.}
+	\label{fig:mrr_sexReleasesOverTime}
+\end{figure}
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/mrr_mapGenusCropped.pdf}}
@@ -170,12 +176,6 @@ This section describes the amendments made by MRR ID (the unique identifier that
 	\end{adjustwidth}
 \end{table}%
 
-\begin{figure}[h]
-	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/mrr_sexReleasesOverTime.pdf}}
-	\caption{\textbf{MRR: time-series by date and sex of released mosquitoes.} The numbers represent by-decade totals of the 232 time-series we used in the main analysis.}
-	\label{fig:mrr_sexReleasesOverTime}
-\end{figure}
-
 
 \subsection{Statistical model}\label{sec:mrr_statistical}
 Data for a typical MRR experiment consists of a single release of $N_{R}$ marked mosquitoes followed by a series of marked mosquito recaptures on subsequent days (Fig. \ref{fig:mrr_exampleMRRSeries} shows three such example series). We model the number $y(t)$ of marked mosquitoes recaptured on day $t$ using a negative binomial sampling model,
@@ -184,7 +184,7 @@ Data for a typical MRR experiment consists of a single release of $N_{R}$ marked
 y(t) \sim \text{NB}\left((N_{R} - Y(t-1)) S(t) \psi, \kappa\right),
 \end{equation}
 %
-where $Y(t-1)$ is the cumulative number of mosquitoes caught on all days before $t$, $S(t)$ is the probability that an individual mosquito survives and remains in the study area until time $t$, $\psi$ is the daily recapture probability for an individual mosquito which is assumed constant through time, and $\kappa$ is the time-independent shape parameter of the negative binomial distribution that controls the extent of variance in recapture rate likely due mostly to environmental heterogeneity. We chose a parameterisation of the negative binomial such that its mean is given by $\mu(t) = (N_{R} - Y(t-1)) S(t) \psi$, and its variance by $\sigma(t)^2 = \mu(t) + \frac{\mu(t)^2}{\kappa}$. 
+where $Y(t-1)$ is the cumulative number of mosquitoes caught on all days before $t$, $S(t)$ is the probability that an individual mosquito survives and remains in the study area until time $t$, $\psi$ is the daily recapture probability for an individual mosquito which is assumed constant through time, and $\kappa$ is the time-independent shape parameter of the negative binomial distribution that controls the extent of variance in recapture rate likely due mostly to environmental heterogeneity. We chose a parameterisation of the negative binomial such that its mean is given by $\mu(t) = (N_{R} - Y(t-1)) S(t) \psi$ and its variance by $\sigma(t)^2 = \mu(t) + \frac{\mu(t)^2}{\kappa}$. 
 
 For some MRR experiments, there were a number of releases ($q\geq 2$) of marked mosquitoes throughout the duration of the study. In contrast to single releases, with multiple releases over time, it is not in general possible to determine the particular release to which a recaptured mosquito belongs. To avoid the complication of directly inferring this quantity, we choose to represent previous recaptures probabilistically. This results in a slightly different mean to that of the single release model,
 %
@@ -192,7 +192,7 @@ For some MRR experiments, there were a number of releases ($q\geq 2$) of marked 
 \mu(t) = N_{Released}(1-\psi)^{t-1} S(t) \psi,
 \end{equation}
 %
-where the factor of $(1-\psi)^{t-1}$ represents the probability that a mosquito is \textit{not} recaptured on a previous day. Where experiments consisted of two or more releases occurring at distinct points in time we assumed that recaptures of individual mosquitoes from either batch were independent of one another, although with the same sampling parameters ($\psi$ and $\kappa$). This results in an overall mean composed of the sum of those from all $q$ releases,
+where the factor of $(1-\psi)^{t-1}$ represents the probability that a mosquito is \textit{not} recaptured on a previous day. Where experiments consisted of two or more releases occurring at distinct points in time, we assumed that recaptures of individual mosquitoes from either batch were independent of one another, although with the same sampling parameters ($\psi$ and $\kappa$). This results in an overall mean composed of the sum of those from all $q$ releases,
 %
 \begin{equation}
 \mu(t) = \mu_1(t) + ... + \mu_q(t).
@@ -211,7 +211,7 @@ The simplest assumption is that death and dispersal rates are independent of mos
 S(t) = e^{-\lambda t},
 \end{equation}
 %
-where $\lambda$ is the sum of the rates of death and dispersal from the study area. To estimate the lifespan of mosquitoes we use this model, partly because of the limited evidence we find for senescence.
+where $\lambda$ is the sum of the rates of death and dispersal from the study area. To estimate the lifespan of mosquitoes, we use this model, partly because of the limited evidence we find for senescence.
 
 We assume that the number of mosquitoes recaptured on one day is independent of the number recaptured on any other day, apart from their joint dependence on $\lambda$, $\psi$ and $\kappa$. This results in a likelihood of the data of the form,
 %
@@ -227,7 +227,7 @@ We first treat each time-series separately, and estimate individual $(\lambda,\p
 
 \begin{figure}[h]
 	\centerline{\includegraphics[width=1.25\textwidth]{./Figure_files/mrr_individualTimeSeries_priors.pdf}}
-	\caption{\textbf{MRR: prior probability distributions used for lifespan (A), recapture probability (B) and dispersal parameter (C) in the individual time-series analysis.} Note: the prior for the recapture probability was truncated at $\psi=0.1$ since most MRR day one recapture fractions were significantly below this threshold.}
+	\caption{\textbf{MRR: prior probability distributions used for lifespan (A), recapture probability (B) and dispersal parameter (C) in the individual time-series analysis.} Note: the prior for the recapture probability was truncated at $\psi=0.1$ since most recapture fractions on the first day were significantly below this threshold.}
 	\label{fig:mrr_individualTimeSeries_priors}
 \end{figure}
 
@@ -271,7 +271,7 @@ The relatively complex nature of priors in hierarchical models make it important
 \end{figure}
 
 \subsection{Testing for age-dependent mortality in wild mosquitoes}\label{sec:mrr_age_dependence}
-Previous work has found evidence of age-dependent mortality in lab populations \citep{styer2007mosquitoes,dawes2009anopheles}, and less-commonly in wild mosquitoes \citep{clements1981analysis,harrington2008age}. Furthermore, modelling work has examined the implications of departures from a constant risk of mortality \citep{styer2007mosquitoes,hancock2009age,novoseltsev2012age}. To determine whether senescence occurs in wild mosquitoes, we re-estimate the model using a range of different survival functions, $S(t)$, that permit mortality to increases with age. Specifically, we re-estimate our model using five other models that were previously used in the literature (see Table \ref{tab:mrr_survivalDescription} for a description of these). Each of these models makes different assumptions about how the rate of death and dispersal varies with age, but all can be represented by a general form,
+Previous work has found evidence of age-dependent mortality in lab populations \citep{styer2007mosquitoes,dawes2009anopheles} and less commonly in wild mosquitoes \citep{clements1981analysis,harrington2008age}. Furthermore, modelling work has examined the implications of departures from a constant risk of mortality \citep{styer2007mosquitoes,hancock2009age,novoseltsev2012age}. To determine whether senescence occurs in wild mosquitoes, we re-estimate the model using a range of different survival functions, $S(t)$, that permit mortality to increases with age. Specifically, we re-estimate our model using five other models that were previously used in the literature (see Table \ref{tab:mrr_survivalDescription} for a description of these). Each of these models makes different assumptions about how the rate of death and dispersal varies with age, but all can be represented by a general form,
 %
 \begin{equation}\label{eq:survivalInt}
 S(t) = e^{-\int\limits_{0}^{t}\lambda(\tau) \mathrm{d}\tau}.
@@ -336,7 +336,7 @@ To judge convergence of the sampling algorithm to the posterior density, we calc
 	\item Age-dependent analysis (Section \ref{sec:mrr_age_dependence}): 12 independent chains with 3000 iterations per chain.
 \end{itemize}
 
-In all cases, we discarded the first half of these iterations as warm-up \citep{gelman2014bayesian}. At the end of all runs for lifespan estimation, $\hat{R}<1.1$ for all model parameters. For the age-dependent cases, there remained a handful of parameters where $\hat{R}>1.1$ after running simulations for 3000 iterations but this did not affect our inferences, since repeated runs demonstrated the same pattern. We also ensured that across each MCMC run, the number of divergent iterations (that can bias the MCMC away from the true posterior density) was minimal. In the majority of cases, the number of divergent iterations was far fewer than 1\% of the total number of samples.
+In all cases, we discarded the first half of these iterations as warm-up \citep{gelman2014bayesian}. At the end of all runs for lifespan estimation, $\hat{R}<1.1$ for all model parameters. For the age-dependent cases, there remained a handful of parameters where $1.2>\hat{R}>1.1$ after running simulations for 3000 iterations but this did not affect our inferences, since repeated runs demonstrated the same pattern. We also ensured that across each MCMC run, the number of divergent iterations (that can bias the MCMC away from the true posterior density) was minimal. In the majority of cases, the number of divergent iterations was far fewer than 1\% of the total number of samples.
 
 The Stan scripts for lifespan estimation (i.e. those using an exponential survival model) for the MRR analyses are provided below. The script for the individual time series analysis (Section \ref{sec:MRR_individual_analysis}):
 
@@ -963,7 +963,12 @@ To convert the estimates of lifespan in physiological age into chronological age
 
 Whilst compiling our dataset on gonotrophic cycles, \cite{massey2016global} published a database of bionomic quantities for malaria vectors (that is, including only anopheline species). Included in this dataset were a number of estimates of gonotrophic cycle duration. After removing duplicates with our dataset, we were left with 120 estimates of gonotrophic cycle duration. The majority of these estimates were based on laboratory experiments conducted on wild-caught specimens or their $F_1$ or $F_2$ descendents ($n=45$), followed by MRR studies ($n=36$), then experiments on laboratory colonies ($n=11$). In MRR studies, estimates are made of the duration of gonotrophic cycles by dissecting recaptured mosquitoes at each time point using the method of \cite{polovodova1949determination} to count ovariolar dilations. For laboratory studies, duration of gonotrophic cycles is determined by direct observation.
 
-Along with point estimates of the parameter we also collected information about the uncertainty in the estimates (if available). In many articles, the duration of the gonotrophic cycle was estimated separately for the first versus subsequent cycles, and these estimates were recorded separately. If there was no disaggregation of durations between 1st and subsequent cycles, we assumed that each of these were the same. Raw estimates of gonotrophic cycle duration were obtained for species across three different genera (\textit{Aedes}, \textit{Anopheles} and \textit{Culex}), although there was a bias towards \textit{Anopheles} with $n=92$ estimates (Fig. \ref{S-fig:dissection_gonotrophicCycleRaw}).
+Along with point estimates of the parameter we also collected information about the uncertainty in the estimates (if available). In many articles, the duration of the gonotrophic cycle was estimated separately for the first versus subsequent cycles, and these estimates were recorded separately. If there was no disaggregation of durations between 1st and subsequent cycles, we assumed that each of these were the same. Raw estimates of gonotrophic cycle duration were obtained for species across three different genera (\textit{Aedes}, \textit{Anopheles} and \textit{Culex}), although there was a bias towards \textit{Anopheles} with $n=92$ estimates (Fig. \ref{fig:dissection_gonotrophicCycleRaw}).
+
+\begin{figure}[ht]
+	\centerline{\includegraphics[width=1\textwidth]{./Figure_files/gonotrophic_data.pdf}}
+	\caption{\textbf{Raw gonotrophic cycle duration estimates for A. the 1st cycle and B. subsequent cycles.} When present, the confidence intervals represent our estimates of the 95\% confidence interval on gonotrophic cycle duration (see Section \ref{sec:dissection_gonotrophicMethod} for a discussion of how we handle this issue); if our estimate of the lower limit was below zero, we deemed this unbiological and set it to 1 day for this graph. If no statement of uncertainty was given in the estimates then we indicate this by a triangle marker. The studies are ordered within each Genus according to the central estimate of gonotrophic duration.}\label{fig:dissection_gonotrophicCycleRaw}
+\end{figure}
 
 \subsection{Statistical analysis of gonotrophic cycle data}\label{sec:dissection_gonotrophicMethod}
 As discussed in Section \ref{sec:dissection_gonotrophicData}, there was considerable study-level heterogeneity in the information provided for the estimates of the gonotrophic cycle duration. A number of studies ($n=42$) provided no estimates of uncertainty in gonotrophic cycle duration, whereas the rest gave some indication of confidence or alternatively a range of possible estimates. However, the types of uncertainty intervals that were specified varied considerably across studies: from the vague (but common), `4-6 days'; to the more helpful, `5$\pm 1$ day (95\% confidence interval)'. 
@@ -1006,7 +1011,7 @@ The estimates of lifespan produced from analysing the dissection data are in ter
 	\subitem then $L^c_i = G_{1i}\times L^p_i$.
 \end{enumerate}
 
-In the using the above methodology to convert from physiological to calendar age, we implicitly assume that all gonotrophic cycles after the first are of the same length (i.e. we choose one $G_{2i}$ per sample). However, since we allow a different $G_{2i}$ for each sample, we nonetheless believe that the above approach allows for sufficient uncertainty in the estimates of subsequent gonotrophic cycle durations. If instead we believed that significant variation in gonotrophic cycle occurred within a particular mosquito's life (as well as between mosquitoes) then we could draw a new value of $G_{2i}$ for each subsequent cycle. This produces results with indistinguishable uncertainty than the results we report (data not shown).
+In using the above methodology to convert from physiological to calendar age, we implicitly assume that all gonotrophic cycles after the first are of the same length (i.e. we choose one $G_{2i}$ per sample). However, since we allow a different $G_{2i}$ for each sample, we nonetheless believe that the above approach allows for sufficient uncertainty in the estimates of subsequent gonotrophic cycle durations. If instead we believed that significant variation in gonotrophic cycle occurred within a particular mosquito's life (as well as between mosquitoes) then we could draw a new value of $G_{2i}$ for each subsequent cycle. This produces results with indistinguishable uncertainty than the results we report (data not shown).
 
 \section{Detinova dissection experiments}\label{sec:detinova}
 \cite{detinova1962age} provided an alternative approach to estimate the lifespan of individual specimens, based on sampling the parous rate in a population (the proportion of adult females that have laid eggs) using dissection to determine parity of each specimen. In what follows, we follow the derivation given by \cite{davidson1954estimation}, to determine an expression for the mean lifespan of a mosquito in terms of gonotrophic cycles (all assumed to be of the same duration, $G$). If the probability of dying in a given cycle, $p$, is assumed constant (i.e. there is no age-dependent mortality), then the probability a mosquito completes $Y$ cycles, is geometrically distributed,
@@ -1025,9 +1030,9 @@ In this section, we describe the data processing carried out on the \cite{massey
 For each of the three datasets (Africa, Americas and Asia) contained with the SOM of \cite{massey2016global}, we used only those observations which had a non-missing and positive total capture size. For each observation, we calculated observed parity ($=\text{parous count}/ \text{total capture size}$) and compared this quantity with the `parity percent' column in the datasets. If the difference between these two quantities was lower than 1\%, we considered the discrepancy to be due to numerical rounding and did not investigate further. In those cases where the difference exceeded 1\%, we did the following:
 
 \begin{itemize}
-	\item Africa: considering the database entry for \cite{ijumba2002malaria}, there was a difference of about 50\%. Reading the paper, it looks like there is a mistake in their Table 5, and that the parous number should be 131 and, as such, we changed this number in the database; considering the entry for \cite{bockarie46service}, there was a difference of around 5\%. We could not access the paper here, so assumed that the issue was with the `parity percent' entry.
+	\item Africa: considering the database entry for \cite{ijumba2002malaria}, there was a difference of about 50\%. Reading the paper, it looks like there is a mistake in their Table 5, and that the parous number should be 131 and, as such, we changed this number in the database; considering the entry for \cite{bockarie46service}, there was a difference of around 5\%. We could not access the paper here so assumed that the issue was with the `parity percent' entry.
 	\item Americas: no differences exceeding 1\%.
-	\item Asia: considering the entry for \cite{kitthawee1992relationship}, there was a difference of around 3\%. Reading the paper, it looks like there was a (small) error in the database, and the parous number should be 35 (rather than 36) - this adjustment was made for the ensuing analysis.
+	\item Asia: considering the entry for \cite{kitthawee1992relationship}, there was a difference of around 3\%. Reading the paper, it looks like there was a (small) error in the database, and the parous number should be 35 (rather than 36) -- this adjustment was made for the ensuing analysis.
 \end{itemize}
 
 For the species- and complex-level estimates of lifespan, we considered only those groups with five or more parity experiments. For the continent-level and overall estimates, we used all data. In a number of cases, a species was indicated as a complex (for example, `Anopheles gambiae complex'), presumably when insufficient information was available in the paper to identify the species. These data were dropped for the species-level analysis but were included for all other analyses.
