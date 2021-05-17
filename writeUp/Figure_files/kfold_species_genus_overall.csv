@@ -1,0 +1,10 @@
+﻿Analysis,Grouping,Log-likelihood,z (vs next best performing model),p (vs next best performing model)
+MRR,genus,-7315.2,NA,NA
+,overall,-7511.0,11.3,0.0
+,species,-7748.9,5.5,0.0
+Detinova,species,-14672.4,NA,NA
+,genus,-15504.9,3.6,0.0
+,continent,-16731.1,0.4,0.3
+Polovodova,species,-3818.3,NA,NA
+,genus,-3848.3,0.4,0.3
+,overall,-3895.5,0.4,0.4
