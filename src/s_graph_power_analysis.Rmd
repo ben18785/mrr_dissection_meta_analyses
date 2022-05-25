@@ -1,0 +1,94 @@
+---
+title: "Power analysis: 2021"
+output: html_notebook
+---
+
+```{r}
+rm(list=ls())
+library(tidyverse)
+library(reshape2)
+```
+Duration power analysis
+```{r}
+durations <- read.csv("power_duration_t.csv", header = F)$V1
+durations_rep <- rep(durations, 2)
+lower <- read.csv("power_duration_1.csv", header = F) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  melt() %>% 
+  mutate(duration=durations_rep) %>% 
+  rename(lower=value)
+middle <- read.csv("power_duration_2.csv", header = F) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  melt() %>% 
+  mutate(duration=durations_rep) %>% 
+  rename(middle=value)
+upper <- read.csv("power_duration_3.csv", header = F) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  melt() %>% 
+  mutate(duration=durations_rep) %>% 
+  rename(upper=value)
+
+lookup <- tribble(~variable, ~lifespan,
+                  "V1", "5 days",
+                  "V2", "10 days")
+
+combined <- lower %>%
+  left_join(middle) %>% 
+  left_join(upper) %>% 
+  left_join(lookup)
+
+combined %>% 
+  ggplot(aes(x=duration, y=middle, colour=lifespan)) +
+  geom_pointrange(aes(ymin=lower, ymax=upper)) +
+  geom_line() +
+  scale_y_log10() +
+  xlab("Study duration, days") +
+  ylab("Absolute error in lifespan estimate") +
+  scale_color_brewer("True\nlifepan", palette = "Dark2")
+```
+
+Release size power analysis
+```{r}
+durations <- read.csv("power_size_n.csv", header = F)$V1
+durations_rep <- rep(durations, 2)
+lower <- read.csv("power_size_1.csv", header = F) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  melt() %>% 
+  mutate(duration=durations_rep) %>% 
+  rename(lower=value)
+middle <- read.csv("power_size_2.csv", header = F) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  melt() %>% 
+  mutate(duration=durations_rep) %>% 
+  rename(middle=value)
+upper <- read.csv("power_size_3.csv", header = F) %>% 
+  t() %>% 
+  as.data.frame() %>% 
+  melt() %>% 
+  mutate(duration=durations_rep) %>% 
+  rename(upper=value)
+
+lookup <- tribble(~variable, ~lifespan,
+                  "V1", "5 days",
+                  "V2", "10 days")
+
+combined <- lower %>%
+  left_join(middle) %>% 
+  left_join(upper) %>% 
+  left_join(lookup)
+
+combined %>% 
+  ggplot(aes(x=duration, y=middle, colour=lifespan)) +
+  geom_pointrange(aes(ymin=lower, ymax=upper)) +
+  geom_line() +
+  scale_y_log10() +
+  scale_x_log10() +
+  xlab("Release size") +
+  ylab("Absolute error in lifespan estimate") +
+  scale_color_brewer(palette = "Dark2")
+```
