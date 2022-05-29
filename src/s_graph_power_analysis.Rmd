@@ -39,14 +39,17 @@ combined <- lower %>%
   left_join(middle) %>% 
   left_join(upper) %>% 
   left_join(lookup)
+combined_duration <- combined %>%
+  mutate(type="A.")
 
-combined %>% 
+g1 <- combined %>% 
   ggplot(aes(x=duration, y=middle, colour=lifespan)) +
   geom_pointrange(aes(ymin=lower, ymax=upper)) +
   geom_line() +
   scale_y_log10() +
   xlab("Study duration, days") +
-  ylab("Absolute error in lifespan estimate") +
+  ylab("RMSE in lifespan estimate") +
+  theme(legend.position = c(0.7, 0.83)) +
   scale_color_brewer("True\nlifepan", palette = "Dark2")
 ```
 
@@ -81,14 +84,29 @@ combined <- lower %>%
   left_join(middle) %>% 
   left_join(upper) %>% 
   left_join(lookup)
+combined_release <- combined %>%
+  mutate(type="B.")
 
-combined %>% 
+g2 <- combined %>% 
   ggplot(aes(x=duration, y=middle, colour=lifespan)) +
   geom_pointrange(aes(ymin=lower, ymax=upper)) +
   geom_line() +
   scale_y_log10() +
   scale_x_log10() +
   xlab("Release size") +
-  ylab("Absolute error in lifespan estimate") +
-  scale_color_brewer(palette = "Dark2")
+  ylab("RMSE in lifespan estimate") +
+  theme(legend.position = c(0.7, 0.83)) +
+  scale_color_brewer("True\nlifepan", palette = "Dark2")
 ```
+
+
+```{r}
+library(cowplot)
+g <- plot_grid(g1, g2, nrow = 1, labels = c("A.", "B."))
+```
+
+```{r}
+save_plot("../writeUp/Figure_files/mrr_power_analysis.pdf", g)
+```
+
+
